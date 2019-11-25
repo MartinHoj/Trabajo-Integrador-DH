@@ -24,8 +24,6 @@ nav ul{
     flex-wrap: wrap;
 }
 
-
-
 nav ul li {
 
     list-style-type: none;
@@ -45,44 +43,24 @@ font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 font-size: large;
 }
 
+.amigos{
+    width: 30%;
+    height: 100px;
+    margin-top: 2%;
+    margin-left: 20%;
+    background-color: rgba(61, 97, 89, 0.747);
+    
 
-main{
+}
 
-    width: 90%;
-    height: auto;
-    /* background-color: darkorange; */
-    margin-left: auto;
-    margin-right: auto;
+#imagenAmigo{
+    width: 20%;
     display: block;
-    /* position: absolute; */
+    float: left;
+    padding-left: 2%;
 }
-
-.posteos{
-
-    width: 50%;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5%;
-    background-color: rgba(51, 90, 75, 0.76); 
-    padding: 1%;
-    border-radius: 1%;
+#nombreAmigo{
+    display: block;
+    float: left;
+    padding-left: 2%;
 }
-
-#fotoPerfilPosteo{
-width: 10%;
-border-radius: 50%;
-
-}
-
-#fotoPosteo{
-
-    width: 100%;
-}
-
-#nombrePerfil{
-
-    font-size: large;
-    color: rgb(0, 0, 0);
-}
-

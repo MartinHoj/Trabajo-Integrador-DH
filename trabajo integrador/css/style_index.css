@@ -9,21 +9,26 @@ body{
 header{
     
     width: 60%;
-    height: 40px;
+    /* height: 40px; */
     background-color: rgba(61, 97, 89, 0.747);
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 1%;
+  
  
  }
+ 
 
-
-
+nav ul{
+    display: flex;
+    flex-wrap: wrap;
+}
 nav ul li {
 
     list-style-type: none;
     display: block;
     float: left;
-    margin-left: 5%;
+    margin-left: 1%;
     /* background-color: rgb(143, 212, 31); */
     padding-top: 1%;
    
