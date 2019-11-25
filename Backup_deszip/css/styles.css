@@ -18,7 +18,6 @@ body{
   max-width: 100%;
   background-color: white;
   margin:1px auto 5px;
-
 }
 .header-index img{
   width: 100px;
@@ -175,11 +174,4 @@ margin-left: 250px;
   display: flex;
   justify-content: center;
   padding-bottom: 100px;
-}
-
-.contenedor-preg{
-  text-align: center;
-}
-.titulo-preg{
-  text-align: center;
 }
