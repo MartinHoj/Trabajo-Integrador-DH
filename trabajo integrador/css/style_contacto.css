@@ -1,0 +1,68 @@
+body{
+
+    margin: 0 auto;
+    background-color: rgb(112, 158, 204);
+    
+
+}
+
+
+.contenedor{
+
+    background-color: rgba(61, 97, 89, 0.747);
+    width: 17%;
+    height: auto;
+    box-sizing: border-box;
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 10%;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 3%;
+    border:3px solid black ;
+    /* padding: 1% 1% 1% 1%; */
+    padding-bottom: 1%;
+   
+}
+
+div p label {
+
+    color: rgb(236, 235, 231);
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+small {
+
+    color: rgb(48, 42, 22);
+}
+
+.input{
+    
+    border-radius: 10%;
+}
+
+.button{
+    
+    width: 100px;
+    height: 40px;
+    border-radius: 10%;
+    border: 1px solid rgb(2, 2, 2);
+    color: blanchedalmond;
+    font-size:medium;
+    background: rgb(81, 99, 61);
+    overflow: hidden;
+    position: relative;
+    -webkit-animation-name: example;  /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s;  /* Safari 4.0 - 8.0 */  
+    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 3s;  
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes example {
+    from {top: -200px;}
+    to {top: 0px; background-color: rgba(134, 95, 21, 0.801);}
+  }
