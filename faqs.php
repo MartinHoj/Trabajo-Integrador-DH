@@ -8,22 +8,7 @@
   <title>Preguntas Frecuentes</title>
 </head>
 <body>
-  <header class="header-index contenedor-index">
-  <nav class="nav">
-  <img src="img/ircap.png" alt="">
-  <div class="menuheader">
-    <a href="index.html">Home</a>
-    <a href="#">F.A.Q</a>
-    <a href="#">Perfirl de Usuario</a>
-  </div>
-
-  <div class="logingheader">
-    <a href="login.html">LOGIN</a>
-    <a href="registro.html">REGISTRO</a>
-    <a href="contacto.html">CONTACTO</a>
-  </div>
-</nav>
-  </header>
+  <?php require_once('header.php') ?>
 <!-- Armo un div general para todo el sitio de FAQS -->
   <div class="">
     <h1 class="titulo-preg">Preguntas frecuentes</h1>

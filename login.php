@@ -9,11 +9,11 @@
 </head>
 <body>
 
-  <div class="contendedor-index">
-
+<div class="contendedor-index">
+<?php require_once('header.php') ?>
 
 <div class="central-index">
-<form action="index.html" method="post">
+<form action="" method="post">
   <h1>BIENVENIDO</h1>
   <br>
   <label for="email">Email</label>

@@ -1,39 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Login</title>
+  <title>Contacto</title>
 </head>
 <body>
+<div class="cont_Prin_Contacto">
+<?php require_once('header.php') ?>
 
-  <div class="contendedor-index">
 
+<form class="formcontacto" action="index.html" method="post">
+  <div class="">
+    <h1>Página de Contacto</h1>
 
-<div class="central-index">
-<form action="index.html" method="post">
-  <h1>BIENVENIDO</h1>
-  <br>
-  <label for="nombre">Nombre</label>
-<br>
-  <input id="nombre" type="text" name="nombre" value="" placeholder="nombre" required>
-  <br>
-  <br>
-  <label for="email">Email</label>
-  <br>
-  <input id="email" type="email" name="email" value="" placeholder="email" required>
+  </div>
+<label for="">¿De dónde sos?</label>
 <br>
 <br>
-  <label for="contrasenia">Contraseña</label>
-  <br>
-  <input id="contrasenia"type="password" name="contrasenia" placeholder="contraseña" value="" required>
-  <br>
-  <br>
-<label for="pais"><b>Pais de Nacimiento</b></label>
-<br>
-<select id="pais" class="pais" name="pais" requered>
+<select class="pais" name="pais">
   <option value="AF">Afganistán</option>
 <option value="AL">Albania</option>
 <option value="DE">Alemania</option>
@@ -83,7 +70,7 @@
 <option value="KM">Comores</option>
 <option value="CG">Congo</option>
 <option value="CD">Congo, República Democrática del</option>
-<option value="KR">Corea del Sur</option>
+<option value="KR" >Corea del Sur</option>
 <option value="KP">Corea del Norte</option>
 <option value="CI">Costa de Marfíl</option>
 <option value="CR">Costa Rica</option>
@@ -272,36 +259,71 @@
 </select>
 <br>
 <br>
+<br>
+<label for="iluminacion">¿Qué te parece nuestro sitio?</label>
+<br>
+<br>
+<input id="iluminacion" type="checkbox" name="iluminacion" value="muy">Muy acorde
+<br>
+<input type="checkbox" name="iluminacion" value="buena">Buena, pero podría mejorar
+<br>
+<input type="checkbox" name="iluminacion" value="mala">Mala
+<br>
+<br>
+<br>
+<label for="preferencia">¿Qué es lo que más te gusta?</label>
+<br>
+<br>
+<input id="preferencia" type="checkbox" name="preferencia" value="entrada">El diseño
+<br>
+<input type="checkbox" name="" value="Ppal">La funcionalidad
+<br>
+<input type="checkbox" name="" value="postre">Que es gratis
+<br>
+<input type="checkbox" name="" value="Otros">Otros
+<br>
+<br>
+<br>
+<label for="recomendar">¿Recomendarías el sitio?</label>
+<br>
+<br>
+<input id="recomendar" type="radio" name="recomendar" value="si">
+Si
+<br>
+<input type="radio" name="recomendar" value="no">
+No
+<br>
+<br>
+<br>
+<label for="comentario">¿Por qué?</label>
+<br>
+<br>
+<textarea id="comentario" name="comentario" rows="8" cols="60"></textarea>
 
-<label for="genero"><b>Género</b></label>
-<br>
-<input id="genero" type="radio" name="genero" value="m">Masculino
-<input type="radio" name="genero" value="f">Femenino
-<input type="radio" name="genero" value="no">Prefiero no decirlo
 <br>
 <br>
-<label for="hobbies"><b>Hobbies</b></label>
 <br>
-<input type="checkbox" name="" value="">Nadar
-<input type="checkbox" name="" value="">Leer
-<input type="checkbox" name="" value="">Programar
-<input type="checkbox" name="" value="">Comer
+<label for="">Dejanos tus datos y nos pondremos en contacto con vos</label>
 <br>
 <br>
-<label for="com"><b>Dejanos tus comentarios</b></label>
-<textarea id="com" name="com" rows="8" cols="25"></textarea>
-<br>
-<input type="checkbox" name="" value="">Términos y condiciones.
+<label for="nombre">Nombre:</label>
+<input id="nombre" type="text" name="nombre" value="" placeholder="tu nombre" required>
 <br>
 <br>
-  <button id="botonlogin" type="submit" name="submit">Registrarme</button>
-<button id="botonlogin" type="reset" name="button">Cancelar</button>
+<label for="email">Email:</label>
+<input id="email" type="email" name="email" value="" placeholder="tu email" required>
+<br>
+<br>
+<button id="btnEnviar" type="submit" name="button">Enviar</button>
+<button id="btnResetear" type="reset" name="button">Resetear</button>
+
+
+
+
 </form>
 
+
 </div>
-
-
-  </div>
-
+<!-- Fin de Contenedor Principal -->
 </body>
 </html>
