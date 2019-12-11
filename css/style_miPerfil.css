@@ -1,0 +1,68 @@
+body{
+
+    margin: 0 auto;
+    /* background-color: rgb(112, 158, 204); */
+    
+
+}
+
+header{
+    
+    width: 60%;
+    /* height: 40px; */
+    background-color: rgba(61, 97, 89, 0.747);
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 1%;
+  
+ 
+ }
+ 
+
+nav ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+
+    list-style-type: none;
+    display: block;
+    float: left;
+    margin-left: 1%;
+    /* background-color: rgb(143, 212, 31); */
+    padding-top: 1%;
+   
+
+}
+
+nav ul li a{
+    color: cornsilk;
+    text-decoration: none;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-size: large;
+}
+
+#fotoPerfil{
+    display: block;
+    float: left;
+    width: 20%;
+    height: auto;
+}
+#datos{
+    padding-left: 2%;
+    padding-top: 3%;
+    float: left;
+}
+
+div div p {
+
+    color:black;
+    font-size: x-large;
+    background-color: blanchedalmond;
+}
+
+.contenedor{
+    padding-top: 3%;
+    padding-left: 5%;
+}
