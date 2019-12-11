@@ -1,3 +1,84 @@
+
+<?php 
+//***********************************REQUIRES*********************************************************** */
+
+
+
+ require_once('controladores/funciones.php');
+
+
+
+
+
+
+
+//**************************************************************************************************************** */
+
+if($_POST) {
+
+
+  // traigo la funcion validar que me devuelve un array errores
+  $errores = validar($_POST);
+
+  if(!$errores) {
+
+
+            // llamo a la función guardarUsuario() --> me devuelve un array asociativo con los datos que envió el usuario
+            $usuario = guardarUsuario($_POST);
+
+            // llamo a la función guardarAvatar() --> guarda la imagen y devuelve le nombre con el que guardé la imagen
+            //$nombreImagen = guardarAvatar();
+    
+            // al array asocativo del nuevo usuario, le creo la posición "avatar" para guardar el nombre de la imagen que subió el usuario
+            //$usuario['avatar'] = $nombreImagen;
+    
+            // me traigo el contenido del archivo usuarios.json
+            $listaDeUsuarios = file_get_contents('usuarios.json');
+    
+            // convierto ese contenido a formato array para poder manipular los datos
+            $arrayUsuarios = json_decode($listaDeUsuarios, true);
+    
+            // en la última posicón del array de usuarios me guardo al nuevo usuario
+            $arrayUsuarios[] = $usuario;
+    
+            // convierto el aray de usuarios a formato json para volver a guardarlo en el archivo de usuarios
+            $todosLosUsuarios = json_encode($arrayUsuarios);
+    
+            // guardo el json completo de ususarios en usuarios.json 
+            file_put_contents('usuarios.json', $todosLosUsuarios);
+    
+            // por ahora redirecciono a la misma vista
+            header('Location: login.php');
+            
+            /*
+            Más adelante, después de guardar al usuario, deberíamos redireccionarlo a otra vista:
+            opción A: redireccionarlo a la vista de login para que inicie sesión
+            opción B: loguearlo atomáticamente y redireccionarlo a la vista de perfil
+    
+            La clase que viene vamos a ver cómo iniciar y mantener la sesión de un usuario así como también recordar los datos de un usuario en el navegador para que, la próxima vez que ingrese a la url, se autologue
+            */
+
+
+  }
+
+}
+
+
+
+"<pre>";
+
+var_dump($_POST);
+"</pre>";
+
+
+
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,36 +86,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Login</title>
+  <title>Registro</title>
 </head>
 <body>
 
-<div class="contendedor-index">
-<?php require_once('header.php') ?>  
+  <div class="contendedor-index">
+  
 
 <div class="central-index">
-<form action="index.html" method="post">
-  <h1>BIENVENIDO</h1>
-  <br>
-  <label for="nombre">Nombre</label>
-<br>
-  <input id="nombre" type="text" name="nombre" value="" placeholder="nombre" required>
-  <br>
-  <br>
-  <label for="email">Email</label>
-  <br>
-  <input id="email" type="email" name="email" value="" placeholder="email" required>
-<br>
-<br>
-  <label for="contrasenia">Contraseña</label>
-  <br>
-  <input id="contrasenia"type="password" name="contrasenia" placeholder="contraseña" value="" required>
-  <br>
-  <br>
-<label for="pais"><b>Pais de Nacimiento</b></label>
-<br>
-<select id="pais" class="pais" name="pais" requered>
-  <option value="AF">Afganistán</option>
+<form action="registro.php" method="post">
+  <h1>Registrarme</h1>
+
+
+
+             <!-- CAMPO NOMBRE -->
+               <p>
+                 <label for="nombre">Nombre</label><br>
+
+                     <input id="name" type="text" name="name" placeholder="Ingresa tu nombre"  value="<?= isset($_POST["name"]) ? $_POST["name"] : "" ?>"><br>
+
+                          <?php if(isset($errores["name"])): ?> 
+                             <small style="color:red;"><?= $errores["name"]?></small><br>
+                                <?php endif; ?>
+                                </p>
+
+
+                                 <!-- CAMPO NOMBRE DE USUARIO -->
+                                 <p>
+                               <label for="username">Nombre de usuario</label><br>
+
+                        <input type="text" name="username" id="username" value="<?= isset($_POST['username']) ? $_POST['username'] : '' ?>" placeholder="Ingresa tu nombre de usuario"><br>
+                      <?php if(isset($errores['username'])): ?>
+                   <small style="color:red;"><?= $errores['username']?></small><br>
+                 <?php endif; ?>
+              </p>
+
+         <!-- CAMPO EMAIL -->
+              <P>
+               <label for="email">Email</label><br>
+
+                 <input id="email" type="email" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Ingresá tu email" placeholder="email" ><br>
+                   </P>
+
+
+
+                     <!-- CAMPO CONTRASEÑA -->
+                    <P>
+                  <label for="password">Contraseña</label><br>
+
+                <input id="password"type="password" name="password"  placeholder="Ingresa tu contraseña" >
+              <?php if(isset($errores['password'])): ?>
+            <small style="color:red;"><?= $errores['password']?></small><br>
+          <?php endif; ?>
+        </P>
+
+
+        <!-- REPETIR CONTRASEÑA -->
+        <p>
+         <label for="repassword">Repetir contraseña</label><br>
+  
+           <input id="repassword" type="password" name="confirm-password" placeholder="Repite tu contraseña igresada"><br>
+             <?php if(isset($errores["repassword"])): ?>
+               <small style="color:red;"><?= $errores["repassword"]?></small><br>
+                <?php endif; ?>
+                  </p>
+
+                  PAIS DE NACIMIENTO
+                          <p>
+                          <label for="pais"><b>Pais de Nacimiento</b></label>
+                        <br>
+                      <select id="pais" class="pais" name="pais" required>
+
+<option value="AF">Afganistán</option>
 <option value="AL">Albania</option>
 <option value="DE">Alemania</option>
 <option value="AD">Andorra</option>
@@ -272,33 +395,49 @@
 </select>
 <br>
 <br>
+</p>
+  <label for="genero"><b>Género</b></label>
+    <br>
+      <input id="genero" type="radio" name="genero" value="masculino">Masculino
+      <input type="radio" name="genero" value="femenino">Femenino
+      <input type="radio" name="genero" value="no">Prefiero no decirlo
+       <br>
+        <?php if(isset($errores["genero"])): ?>
+          <small style="color:red;"><?= $errores["genero"]?></small><br>
+             <?php endif; ?>
 
-<label for="genero"><b>Género</b></label>
-<br>
-<input id="genero" type="radio" name="genero" value="m">Masculino
-<input type="radio" name="genero" value="f">Femenino
-<input type="radio" name="genero" value="no">Prefiero no decirlo
-<br>
-<br>
-<label for="hobbies"><b>Hobbies</b></label>
-<br>
-<input type="checkbox" name="" value="">Nadar
-<input type="checkbox" name="" value="">Leer
-<input type="checkbox" name="" value="">Programar
-<input type="checkbox" name="" value="">Comer
-<br>
-<br>
-<label for="com"><b>Dejanos tus comentarios</b></label>
-<textarea id="com" name="com" rows="8" cols="25"></textarea>
-<br>
-<input type="checkbox" name="" value="">Términos y condiciones.
-<br>
-<br>
-  <button id="botonlogin" type="submit" name="submit">Registrarme</button>
-<button id="botonlogin" type="reset" name="button">Cancelar</button>
-</form>
+             <p>
+           <br>
+         <label for="hobbies"><b>Hobbies</b></label>
+       <br>
+      <input type="checkbox" name="hobbies" value="Nadar">Nadar
+      <input type="checkbox" name="hobbies" value="Leer">Leer
+      <input type="checkbox" name="hobbies" value="Programar">Programar
+      <input type="checkbox" name="hobbies" value="musica">Tocar música
+      <input type="checkbox" name="hobbies" value="Comer">Comer
+      <input type="checkbox" name="hobbies" value="Trabajar">Trabajar
+      <input type="checkbox" name="hobbies" value="Estudiar">Estudiar
+    <br>
+<?php if(isset($errores["hobbies"])): ?>
+   <small style="color:red;"><?= $errores["hobbies"]?></small><br>
+    <?php endif; ?>
+     <br>
+      </p>
 
-</div>
+        <p>
+       <br>
+      <input type="checkbox" name="terminos" >Acepto Términos y condiciones.
+    <br>
+  <?php if(isset($errores["terminos"])): ?>
+<small style="color:red;"><?= $errores["terminos"]?></small><br>
+ <?php endif; ?>
+  </p> 
+    <br>
+      <button id="botonlogin" type="submit" name="submit">Registrarme</button>
+        <button id="botonlogin" type="reset" name="button">Borrar</button>
+          </form>
+
+            </div>
 
 
   </div>

@@ -152,15 +152,25 @@ body{
   .central-index h1{
     text-align: center;
   }
+  #username{
+
+    width: 99%;
+  }
+  
   #email{
     width: 99%;
-  }
-  #contrasenia{
+  } 
+  #password{
     width: 99%;
   }
-  #nombre{
+  #name{
   width: 99%;
   }
+  
+  #repassword{
+  width: 99%;
+  }
+
   #recordar{
   margin-left: 250px;
   }
@@ -188,7 +198,6 @@ body{
 
   }
 }
-
 
 /* Para pantalla mayor de 1224px */
 @media only screen and (min-width:1224px) {
@@ -335,15 +344,25 @@ body{
   #email{
     width: 99%;
   }
-  #contrasenia{
+  #password{
     width: 99%;
   }
-  #nombre{
+
+  #repassword{
+    width: 99%;
+  }
+  #name{
   width: 99%;
   }
   #recordar{
   margin-left: 250px;
   }
+
+  #username{
+
+    width: 99%;
+  }
+  
   #botonlogin{
     width: 150px;
     height: 40px;
