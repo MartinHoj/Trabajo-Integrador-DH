@@ -1,5 +1,4 @@
 <?php 
-var_dump($_POST);
 $base = file_get_contents("usuarios.json");
 //Abro la base de datos
 $baseDeDatos = json_decode($base,true);
@@ -11,9 +10,12 @@ if (($_POST)) {
     $errores["email"] = "El campo email es obligatorio";
   } else {
     if (!$_POST["password"] == "") {
-    foreach ($baseDeDatos as $key => $usuario) {
+    foreach ($baseDeDatos as $usuario) {
       if ($_POST["email"] == $usuario["email"]) {
         if (password_verify($_POST["password"],$usuario["password"])) {
+          session_start();
+          $_SESSION = $_POST;
+          $_SESSION["password"] = NULL;
           header('Location: index.php'); exit;
         }
       }
@@ -53,12 +55,12 @@ if (($_POST)) {
       <p>
         <label for="labelEmail">Dirección de correo electrónico</label>
         <br>
-        <input type="email" class="input" name="email" id="email" placeholder="    E-mail">
+        <input type="email" class="input" name="email" id="email" value=" <?= (isset($_POST["email"]))?$_POST["email"]:"" ?> " placeholder="    E-mail">
         <br>
         <small id="email">
           Nunca compartiremos su correo electrónico con nadie .</small> <br>
           <?php if (isset($errores["email"])) :?>
-          <small> <?= $errores["email"]; ?> </small>
+          <small style="color:red"> <?= $errores["email"]; ?> </small>
           <?php endif ?>
       </p>
       <p>
@@ -66,15 +68,15 @@ if (($_POST)) {
         <br>
         <input type="password" class="input" name= "password" id="password" placeholder="Password"> <br>
         <?php if (isset($errores["password"])) :?>
-          <small> <?= $errores["password"]; ?> </small>
+          <small style="color:red"> <?= $errores["password"]; ?> </small>
           <?php endif ?>
       </p>
       <p>
-        <input type="checkBox" class="checkBox">
+        <input type="checkBox" class="checkBox" name="recordarme" value="recordarme">
         <label class="recordarme" name="recordarme" for="recordarme">Recordarme</label> <br>
       </p>
       <?php if ($errores == "El email o contraseña son incorrectos") :?>
-          <small> <?= $errores; ?> </small>
+          <small style="color:red"> <?= $errores; ?> </small>
           <?php endif ?>
       <button type="submit" class="button">Ingresar</button>
     </div>
