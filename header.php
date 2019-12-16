@@ -43,6 +43,10 @@
                     <li>
                         <a href="registro.php">Registro</a>
                     </li>
+                    <li>
+                        <a href="deslogueo.php">Deslogueo</a>
+                        
+                    </li>
 
                 </ul>
             </nav>
