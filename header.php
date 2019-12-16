@@ -1,3 +1,5 @@
+
+
 <?php
  //Abro la base de datos
  session_start();
@@ -7,14 +9,43 @@
      foreach ($baseDeDatos as $usuario) {
          if ($usuario["email"] == $_SESSION["email"]) {
              $_SESSION["name"] = $usuario["name"];
+             $_SESSION["apellido"] = $usuario["apellido"];
+             $_SESSION["email"] = $usuario["email"];
+             $_SESSION["tel"] = $usuario["tel"];
+             $_SESSION["hobbies"] = $usuario["hobbies"];
+             $_SESSION["pais"] = $usuario["pais"];
+             $_SESSION["genero"] = $usuario["genero"];
          }
      }
  }
+
+
+ "<pre>";
+ var_dump($_SESSION["hobbies"]);
+ "</pre> <br>";
+
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
 <header>
             <nav>
                 <ul>
+                <li >    
+                    <?php if (!isset($_SESSION["name"])) { ?>
+                        <a href="login.php">Login</a>
+                    <?php } else {?><span >Usuario: </span>
+                        <?php echo $_SESSION["name"];
+                     } ?>
+                    
+                    </li>
                     <li>
                         <a href="index.php">Inicio</a>
                     </li>
@@ -30,13 +61,7 @@
                     <li>
                         <a href="preguntasFrecuentes.php">Preguntas frecuentes</a>
                     </li> 
-                    <li>    
-                    <?php if (!isset($_SESSION["name"])) { ?>
-                        <a href="login.php">Login</a>
-                    <?php } else {
-                        echo $_SESSION["name"];
-                     } ?>
-                    </li>
+                   
                     <li>
                         <a href="contacto.php">Contacto</a>
                     </li>
@@ -51,3 +76,5 @@
                 </ul>
             </nav>
         </header>
+</html>
+

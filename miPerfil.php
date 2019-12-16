@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,11 +22,73 @@
 
         <img id="fotoPerfil" src="img/spawn-302_d6459a58da.jpg" alt="imagenPosteo">
         <div id="datos">
-            <p>Nombre</p>
-            <p>Apellido</p>
-            <p>Email</p>
-            <p>Telefono</p>
-            <p>Contraseña</p>
+            <p>Nombre:
+                <span>
+                <?php if (!isset($_SESSION["name"])) { ?>
+                        <span></span>
+                    <?php } else {
+                        echo $_SESSION["name"];
+                     } ?>
+                </span>
+            </p> 
+            <p>Apellido:
+            <span>
+                <?php if (!isset($_SESSION["apellido"])) { ?>
+                        <span></span>
+                    <?php } else {
+                        echo $_SESSION["apellido"];
+                     } ?>
+                </span>
+            </p>
+            <p>Email:
+            <span>
+                <?php if (!isset($_SESSION["email"])) { ?>
+                        <span></span>
+                    <?php } else {
+                        echo $_SESSION["email"];
+                     } ?>
+                </span>
+            </p>
+            <p>Teléfono:
+            <span>
+                <?php if (!isset($_SESSION["tel"])) { ?>
+                        <span></span>
+                    <?php } else {
+                        echo $_SESSION["tel"];
+                     } ?>
+                </span>
+
+            </p>
+            <p>Hobby: 
+            <span>
+                <?php if (!isset($_SESSION["hobbies"])) { ?>
+                        <span></span>
+                    <?php } else {
+                        echo $_SESSION["hobbies"];
+                     } ?>
+                </span>
+
+            </p>
+            <p>País: 
+            <span>
+                <?php if (!isset($_SESSION["pais"])) { ?>
+                        <span></span>
+                    <?php } else {
+                        echo $_SESSION["pais"];
+                     } ?>
+                </span>
+
+            </p>
+            <p>Género: 
+            <span>
+                <?php if (!isset($_SESSION["genero"])) { ?>
+                        <span></span>
+                    <?php } else {
+                        echo $_SESSION["genero"];
+                     } ?>
+                </span>
+
+            </p>
         </div>
 
 

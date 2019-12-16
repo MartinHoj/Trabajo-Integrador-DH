@@ -386,3 +386,12 @@ body{
 
   }
 }
+
+/* header */
+
+header nav ul li span {
+
+color: azure;
+font-size: larger;
+
+}

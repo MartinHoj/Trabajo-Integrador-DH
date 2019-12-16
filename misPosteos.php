@@ -19,14 +19,26 @@
             <div class="divMain">
                 <div class="posteos">
                     <img id="fotoPerfilPosteo" src="img/spawn-302_d6459a58da.jpg" alt="imagenPosteo">
-                    <p id="nombrePerfil">Mi nombre de Perfil</p>
+                    <p id="nombrePerfil"><span>
+                <?php if (!isset($_SESSION["name"])) { ?>
+                        <span></span>
+                    <?php } else {
+                        echo $_SESSION["name"];
+                     } ?>
+                </span></p>
 
                     <img id="fotoPosteo" src="img/1.jpg" alt="imagenPosteo">
 
                 </div>
                 <div class="posteos">
                     <img id="fotoPerfilPosteo" src="img/spawn-302_d6459a58da.jpg" alt="imagenPosteo">
-                    <p id="nombrePerfil">Mi nombre de Perfil</p>
+                    <p id="nombrePerfil"><span>
+                <?php if (!isset($_SESSION["name"])) { ?>
+                        <span></span>
+                    <?php } else {
+                        echo $_SESSION["name"];
+                     } ?>
+                </span></p>
 
                     <img id="fotoPosteo" src="img/1.jpg" alt="imagenPosteo">
 

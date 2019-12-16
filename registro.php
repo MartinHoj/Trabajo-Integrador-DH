@@ -65,10 +65,10 @@ if($_POST) {
 
 
 
-"<pre>";
+// "<pre>";
 
-var_dump($_POST);
-"</pre>";
+// var_dump($_POST);
+// "</pre>";
 
 
 
@@ -129,7 +129,22 @@ var_dump($_POST);
 
                  <input id="email" type="email" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Ingresá tu email" placeholder="email" ><br>
                    </P>
+                     
 
+                   <!-- APELLIDO -->
+                   <P>
+               <label for="email">Apellido</label><br>
+
+                 <input id="apellido" type="text" name="apellido" value="<?= isset($_POST['apellido']) ? $_POST['apellido'] : '' ?>" placeholder="Ingresá tu apellido" placeholder="Apellido" ><br>
+                   </P>
+
+
+                    <!--TELEFONO -->
+                    <P>
+               <label for="email">Teléfono</label><br>
+
+                 <input id="tel" type="text" name="tel" value="<?= isset($_POST['Telefono']) ? $_POST['telefono'] : '' ?>" placeholder="Ingresá tu telefono" placeholder="telefono" ><br>
+                   </P>
 
 
                      <!-- CAMPO CONTRASEÑA -->
@@ -412,13 +427,13 @@ var_dump($_POST);
            <br>
          <label for="hobbies"><b>Hobbies</b></label>
        <br>
-      <input type="checkbox" name="hobbies" value="Nadar">Nadar
-      <input type="checkbox" name="hobbies" value="Leer">Leer
-      <input type="checkbox" name="hobbies" value="Programar">Programar
-      <input type="checkbox" name="hobbies" value="musica">Tocar música
-      <input type="checkbox" name="hobbies" value="Comer">Comer
-      <input type="checkbox" name="hobbies" value="Trabajar">Trabajar
-      <input type="checkbox" name="hobbies" value="Estudiar">Estudiar
+      <input type="radio" name="hobbies" value="Nadar">Nadar
+      <input type="radio" name="hobbies" value="Leer">Leer
+      <input type="radio" name="hobbies" value="Programar">Programar
+      <input type="radio" name="hobbies" value="musica">Tocar música
+      <input type="radio" name="hobbies" value="Comer">Comer
+      <input type="radio" name="hobbies" value="Trabajar">Trabajar
+      <input type="radio" name="hobbies" value="Estudiar">Estudiar
     <br>
 <?php if(isset($errores["hobbies"])): ?>
    <small style="color:red;"><?= $errores["hobbies"]?></small><br>

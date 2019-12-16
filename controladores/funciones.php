@@ -126,7 +126,27 @@ $errores['password'] = "La contraseña debe tener al menos 6 caracteres";
                                  $errores['hobbies'] = "Debes seleccionar por lo menos un hobbie";
                              }
 
+// CAMPO APELLIDO--------------------------
+            
+                  //TRIMEO apellido
+                  $apellido = trim($datosUsuario['apellido']);
+            
+                    if(strlen($apellido) < 2) {
+           
+                      // CREO LA POSICION apellido EN EL ARRAY Y GUARDO EL ERROR 
+                         $errores['apellido'] = "El apellido debe tener al menos 2 caracteres";
+    }
 
+    // CAMPO APELLIDO--------------------------
+            
+                  //TRIMEO apellido
+                  $telefono = trim($datosUsuario['tel']);
+            
+                    if(strlen($telefono) < 8) {
+           
+                      // CREO LA POSICION apellido EN EL ARRAY Y GUARDO EL ERROR 
+                         $errores['telefono'] = "El apellido debe tener al menos 2 caracteres";
+    }
        
 
 
@@ -152,6 +172,8 @@ function guardarUsuario($datosUsuario) {
          "terminos" => $datosUsuario["terminos"],
          "genero" => $datosUsuario["genero"],
          "hobbies" => $datosUsuario["hobbies"],
+         "apellido" => $datosUsuario["apellido"],
+         "tel" => $datosUsuario["tel"],
 
     ];
     
