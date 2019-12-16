@@ -150,8 +150,7 @@ var_dump($_POST);
         <p>
          <label for="profile">Subir Foto de Perfil</label><br>
   
-         <input name="profile" type="file" />
-           <input type="submit" value="Subir archivo" /><br>
+         <input name="profile" type="file" required > <br>
              <?php if(isset($errores["profile"])): ?>
                <small style="color:red;"><?= $errores["profile"]?></small><br>
                 <?php endif; ?>
