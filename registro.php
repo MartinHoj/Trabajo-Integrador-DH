@@ -173,6 +173,16 @@ if($_POST) {
                 <?php endif; ?>
                   </p>
 
+                  <!-- FOTO DE PERFIL -->
+        <p>
+         <label for="profile">Subir Foto de Perfil</label><br>
+  
+         <input name="profile" type="file" required >
+             <?php if(isset($errores["profile"])): ?>
+               <small style="color:red;"><?= $errores["profile"]?></small><br>
+                <?php endif; ?>
+                  </p>
+
                   PAIS DE NACIMIENTO
                           <p>
                           <label for="pais"><b>Pais de Nacimiento</b></label>
