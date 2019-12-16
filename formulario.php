@@ -92,7 +92,7 @@ var_dump($_POST);
     background="https://www.desktopbackground.org/p/2015/12/30/1065649_franco-feruci-sisal-twill-yaz-97139-designer-wallcoverings_1944x1281_h.jpg"
     title="Franco Feruci SISAL TWILL [YAZ 97139] : Designer Wallcoverings™ Desktop Background">
     <div class="contenedor">
-        <form action="formulario.php" method="POST">
+        <form action="formulario.php" method="POST" enctype="multipart/form-data>
 
             <h1>Registrarme</h1>
             <p>
@@ -145,6 +145,17 @@ var_dump($_POST);
             <small style="color:red;"><?= $errores["repassword"]?></small><br>
              <?php endif; ?>
                </p>
+
+               <!-- FOTO DE PERFIL -->
+        <p>
+         <label for="profile">Subir Foto de Perfil</label><br>
+  
+         <input name="profile" type="file" />
+           <input type="submit" value="Subir archivo" /><br>
+             <?php if(isset($errores["profile"])): ?>
+               <small style="color:red;"><?= $errores["profile"]?></small><br>
+                <?php endif; ?>
+                  </p>
 
                PAIS DE NACIMIENTO
                        <p>
