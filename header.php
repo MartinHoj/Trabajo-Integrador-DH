@@ -66,7 +66,7 @@
                         <a href="contacto.php">Contacto</a>
                     </li>
                     <li>
-                        <a href="registro.php">Registro</a>
+                        <a href="formulario.php">Registro</a>
                     </li>
                     <li>
                         <a href="deslogueo.php">Deslogueo</a>
