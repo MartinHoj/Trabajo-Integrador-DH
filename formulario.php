@@ -116,6 +116,21 @@ var_dump($_POST);
               <?php endif; ?>
            </p>
 
+           <!-- APELLIDO -->
+           <P>
+               <label for="email">Apellido</label><br>
+
+                 <input id="apellido" type="text" name="apellido" value="<?= isset($_POST['apellido']) ? $_POST['apellido'] : '' ?>" placeholder="Ingresá tu apellido" placeholder="Apellido" ><br>
+                   </P>
+
+
+                    <!--TELEFONO -->
+                    <P>
+               <label for="email">Teléfono</label><br>
+
+                 <input id="tel" type="text" name="tel" value="<?= isset($_POST['Telefono']) ? $_POST['telefono'] : '' ?>" placeholder="Ingresá tu telefono" placeholder="telefono" ><br>
+                   </P>
+
       <!-- CAMPO EMAIL -->
            <P>
             <label for="email">Email</label><br>
