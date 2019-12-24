@@ -1,7 +1,7 @@
 body{
 
     margin: 0 auto;
-    background-color: rgb(112, 158, 204);
+   
     
 
 }
@@ -9,7 +9,7 @@ body{
 
 .contenedor{
 
-    background-color: rgba(61, 97, 89, 0.747);
+     background-color: rgba(61, 97, 89, 0.747); 
     width: 17%;
     height: auto;
     box-sizing: border-box;
@@ -21,16 +21,19 @@ body{
     border-radius: 3%;
     border:3px solid black ;
     /* padding: 1% 1% 1% 1%; */
-    padding-bottom: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%; 
    
 }
 
-div p label {
+/* div p label {
 
     color: rgb(236, 235, 231);
     font-size: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
+} */
 
 small {
 

@@ -64,10 +64,10 @@ if($_POST) {
 
 
 
-"<pre>";
+// "<pre>";
 
-var_dump($_POST);
-"</pre>";
+// var_dump($_POST);
+// "</pre>";
 
 
 
@@ -88,11 +88,9 @@ var_dump($_POST);
     <title>Document</title>
 </head>
 
-<body
-    background="https://www.desktopbackground.org/p/2015/12/30/1065649_franco-feruci-sisal-twill-yaz-97139-designer-wallcoverings_1944x1281_h.jpg"
-    title="Franco Feruci SISAL TWILL [YAZ 97139] : Designer Wallcoverings™ Desktop Background">
+<body background="img\background.jpg">
     <div class="contenedor">
-        <form action="formulario.php" method="POST" enctype="multipart/form-data>
+        <form action="formulario.php" method="POST" enctype="multipart/form-data">
 
             <h1>Registrarme</h1>
             <p>
@@ -171,7 +169,7 @@ var_dump($_POST);
                 <?php endif; ?>
                   </p>
 
-               PAIS DE NACIMIENTO
+               <!-- PAIS DE NACIMIENTO -->
                        <p>
                        <label for="pais"><b>Pais de Nacimiento</b></label>
                      <br>
