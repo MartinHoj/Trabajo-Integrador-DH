@@ -149,8 +149,8 @@ $errores['password'] = "La contraseña debe tener al menos 6 caracteres";
     }
        
 
-
-
+     
+      
 
 return $errores;
 }
@@ -180,7 +180,7 @@ function guardarUsuario($datosUsuario) {
     return $usuario;
 }
 
-/****FUNCION DE PERSISTENCIA DE USUARIO EN EL LOGIN*************/
+/****VALIDACION DE USUARIO EN EL LOGIN*************/
 
 function validarlog($datosUsuario){
   //Creo la variable para ir guardando los errores del logeo
@@ -280,5 +280,57 @@ function validarUsuario($baseDeDatos) {
    
    
     }
+
+
+
+//------------------CARGA DE IMAGEN----------------------------------//
+
+
+function validarImagen(){   
+
+     $Resultado = null;
+       $name = $_FILES['imagenPerfil']['name'];
+         $tmp_name = $_FILES['imagenPerfil']['tmp_name'];
+           $error = $_FILES['imagenPerfil']['error'];
+             $size = $_FILES['imagenPerfil']['size'];
+               $max_size = 1024 * 1024 * 1; // tamaño * tamaño * 1mb como maximo
+                 $type = $_FILES['imagen']['type'];    
+
+
+
+if($_FILES["imagenPerfil"]["error"] !=0){
+      return $Resultado = "Hubo un error al cargar la Imagen <br>";
+}else{
+  
+  $ext = pathinfo($_FILES["imagenPerfil"]["name"], PATHINFO_EXTENSION);
+}
+   
+if($size > $max_size){
+
+     return $Resultado = "El tamaño supera el maximo permitido";
+    }
+      
+   //valido el tipo de archivo por extension
+  if($ext != "jpg" && $ext != "jpeg" && $ext != "png"){
+  
+   return $Resultado = "La imagen debe ser jpg, jpeg o png <br>";
+  
+  }else{
+  
+      // si no hay errores 
+      move_uploaded_file( $tmp_name,"archivos/imagen." . $ext);
+     //return $Resultado = "La imagen' $name 'ha sido cargada con éxito <br>";
+  
+  }
+
+
+
+
+}
+
+
+
+
+
 
 ?>
