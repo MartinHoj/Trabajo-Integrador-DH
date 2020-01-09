@@ -64,10 +64,7 @@ if($_POST) {
 
 
 
-"<pre>";
 
-var_dump($_POST);
-"</pre>";
 
 
 

@@ -20,9 +20,7 @@
  }
 
 
- "<pre>";
- var_dump($_SESSION["hobbies"]);
- "</pre> <br>";
+
 
 ?>
 
