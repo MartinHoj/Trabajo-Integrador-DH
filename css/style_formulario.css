@@ -20,8 +20,10 @@ body{
     border-radius: 3%;
     border:3px solid black ;
     /* padding: 1% 1% 1% 1%; */
-    padding-bottom: 1%;
-   
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%; 
 }
 
 
@@ -33,27 +35,3 @@ div p label {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.button{
-    
-    width: 100px;
-    height: 40px;
-    border-radius: 10%;
-    border: 1px solid rgb(2, 2, 2);
-    color: blanchedalmond;
-    font-size: medium;
-    background: rgb(81, 99, 61);
-    overflow: hidden;
-    position: relative;
-    -webkit-animation-name: example;  /* Safari 4.0 - 8.0 */
-    -webkit-animation-duration: 3s;  /* Safari 4.0 - 8.0 */  
-    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
-    animation-name: example;
-    animation-duration: 3s;  
-    animation-fill-mode: forwards;
-}
-
-
-@keyframes example {
-    from {top: -200px;}
-    to {top: 0px; background-color: rgba(134, 95, 21, 0.801);}
-  }

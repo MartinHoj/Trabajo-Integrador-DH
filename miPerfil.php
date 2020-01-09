@@ -13,8 +13,7 @@
 </head>
 
 <body
-    background="https://www.desktopbackground.org/p/2015/12/30/1065649_franco-feruci-sisal-twill-yaz-97139-designer-wallcoverings_1944x1281_h.jpg"
-    title="Franco Feruci SISAL TWILL [YAZ 97139] : Designer Wallcoverings™ Desktop Background">
+background="img\background.jpg">
 
     <?php require_once('header.php'); ?>
     <div class="contenedor">

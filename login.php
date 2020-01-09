@@ -1,4 +1,7 @@
 <?php 
+
+
+
 $base = file_get_contents("usuarios.json");
 //Abro la base de datos
 $baseDeDatos = json_decode($base,true);
@@ -27,7 +30,29 @@ if (($_POST)) {
   }
 }
 
+require_once('controladores/funciones.php');
+// persistencia con la base de datos al campo de usuario
 
+$base = file_get_contents("usuarios.json");
+//Abro la base de datos
+$baseDeDatos = json_decode($base,true);
+
+$erroresBaseDeDatos;
+$persitenciaUsuario;
+
+if($_POST){
+  $errores = validarlog($_POST);
+  // var_dump($errores);exit;
+   if (!$errores) {
+    $erroresBaseDeDatos =validarUsuario($baseDeDatos);
+   
+   // pre($erroresBaseDeDatos);
+   }
+
+   // persiste el uusuario correcto
+   $persitenciaUsuario = persistenciaLog($baseDeDatos);
+   //pre($persitenciaUsuario);
+}
 
 
 
@@ -47,41 +72,73 @@ if (($_POST)) {
   <title>Document</title>
 </head>
 
-<body
-  background="https://www.desktopbackground.org/p/2015/12/30/1065649_franco-feruci-sisal-twill-yaz-97139-designer-wallcoverings_1944x1281_h.jpg"
-  title="Franco Feruci SISAL TWILL [YAZ 97139] : Designer Wallcoverings™ Desktop Background">
+<body background="img\background.jpg">
+
+
+
+
+
 
 
   <form action="login.php" method="post">
-    <div class="contenedor">
-      <h1>Ingresar</h1>
+    <div class="contenedor" >
+      
+    <h1>Ingresar</h1>
       <p>
         <label for="labelEmail">Dirección de correo electrónico</label>
         <br>
-        <input type="email" class="input" name="email" id="email" value=" <?= (isset($_POST["email"]))?$_POST["email"]:"" ?> " placeholder="    E-mail">
+
+         <!-- class="input" -->
+        <input type="email" class="form-control" name="email" id="email" value=" <?= (isset($_POST["email"]))? $persitenciaUsuario : "" ?> " placeholder="    E-mail">
         <br>
         <small id="email">
           Nunca compartiremos su correo electrónico con nadie .</small> <br>
           <?php if (isset($errores["email"])) :?>
           <small style="color:red"> <?= $errores["email"]; ?> </small>
           <?php endif ?>
-      </p>
+           
+           <!-- leyenda al comparar con la base de datos -->
+           <?php if(isset($erroresBaseDeDatos['email'])): ?>
+           <small style="color:red;"> <?= $erroresBaseDeDatos['email']; ?> </small>
+            <?php endif; ?>
+      
+       </p>
       <p>
         <label for="labelPassword">Password</label>
         <br>
-        <input type="password" class="input" name= "password" id="password" placeholder="Password"> <br>
+
+        <!-- class="input" -->
+        <input type="password" class="form-control" name= "password" id="password" placeholder="Password"> <br>
         <?php if (isset($errores["password"])) :?>
           <small style="color:red"> <?= $errores["password"]; ?> </small>
           <?php endif ?>
+          <!-- leyenda al comparar con la base de datos -->
+          <?php if(isset($erroresBaseDeDatos['password'])): ?>
+    <small style="color:red;"> <?= $erroresBaseDeDatos['password']; ?> </small>
+    <?php endif; ?>
+
+
       </p>
+
+   
+
       <p>
-        <input type="checkBox" class="checkBox" name="recordarme" value="recordarme">
+        <input type="checkBox"  class="checkBox"  name="recordarme" value="recordarme">
         <label class="recordarme" name="recordarme" for="recordarme">Recordarme</label> <br>
       </p>
       <?php if ($errores == "El email o contraseña son incorrectos") :?>
           <small style="color:red"> <?= $errores; ?> </small>
           <?php endif ?>
-      <button type="submit" class="button">Ingresar</button>
+
+
+<div>
+          <!-- class="button -->
+      <button type="submit" class="btn btn-primary">Ingresar</button>
+      </div>
+      <p>
+      <a href="formulario.php" class="text-white">Registrarme</a>
+      </p>
+
     </div>
   </form>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

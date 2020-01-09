@@ -11,8 +11,7 @@
 </head>
 
 <body
-    background="https://www.desktopbackground.org/p/2015/12/30/1065649_franco-feruci-sisal-twill-yaz-97139-designer-wallcoverings_1944x1281_h.jpg"
-    title="Franco Feruci SISAL TWILL [YAZ 97139] : Designer Wallcoverings™ Desktop Background">
+background="img\background.jpg">
 
     <div class="contenedor">
         <form action="contacto.php" method="POST">
@@ -21,13 +20,13 @@
             <p>
                 <label for="labelNombre">Nombre</label>
                 <br>
-                <input type="text" class="input" id="nombre" placeholder="   Nombre">
+                <input type="text" class="form-control" id="nombre" placeholder="   Nombre">
             </p>
 
             <p>
                 <label for="labelEmail">Dirección de correo electrónico</label>
                 <br>
-                <input type="email" class="input" id="email" placeholder="    E-mail">
+                <input type="email" class="form-control" id="email" placeholder="    E-mail">
                 <br>
                 <small id="email">
                     Nunca compartiremos su correo electrónico con nadie .</small>

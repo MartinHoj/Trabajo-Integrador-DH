@@ -18,9 +18,13 @@ if($_POST) {
 
   // traigo la funcion validar que me devuelve un array errores
   $errores = validar($_POST);
+  $errorImagen = validarImagen($_FILES);
 
-  if(!$errores) {
-
+  if(!$errores && !$errorImagen) {
+    
+    
+    
+            
 
             // llamo a la función guardarUsuario() --> me devuelve un array asociativo con los datos que envió el usuario
             $usuario = guardarUsuario($_POST);
@@ -45,7 +49,7 @@ if($_POST) {
 
             // guardo el json completo de ususarios en usuarios.json
             file_put_contents('usuarios.json', $todosLosUsuarios);
-
+            
             // por ahora redirecciono a la misma vista
             header('Location: login.php');
 
@@ -57,6 +61,9 @@ if($_POST) {
             La clase que viene vamos a ver cómo iniciar y mantener la sesión de un usuario así como también recordar los datos de un usuario en el navegador para que, la próxima vez que ingrese a la url, se autologue
             */
 
+   
+   
+   
 
   }
 
@@ -66,8 +73,12 @@ if($_POST) {
 
 
 
+// "<pre>";
 
+// var_dump($_POST);
+// "</pre>";
 
+//var_dump($_FILES["imagenPerfil"]["error"]);
 
 
 ?>
@@ -85,17 +96,15 @@ if($_POST) {
     <title>Document</title>
 </head>
 
-<body
-    background="https://www.desktopbackground.org/p/2015/12/30/1065649_franco-feruci-sisal-twill-yaz-97139-designer-wallcoverings_1944x1281_h.jpg"
-    title="Franco Feruci SISAL TWILL [YAZ 97139] : Designer Wallcoverings™ Desktop Background">
+<body background="img\background.jpg">
     <div class="contenedor">
-        <form action="formulario.php" method="POST" enctype="multipart/form-data>
+        <form action="formulario.php" method="POST" enctype="multipart/form-data">
 
             <h1>Registrarme</h1>
             <p>
               <label for="nombre">Nombre</label><br>
 
-                  <input id="name" type="text" name="name" placeholder="Ingresa tu nombre"  value="<?= isset($_POST["name"]) ? $_POST["name"] : "" ?>"><br>
+                  <input id="name" type="text" name="name" placeholder="Ingresa tu nombre" class="form-control"  value="<?= isset($_POST["name"]) ? $_POST["name"] : "" ?>"><br>
 
                        <?php if(isset($errores["name"])): ?>
                           <small style="color:red;"><?= $errores["name"]?></small><br>
@@ -107,17 +116,32 @@ if($_POST) {
                               <p>
                             <label for="username">Nombre de usuario</label><br>
 
-                     <input type="text" name="username" id="username" value="<?= isset($_POST['username']) ? $_POST['username'] : '' ?>" placeholder="Ingresa tu nombre de usuario"><br>
+                     <input type="text" name="username" id="username" class="form-control" value="<?= isset($_POST['username']) ? $_POST['username'] : '' ?>" placeholder="Ingresa tu nombre de usuario"><br>
                    <?php if(isset($errores['username'])): ?>
                 <small style="color:red;"><?= $errores['username']?></small><br>
               <?php endif; ?>
            </p>
 
+           <!-- APELLIDO -->
+           <P>
+               <label for="email">Apellido</label><br>
+
+                 <input id="apellido" type="text" name="apellido" class="form-control" value="<?= isset($_POST['apellido']) ? $_POST['apellido'] : '' ?>" placeholder="Ingresá tu apellido" placeholder="Apellido" ><br>
+                   </P>
+
+
+                    <!--TELEFONO -->
+                    <P>
+               <label for="email">Teléfono</label><br>
+
+                 <input id="tel" type="text" name="tel" class="form-control" value="<?= isset($_POST['Telefono']) ? $_POST['telefono'] : '' ?>" placeholder="Ingresá tu telefono" placeholder="telefono" ><br>
+                   </P>
+
       <!-- CAMPO EMAIL -->
            <P>
             <label for="email">Email</label><br>
 
-              <input id="email" type="email" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Ingresá tu email" placeholder="email" ><br>
+              <input id="email" type="email" name="email" class="form-control" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Ingresá tu email" placeholder="email" ><br>
                 </P>
 
 
@@ -126,7 +150,7 @@ if($_POST) {
                  <P>
                <label for="password">Contraseña</label><br>
 
-             <input id="password"type="password" name="password"  placeholder="Ingresa tu contraseña" >
+             <input id="password"type="password" name="password"  placeholder="Ingresa tu contraseña" class="form-control" >
            <?php if(isset($errores['password'])): ?>
          <small style="color:red;"><?= $errores['password']?></small><br>
        <?php endif; ?>
@@ -137,7 +161,7 @@ if($_POST) {
      <p>
       <label for="repassword">Repetir contraseña</label><br>
 
-        <input id="repassword" type="password" name="confirm-password" placeholder="Repite tu contraseña igresada"><br>
+        <input id="repassword" type="password" name="confirm-password" placeholder="Repite tu contraseña igresada" class="form-control"><br>
           <?php if(isset($errores["repassword"])): ?>
             <small style="color:red;"><?= $errores["repassword"]?></small><br>
              <?php endif; ?>
@@ -145,15 +169,19 @@ if($_POST) {
 
                <!-- FOTO DE PERFIL -->
         <p>
-         <label for="profile">Subir Foto de Perfil</label><br>
+         <label for="imagenPerfil">Subir Foto de Perfil</label><br>
   
-         <input name="profile" type="file" required > <br>
-             <?php if(isset($errores["profile"])): ?>
-               <small style="color:red;"><?= $errores["profile"]?></small><br>
-                <?php endif; ?>
+         <input name="imagenPerfil" type="file"  > <br>
+
+         <?php if(isset($_FILES['imagenPerfil']['error'])): ?>
+                          <small style="color:red;"><?= $errorImagen?></small><br>
+                             <?php endif; ?>
+             
+               
+               
                   </p>
 
-               PAIS DE NACIMIENTO
+               <!-- PAIS DE NACIMIENTO -->
                        <p>
                        <label for="pais"><b>Pais de Nacimiento</b></label>
                      <br>
@@ -435,8 +463,9 @@ if($_POST) {
 <?php endif; ?>
 </p>
  <br>
-   <button id="botonlogin" type="submit" name="submit">Registrarme</button>
-     <button id="botonlogin" type="reset" name="button">Borrar</button>
+   
+     <button class="btn btn-primary" type="reset" name="button">Borrar</button>
+     <button class="btn btn-primary" id="botonlogin" type="submit" name="submit">Registrarme</button>
         </form>
     </div>
 </body>

@@ -149,8 +149,8 @@ $errores['password'] = "La contraseña debe tener al menos 6 caracteres";
     }
        
 
-
-
+     
+      
 
 return $errores;
 }
@@ -179,6 +179,158 @@ function guardarUsuario($datosUsuario) {
     
     return $usuario;
 }
+
+/****VALIDACION DE USUARIO EN EL LOGIN*************/
+
+function validarlog($datosUsuario){
+  //Creo la variable para ir guardando los errores del logeo
+  $erroreslog = [];
+  // CAMPO EMAIL-----------------------------
+
+  //TRIMEO A EMAIL
+  $email = trim($datosUsuario['email']);
+
+  //COMPRUEBO QUE EL EMAIL NO TENGA CARACTERES NO DESEADOS
+  $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+  // SI ESTA VACIO
+  if($email == ""){
+
+    // CREO LA POSICION EMAIL EN EL ARRAY Y GUARDO EL ERROR
+    $erroreslog['email'] = "El mail es obligatorio";
+
+    //COMPRUEBO QUE EL EMAIL SEA VALIDO
+  } elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $erroreslog['email'] = "El email ingresado no es válido";
+  }
+  //Compruebo cosas basicas de la contraseña
+  // CAMPO CONTRASEÑA ------------------------
+
+  //TRIMEO EL PASSWORD
+  $password = trim($datosUsuario['password']);
+
+  // SI ESTA VACIO
+  if($password == "" ) {
+
+    // CREO LA POSICION PASSWORD EN EL ARRAY Y GUARDO EL ERROR
+    $erroreslog['password'] = "La contraseña es obligatoria";
+  }
+  // si tiene una longitud menos a 6
+  elseif (strlen($password) < 6) {
+    // VALIDO QUE TENGA MAS DE SEIS CARACTERES
+    $erroreslog['password'] = "La contraseña debería tener al menos 6 caracteres";
+  }
+
+
+  return $erroreslog;
+}
+
+
+
+ 
+//VALIDO EL USUARIO DE LOGIN Y LO PERSISTO
+function validarUsuario($baseDeDatos) {
+  
+  $erroresValidarLogin=[];
+
+  
+  foreach ($baseDeDatos as $usuario) {
+    if ($usuario["email"] == $_POST["email"]) {
+      //return $erroresValidarLogin=$usuario["email"];
+      if (password_verify($_POST["password"],$usuario["password"])) {
+        header('Location: index.php');
+        exit;
+        }
+      } 
+    }
+    
+    // COMPARO CON EL JSON EL MAIL INGRESADO
+     if($usuario["email"] != $_POST["email"]) {
+       $erroresValidarLogin["email"]="El mail de usuario no existe."; 
+      }
+
+        // COMPARO CON EL JSON EL PASSWORD INGRESADO
+       if($usuario["password"] != $_POST["password"]) {
+         $erroresValidarLogin["password"]="La contraseña es invalida."; 
+         }  
+     
+       
+       
+
+      return $erroresValidarLogin;
+     
+      
+        
+  }
+
+  
+
+//-----------------------PERSISTENCIA BASE DE DATOS-----------------------------------
+
+
+   function persistenciaLog($baseDeDatos){
+   
+    $usuarioPersistido= [];
+
+     foreach ($baseDeDatos as $usuario) {
+       if ($usuario["email"] == $_POST["email"]) {
+       return $usuarioPersistido=$_POST["email"];
+      }
+      } 
+   
+   
+    }
+
+
+
+//------------------CARGA DE IMAGEN----------------------------------//
+
+
+function validarImagen(){   
+
+     $Resultado = null;
+       $name = $_FILES['imagenPerfil']['name'];
+         $tmp_name = $_FILES['imagenPerfil']['tmp_name'];
+           $error = $_FILES['imagenPerfil']['error'];
+             $size = $_FILES['imagenPerfil']['size'];
+               $max_size = 1024 * 1024 * 1; // tamaño * tamaño * 1mb como maximo
+                 $type = $_FILES['imagen']['type'];    
+
+
+
+if($_FILES["imagenPerfil"]["error"] !=0){
+      return $Resultado = "Hubo un error al cargar la Imagen <br>";
+}else{
+  
+  $ext = pathinfo($_FILES["imagenPerfil"]["name"], PATHINFO_EXTENSION);
+}
+   
+if($size > $max_size){
+
+     return $Resultado = "El tamaño supera el maximo permitido";
+    }
+      
+   //valido el tipo de archivo por extension
+  if($ext != "jpg" && $ext != "jpeg" && $ext != "png"){
+  
+   return $Resultado = "La imagen debe ser jpg, jpeg o png <br>";
+  
+  }else{
+  
+      // si no hay errores 
+      move_uploaded_file( $tmp_name,"archivos/imagen." . $ext);
+     //return $Resultado = "La imagen' $name 'ha sido cargada con éxito <br>";
+  
+  }
+
+
+
+
+}
+
+
+
+
 
 
 ?>

@@ -21,6 +21,9 @@
 
 
 
+//  "<pre>";
+//  var_dump($_SESSION["hobbies"]);
+//  "</pre> <br>";
 
 ?>
 
@@ -73,6 +76,11 @@
 
                 </ul>
             </nav>
+
+
+                    
         </header>
+
+        
 </html>
 
