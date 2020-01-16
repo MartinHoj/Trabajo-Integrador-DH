@@ -440,13 +440,13 @@ if($_POST) {
         <br>
       <label for="hobbies"><b>Hobbies</b></label>
     <br>
-   <input type="checkbox" name="hobbies" value="Nadar">Nadar
-   <input type="checkbox" name="hobbies" value="Leer">Leer
-   <input type="checkbox" name="hobbies" value="Programar">Programar
-   <input type="checkbox" name="hobbies" value="musica">Tocar música
-   <input type="checkbox" name="hobbies" value="Comer">Comer
-   <input type="checkbox" name="hobbies" value="Trabajar">Trabajar
-   <input type="checkbox" name="hobbies" value="Estudiar">Estudiar
+   <input type="radio" name="hobbies" value="Nadar">Nadar
+   <input type="radio" name="hobbies" value="Leer">Leer
+   <input type="radio" name="hobbies" value="Programar">Programar
+   <input type="radio" name="hobbies" value="musica">Tocar música
+   <input type="radio" name="hobbies" value="Comer">Comer
+   <input type="radio" name="hobbies" value="Trabajar">Trabajar
+   <input type="radio" name="hobbies" value="Estudiar">Estudiar
  <br>
 <?php if(isset($errores["hobbies"])): ?>
 <small style="color:red;"><?= $errores["hobbies"]?></small><br>
@@ -467,6 +467,10 @@ if($_POST) {
      <button class="btn btn-primary" type="reset" name="button">Borrar</button>
      <button class="btn btn-primary" id="botonlogin" type="submit" name="submit">Registrarme</button>
         </form>
+        <p>
+      <br>
+      <a href="index.php" class="text-white">Si ya tenés una cuenta logueate acá!</a>
+      </p>
     </div>
 </body>
 

@@ -41,14 +41,14 @@
                 <ul>
                 <li >    
                     <?php if (!isset($_SESSION["name"])) { ?>
-                        <a href="login.php">Login</a>
+                        <a href="index.php">Login</a>
                     <?php } else {?><span >Usuario: </span>
                         <?php echo $_SESSION["name"];
                      } ?>
                     
                     </li>
                     <li>
-                        <a href="index.php">Inicio</a>
+                        <a href="home.php">Inicio</a>
                     </li>
                     <li>
                         <a href="misPosteos.php">Mis Posteos</a>

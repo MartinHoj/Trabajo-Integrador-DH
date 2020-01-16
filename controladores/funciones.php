@@ -332,5 +332,24 @@ if($size > $max_size){
 
 
 
+// funcion para el check recordarme
+function recordarUsuario($checkRecordarme){
+     
+  if(isset($checkRecordarme['recordarme'])) {
+         $checkRecordarme ['recordarme']="on";
+       
+        }
+
+       
+
+return  $checkRecordarme;
+};
+
+
+
+
+
+
+
 
 ?>
