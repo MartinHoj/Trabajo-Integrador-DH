@@ -77,6 +77,39 @@ class BBDD
         return $this;
     }
 }
+/*
+//$opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
+
+	$link = new PDO(
+					'mysql:host=localhost;dbname=nombreBBDD', 
+					'usuario', 
+					'clave'
+					);
+    //$link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+    
+    ###				GUIA para operar con PDO			###
+#######################################################
+
+
+	1.- Conectar				new PDO()
+	2.- SQL						$sql = "";
+	3.- preparar statement		prepare($sql)
+	4.- ejecutar statement		execute()
+	[5.- traer datos				fetch() || fetchAll()]
+
+
+	###				ejemplo				###
+
+	$link = new PDO(----);
+	$sql = "SELECT ---- ";
+	$stmt = $link->prepare($sql);
+	$stmt = execute();
+
+	$resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+#######################################################
+*/
+
 
 
 
