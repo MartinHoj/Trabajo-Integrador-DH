@@ -1,9 +1,25 @@
 <?php
+
+require_once("../controladores/config.php");
+
+
 class BBDD
 {
     private $usuario;
     private $contraseña;
     private $puerto;
+
+    static function conectarse()
+    {
+        $link = new PDO
+        (
+            'mysql:host=localhost;dbname=redsocial', 
+					'root', 
+					'root'
+        );
+        $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+        return $link;
+    }
 
     public function guardarUsuario(Usuario $usuario)
     {

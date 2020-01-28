@@ -1,4 +1,7 @@
 <?php
+
+require_once("../controladores/config.php");
+
 abstract class Usuario
 {
     protected $nombre;

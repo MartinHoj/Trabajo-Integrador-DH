@@ -1,5 +1,5 @@
 <?php
-require_once(Usuario.php);
+require_once("../controladores/config.php");
 
 class Cliente extends Usuario
 {
