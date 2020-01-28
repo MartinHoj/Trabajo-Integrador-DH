@@ -165,16 +165,15 @@ function guardarUsuario($datosUsuario) {
   
   $usuario = [
     "name"  => $datosUsuario["name"],
-    "email" => $datosUsuario["email"],
+    "apellido" => $datosUsuario["apellido"],
     "username" => $datosUsuario["username"],
     "password" => password_hash($datosUsuario["password"], PASSWORD_DEFAULT),
-    "pais" => $datosUsuario["pais"],
-    "terminos" => $datosUsuario["terminos"],
-    "genero" => $datosUsuario["genero"],
-    "hobbies" => $datosUsuario["hobbies"],
-    "apellido" => $datosUsuario["apellido"],
     "tel" => $datosUsuario["tel"],
-    
+    "hobbies" => $datosUsuario["hobbies"],
+    "pais" => $datosUsuario["pais"],
+    "email" => $datosUsuario["email"],    
+    "terminos" => $datosUsuario["terminos"],
+    "genero" => $datosUsuario["genero"],   
   ];
   
   return $usuario;
