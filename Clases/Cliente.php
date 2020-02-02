@@ -14,7 +14,7 @@ class Cliente extends Usuario
     {
         $this->hobbie = $hobbie;
     }
-    public function agregarAmigo(Usuario $amigo)
+    public function agregarAmigo($amigo)
     {
         $this->amigos[] = $amigo;
     }
