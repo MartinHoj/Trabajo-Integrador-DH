@@ -35,7 +35,13 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Habrá una pequeña validación que compruebe que el nombre del rol no exista
+        //A través de un Midleware se verá que nadie que no tenga el rol de admin pueda ejecutar este metodo
+        $role = new Role();
+        $role->role_name = $request['role_name'];
+        $role->save();
+        return redirect('/adminRoles')
+            ->with('mensaje', 'Role done');
     }
 
     /**

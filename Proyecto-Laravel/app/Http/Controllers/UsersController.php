@@ -35,7 +35,22 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validacion en HomeController a editar
+        $user = new User();
+        $user->name = $request['name'];
+        $user->surname = $request['surname'];
+        $user->email = $request['email'];
+        $user->username = $request['username'];
+        $user->password = passwordhash($request['password'],PASSWORD_DEFAULT);
+        $user->phone = $request['phone'];
+        $user->hobbie = $request['hobbie'];
+        $user->country = $request['country'];
+        // A traves de un Midleware este campo sera habilitado o no en el formulario. Sera por defecto el rol de cliente
+        $user->role_id = $request['role_id'];
+
+        $user->save();
+        return redirect('/home')
+        ->with('mensaje','Bienvenido');
     }
 
     /**

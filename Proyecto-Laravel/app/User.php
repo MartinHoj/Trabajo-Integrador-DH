@@ -9,8 +9,20 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-    protected $id = 'user_id';
+    protected $primaryKey = 'user_id';
     protected $guarded = [];
+    
+    public function getPosts()
+    {
+        $this->hasMany('App/Post','user_id');
+    }
+    
+    public function getRole()
+    {
+        $this->belongsTo('App/Role','role_id');
+    }
+    
+    
     /**
      * The attributes that are mass assignable.
      *

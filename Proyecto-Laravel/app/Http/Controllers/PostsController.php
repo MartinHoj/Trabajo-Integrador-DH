@@ -35,7 +35,17 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Falta hacer la validación completa
+        $post = new Post();
+        $post->title = $request['title'];
+        $post->body = $request['body'];
+        //$post->imgName = validateImage($request); 
+        //validateImage recibe $request, valida la imagen, la guarda donde corresponde y retorna unicamente su nombre
+        $post->user_id = $request['user_id'];
+        
+        $post->save();
+        return redirect('/adminPosts')
+            ->with('mensaje', 'Posting done');
     }
 
     /**
@@ -82,4 +92,23 @@ class PostsController extends Controller
     {
         //
     }
+    
+    /*
+    public function validateImage(Request $request)
+    {
+        $validacion = $request->validate([
+            'prdImagen' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        $imageName = 'noDisponible.jpg';
+        if( $request->file('prdImagen') ) {
+            //$imageName = time().'.'.request()->prdImagen->getClientOriginalExtension();
+            $imagen = $request->file('prdImagen');
+            //$imagen->getClientOriginalExtension();
+            $imageName = $request->prdImagen->getClientOriginalName();
+            $request->prdImagen->move(public_path('images/productos'), $imageName);
+        }
+        return $imageName;
+    }
+    */
 }
