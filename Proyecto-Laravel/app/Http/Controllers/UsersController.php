@@ -24,7 +24,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('formRegister');
     }
 
     /**
@@ -41,7 +41,7 @@ class UsersController extends Controller
         $user->surname = $request['surname'];
         $user->email = $request['email'];
         $user->username = $request['username'];
-        $user->password = passwordhash($request['password'],PASSWORD_DEFAULT);
+        $user->password = password_hash($request['password'],PASSWORD_DEFAULT);
         $user->phone = $request['phone'];
         $user->hobbie = $request['hobbie'];
         $user->country = $request['country'];
