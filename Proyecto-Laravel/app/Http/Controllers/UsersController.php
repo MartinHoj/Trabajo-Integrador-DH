@@ -91,11 +91,29 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editAdmin($id)
     {
+      //Solo para administradores
+      $user_id = session('user_id');
+        if (User::find($user_id)->role_id == 2) {
+          return 'Usted no está habilitado para modificar este usuario';
+        };
         $user = User::find($id);
         return view('/formEdit',['user'=>$user]);
     }
+    public function editUserData()
+    {
+      //Va a mostrar el formulario para modificar los datos propios del usuario
+    }
+    public function editUserPassword()
+    {
+      //Va a mostrar el formulario para modificar la contraseña propia del usuario
+    }
+    public function editUserAvatar()
+    {
+      //Va a mostrar el formulario para modificar el avatar propio del usuario
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -104,9 +122,35 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
 
+        $user = User::find($request->input('user_id'));
+        $request->validate([
+            'name' => 'string|required|max:255',
+            'surname' => 'string|required|max:255',
+            'email' => 'bail|unique:users|string|email|required|max:255',
+            'username' => 'unique:users|string|required|max:255',
+            'password' => 'required|string|max:255',
+            'phone' => 'integer',
+            'hobbie' => 'string|max:255',
+            'country' => 'string|max:255'
+
+        ]);
+        $user->name = $request['name'];
+        $user->surname = $request['surname'];
+        $user->email = $request['email'];
+        $user->username = $request['username'];
+        $user->password = password_hash($request['password'],PASSWORD_DEFAULT);
+        $user->phone = $request['phone'];
+        $user->hobbie = $request['hobbie'];
+        $user->country = $request['country'];
+        // A traves de un Midleware este campo sera habilitado o no en el formulario. Sera por defecto el rol de cliente
+        $user->role_id = 2;
+        $user->avatar_name = UsersController::validateImg($request);
+        $user->save();
+        return redirect('/adminListUsers')
+            ->with('mensaje', 'User '.$user->name.' modificado con éxito');
     }
 
     /**
@@ -148,6 +192,7 @@ class UsersController extends Controller
             if ($user->email == $request['email']) {
                 if (password_verify($request['password'],$user->password)) {
                     session(['log'=>true]);
+                    session(['user_id'=>$user->user_id]);
                     return redirect('/home');
                 }
             }
