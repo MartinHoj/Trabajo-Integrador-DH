@@ -23,4 +23,4 @@ Route::post('/register','UsersController@store')->name('register');
 Route::post('/login','UsersController@login');
 Route::get('/adminListUsers','UsersController@index');
 Route::get('/userDetails/{id}','UsersController@show');
-Route::get('/formEdit','UsersController@edit');
+Route::get('/formEdit','UsersController@editAdmin');
