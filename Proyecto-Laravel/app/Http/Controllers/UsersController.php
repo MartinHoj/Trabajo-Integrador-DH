@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 
 class UsersController extends Controller
 {
@@ -14,7 +15,11 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+      $users = User::with('getRole')->get();
+       return view('adminListUsers',
+           [
+               'users'=>$users
+           ]);
     }
 
     /**
@@ -58,11 +63,11 @@ class UsersController extends Controller
         $user->hobbie = $request['hobbie'];
         $user->country = $request['country'];
         // A traves de un Midleware este campo sera habilitado o no en el formulario. Sera por defecto el rol de cliente
-        $user->role_id = $request['role_id'];
+        $user->role_id = 2;
         $user->avatar_name = UsersController::validateImg($request);
 
         $user->save();
-        dd(session('status'));
+        session(['log'=>true]);
         return redirect('/home')
         ->with('mensaje','Bienvenido');
     }
@@ -75,7 +80,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $role = Role::find($user->role_id);
+        return view('/userDetails',['user'=>$user,'role' => $role]);
     }
 
     /**
@@ -86,7 +93,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('/formEdit',['user'=>$user]);
     }
 
     /**
@@ -98,7 +106,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -134,11 +142,12 @@ class UsersController extends Controller
             'email' => 'email',
             'password' => 'string|max:255'
         ]);
-        
+
         $users = User::all();
         foreach ($users as $user) {
             if ($user->email == $request['email']) {
                 if (password_verify($request['password'],$user->password)) {
+                    session(['log'=>true]);
                     return redirect('/home');
                 }
             }
