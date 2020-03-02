@@ -12,18 +12,18 @@ class User extends Authenticatable
     protected $primaryKey = 'user_id';
     protected $guarded = [];
     protected $role_id = 2;
-    
+
     public function getPosts()
     {
-        $this->hasMany('App/Post','user_id');
+        return $this->hasMany('App/Post','user_id','user_id');
     }
-    
+
     public function getRole()
     {
-        $this->belongsTo('App/Role','role_id');
+        return $this->belongsTo(Role::class,'role_id','role_id');
     }
-    
-    
+
+
     /**
      * The attributes that are mass assignable.
      *
