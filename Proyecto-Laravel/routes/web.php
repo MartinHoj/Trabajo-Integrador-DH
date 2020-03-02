@@ -15,11 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function(){
-    return view('home');
-});
+Route::get('/home', 'HomeController@index');
 
 Route::get('/formRegister','UsersController@create');
-Route::post('/register','UsersController@store');
+Route::post('/register','UsersController@store')->name('register');
 
 Route::post('/login','UsersController@login');
+Route::get('/adminListUsers','UsersController@index');
+Route::get('/userDetails/{id}','UsersController@show');
+Route::get('/formEdit','UsersController@edit');
