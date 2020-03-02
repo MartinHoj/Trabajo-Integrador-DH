@@ -8,10 +8,12 @@
     <title>@yield('title')</title>
 </head>
 <body>
+    <div class="container">
     <form action={{@yield('action')}} method="post">
-    
+    @yield('form')
     
     
     </form>
+    </div>
 </body>
 </html>

@@ -11,6 +11,7 @@ class User extends Authenticatable
     use Notifiable;
     protected $primaryKey = 'user_id';
     protected $guarded = [];
+    protected $role_id = 2;
     
     public function getPosts()
     {

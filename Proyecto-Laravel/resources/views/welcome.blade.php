@@ -9,6 +9,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        <link rel="stylesheet" href="/css/app.css">
         <!-- Styles -->
         <style>
             html, body {
@@ -17,7 +18,7 @@
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
-                margin: 0;
+                margin: 0, auto;
             }
 
             .full-height {
@@ -64,35 +65,77 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+            <div class="content" >
+                
+                <div class="m-b-md">
+                    <h1>
+                    Bienvenido a Red Social
+                    </h1>
                 </div>
-            @endif
+                <div class="content card border-success mb-3 ml-md-5 mr-md-5" style="width:80vw;">
+                    <div class="card-header bg-transparent border-success" >Logueate para disfrutar en esta red social</div>
+                    <form method="POST" action="/login">
+                        @csrf
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+                        <div class="content form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Remember Me') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Login
+                                </button>
+                            </div>
+                        </div>
+                        <br>
+                        @isset ($mensaje)
+                        <div class="alert alert-danger" role="alert">
+                            {{$mensaje}}
+                        </div>
+                        @endisset
+                    <br>
+                    <br>
+                    <a class="card-footer bg-transparent border-success" href="/formRegister">No tenés una cuenta? Registrate!</a>
+                  </div>
+
+
             </div>
         </div>
     </body>

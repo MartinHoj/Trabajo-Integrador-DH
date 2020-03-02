@@ -36,6 +36,18 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //Validacion en HomeController a editar
+        $request->validate([
+            'name' => 'string|required|max:255',
+            'surname' => 'string|required|max:255',
+            'email' => 'bail|unique:users|string|email|required|max:255',
+            'username' => 'unique:users|string|required|max:255',
+            'password' => 'required|string|max:255',
+            'phone' => 'integer',
+            'hobbie' => 'string|max:255',
+            'country' => 'string|max:255'
+
+        ]);
+
         $user = new User();
         $user->name = $request['name'];
         $user->surname = $request['surname'];
@@ -47,8 +59,10 @@ class UsersController extends Controller
         $user->country = $request['country'];
         // A traves de un Midleware este campo sera habilitado o no en el formulario. Sera por defecto el rol de cliente
         $user->role_id = $request['role_id'];
+        $user->avatar_name = UsersController::validateImg($request);
 
         $user->save();
+        dd(session('status'));
         return redirect('/home')
         ->with('mensaje','Bienvenido');
     }
@@ -97,4 +111,41 @@ class UsersController extends Controller
     {
         //
     }
+    public function validateImg(Request $request)
+    {
+        $validacion = $request->validate([
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        $imageName = 'noDisponible.jpg';
+        if( $request->file('avatar') ) {
+            //$imageName = time().'.'.request()->prdImagen->getClientOriginalExtension();
+            $imagen = $request->file('avatar');
+            //$imagen->getClientOriginalExtension();
+            $imageName = $request->avatar->getClientOriginalName();
+            $request->avatar->move(public_path('images/avatars'), $imageName);
+        }
+        return $imageName;
+    }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'email',
+            'password' => 'string|max:255'
+        ]);
+        
+        $users = User::all();
+        foreach ($users as $user) {
+            if ($user->email == $request['email']) {
+                if (password_verify($request['password'],$user->password)) {
+                    return redirect('/home');
+                }
+            }
+        }
+        $mensaje = 'No estás registrado aún, deberás registrarte para loguearte';
+        return view('/welcome',['mensaje' => $mensaje]);
+
+    }
+
 }
