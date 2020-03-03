@@ -46,7 +46,7 @@ class UsersController extends Controller
             'surname' => 'string|required|max:255',
             'email' => 'bail|unique:users|string|email|required|max:255',
             'username' => 'unique:users|string|required|max:255',
-            'password' => 'required|string|max:255',
+            'password' => 'required|string|max:255|min:6',
             'phone' => 'integer',
             'hobbie' => 'string|max:255',
             'country' => 'string|max:255'
@@ -64,7 +64,7 @@ class UsersController extends Controller
         $user->country = $request['country'];
         // A traves de un Midleware este campo sera habilitado o no en el formulario. Sera por defecto el rol de cliente
         $user->role_id = 2;
-        $user->avatar_name = UsersController::validateImg($request);
+        $user->avatar_name = UsersController::validateAvatar($request);
 
         $user->save();
         session(['log'=>true]);
@@ -98,7 +98,7 @@ class UsersController extends Controller
         if (User::find($user_id)->role_id == 2) {
           return 'Usted no está habilitado para modificar este usuario';
         };
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         return view('/formEdit',['user'=>$user]);
     }
     public function editUserData()
@@ -113,14 +113,14 @@ class UsersController extends Controller
       //Va a mostrar el formulario para modificar la contraseña propia del usuario
       $user_id = session('user_id');
       $user = User::find($user_id);
-      return view('/formEditData',['user' => $user]);
+      return view('/formEditPassword',['user' => $user]);
     }
     public function editUserAvatar()
     {
       //Va a mostrar el formulario para modificar el avatar propio del usuario
       $user_id = session('user_id');
       $user = User::find($user_id);
-      return view('/formEditData',['user' => $user]);
+      return view('/formEditAvatar',['user' => $user]);
     }
 
 
@@ -140,7 +140,7 @@ class UsersController extends Controller
             'surname' => 'string|required|max:255',
             'email' => 'bail|unique:users|string|email|required|max:255',
             'username' => 'unique:users|string|required|max:255',
-            'password' => 'required|string|max:255',
+            'password' => 'required|string|max:255|min:6',
             'phone' => 'integer',
             'hobbie' => 'string|max:255',
             'country' => 'string|max:255'
@@ -155,11 +155,63 @@ class UsersController extends Controller
         $user->hobbie = $request['hobbie'];
         $user->country = $request['country'];
         // A traves de un Midleware este campo sera habilitado o no en el formulario. Sera por defecto el rol de cliente
-        $user->role_id = 2;
-        $user->avatar_name = UsersController::validateImg($request);
+        $user->role_id = $request['role_id'];
+        $user->avatar_name = UsersController::validateAvatar($request);
         $user->save();
         return redirect('/adminListUsers')
             ->with('mensaje', 'User '.$user->name.' modificado con éxito');
+    }
+    public function updatetData(Request $request)
+    {
+      $user_id = session('user_id');
+      $user = User::find($user_id);
+      $request->validate([
+        'name' => 'string|required|max:255',
+        'surname' => 'string|required|max:255',
+        'email' => 'bail|unique:users|string|email|required|max:255',
+        'username' => 'unique:users|string|required|max:255',
+        'phone' => 'integer',
+        'hobbie' => 'string|max:255',
+        'country' => 'string|max:255'
+
+    ]);
+    $user->name = $request['name'];
+    $user->surname = $request['surname'];
+    $user->email = $request['email'];
+    $user->username = $request['username'];
+    $user->phone = $request['phone'];
+    $user->hobbie = $request['hobbie'];
+    $user->country = $request['country'];
+    $user->save();
+    return redirect('/home');
+    }
+    public function updatePassword(Request $request)
+    {
+      $user_id = session('user_id');
+      $user = User::find($user_id);
+      $request->validate([
+          'password' => 'string',
+          'newPassword' => 'string|min:6|required_with:confirmPassword|same:confirmPassword',
+          'confirmPassword' => 'string'
+      ]);
+      if (password_verify($request['lastPassword'],$user->password)) {
+          if ($request['newPassword'] == $request['confirmPassword']) {
+              $user->password = password_hash($request['newPassword'],PASSWORD_DEFAULT);
+              $user->save();
+              return redirect('/home');
+          }
+      } else {
+          $errors = 'Wrong password';
+      }
+      return view('/formEditPassword',['user' => $user]);
+    }
+    public function updateAvatar(Request $request)
+    {
+      //Va a mostrar el formulario para modificar el avatar propio del usuario
+      $user_id = session('user_id');
+      $user = User::find($user_id);
+      $user->avatar_name = UsersController::validateAvatar($request);
+      return view('/formEditAvatar',['user' => $user]);
     }
 
     /**
@@ -170,9 +222,18 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/adminListUsers');
     }
-    public function validateImg(Request $request)
+    public function destroyUser()
+    {
+        $user_id = session('user_id');
+        $user = User::find($user_id);
+        $user->delete();
+        return redirect('/');
+    }
+    public function validateAvatar(Request $request)
     {
         $validacion = $request->validate([
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'

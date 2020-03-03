@@ -24,7 +24,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('/formCreatePost');
     }
 
     /**
@@ -39,9 +39,9 @@ class PostsController extends Controller
         $post = new Post();
         $post->title = $request['title'];
         $post->body = $request['body'];
-        //$post->imgName = validateImage($request); 
+        $post->img_name = Post::validateImg($request); 
         //validateImage recibe $request, valida la imagen, la guarda donde corresponde y retorna unicamente su nombre
-        $post->user_id = $request['user_id'];
+        $post->user_id = session('user_id');
         
         $post->save();
         return redirect('/adminPosts')
@@ -93,22 +93,22 @@ class PostsController extends Controller
         //
     }
     
-    /*
-    public function validateImage(Request $request)
+    
+    public function validateImg(Request $request)
     {
         $validacion = $request->validate([
-            'prdImagen' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         $imageName = 'noDisponible.jpg';
-        if( $request->file('prdImagen') ) {
+        if( $request->file('img') ) {
             //$imageName = time().'.'.request()->prdImagen->getClientOriginalExtension();
-            $imagen = $request->file('prdImagen');
+            $imagen = $request->file('img');
             //$imagen->getClientOriginalExtension();
-            $imageName = $request->prdImagen->getClientOriginalName();
-            $request->prdImagen->move(public_path('images/productos'), $imageName);
+            $imageName = $request->img->getClientOriginalName();
+            $request->prdImagen->move(public_path('images/posts'), $imageName);
         }
         return $imageName;
     }
-    */
+    
 }
