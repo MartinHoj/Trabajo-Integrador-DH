@@ -104,14 +104,23 @@ class UsersController extends Controller
     public function editUserData()
     {
       //Va a mostrar el formulario para modificar los datos propios del usuario
+      $user_id = session('user_id');
+      $user = User::find($user_id);
+      return view('/formEditData',['user' => $user]);
     }
     public function editUserPassword()
     {
       //Va a mostrar el formulario para modificar la contraseña propia del usuario
+      $user_id = session('user_id');
+      $user = User::find($user_id);
+      return view('/formEditData',['user' => $user]);
     }
     public function editUserAvatar()
     {
       //Va a mostrar el formulario para modificar el avatar propio del usuario
+      $user_id = session('user_id');
+      $user = User::find($user_id);
+      return view('/formEditData',['user' => $user]);
     }
 
 
