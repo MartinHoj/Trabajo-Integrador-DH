@@ -68,6 +68,7 @@ class UsersController extends Controller
 
         $user->save();
         session(['log'=>true]);
+        session(['user_id' => $user->user_id]);
         return redirect('/home')
         ->with('mensaje','Bienvenido');
     }
@@ -211,7 +212,8 @@ class UsersController extends Controller
       $user_id = session('user_id');
       $user = User::find($user_id);
       $user->avatar_name = UsersController::validateAvatar($request);
-      return view('/formEditAvatar',['user' => $user]);
+      $user->save();
+      return redirect('/home');
     }
 
     /**

@@ -14,7 +14,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('/adminPosts',['posts' => $posts]);
     }
 
     /**
@@ -44,7 +45,7 @@ class PostsController extends Controller
         $post->user_id = session('user_id');
         
         $post->save();
-        return redirect('/adminPosts')
+        return redirect('/myPosts')
             ->with('mensaje', 'Posting done');
     }
 
@@ -56,8 +57,22 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('/postDetails',['post' => $post]);
     }
+    public function showMyPosts()
+    {
+        $user_id = session('user_id');
+        $post = Post::where('user_id',$user_id)->get();
+        return view('/postDetails',['post' => $post]);
+    }
+    public function showFriendsPosts($id)
+    {
+        $post = Post::find($id);
+        return view('/postDetails',['post' => $post]);
+    }
+    
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -90,9 +105,21 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect('/adminPosts');
     }
-    
+    public function destroyMyPost($id)
+    {
+        $post = Post::findOrFail($id);
+        $user_id = session('user_id');
+        if (!($post->user_id == $user_id)) {
+            return 'Usted no es el propietario de este posteo, no puede borrarlo';
+            exit;
+        }
+        $post->delete();
+        return redirect('/adminPosts');
+    }
     
     public function validateImg(Request $request)
     {
