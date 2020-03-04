@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
 
 class PostsController extends Controller
 {
@@ -82,7 +83,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('/formEditPost',['post'=>$post]);
     }
 
     /**
@@ -105,6 +107,11 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
+        $user_id = session('user_id');
+        $user = User::find($user_id);
+        if ($user->role_id == 2) {
+            return 'Tu no tiene autorización para eliminar este posteo';
+        }
         $post = Post::findOrFail($id);
         $post->delete();
         return redirect('/adminPosts');
