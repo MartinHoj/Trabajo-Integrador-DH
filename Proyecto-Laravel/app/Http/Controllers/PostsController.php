@@ -45,10 +45,10 @@ class PostsController extends Controller
         $post = new Post();
         $post->title = $request['title'];
         $post->body = $request['body'];
-        $post->img_name = Post::validateImg($request); 
+        $post->img_name = PostsController::validateImg($request);
         //validateImage recibe $request, valida la imagen, la guarda donde corresponde y retorna unicamente su nombre
         $post->user_id = session('user_id');
-        
+
         $post->save();
         return redirect('/myPosts')
             ->with('mensaje', 'Posting done');
@@ -68,16 +68,16 @@ class PostsController extends Controller
     public function showMyPosts()
     {
         $user_id = session('user_id');
-        $post = Post::where('user_id',$user_id)->get();
-        return view('/postDetails',['post' => $post]);
+        $posts = Post::where('user_id',$user_id)->get();
+        return view('/myPosts',['posts' => $posts]);
     }
     public function showFriendsPosts($id)
     {
         $post = Post::find($id);
         return view('/postDetails',['post' => $post]);
     }
-    
-    
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -108,10 +108,10 @@ class PostsController extends Controller
         $post = Post::find($request['id']);
         $post->title = $request['title'];
         $post->body = $request['body'];
-        $post->img_name = Post::validateImg($request); 
+        $post->img_name = Post::validateImg($request);
         //validateImage recibe $request, valida la imagen, la guarda donde corresponde y retorna unicamente su nombre
         $post->user_id = session('user_id');
-        
+
         $post->save();
         return redirect('/myPosts')
             ->with('mensaje', 'Posting update');
@@ -145,7 +145,7 @@ class PostsController extends Controller
         $post->delete();
         return redirect('/adminPosts');
     }
-    
+
     public function validateImg(Request $request)
     {
         $validacion = $request->validate([
@@ -158,9 +158,9 @@ class PostsController extends Controller
             $imagen = $request->file('img');
             //$imagen->getClientOriginalExtension();
             $imageName = $request->img->getClientOriginalName();
-            $request->prdImagen->move(public_path('images/posts'), $imageName);
+            $request->img->move(public_path('images/posts'), $imageName);
         }
         return $imageName;
     }
-    
+
 }

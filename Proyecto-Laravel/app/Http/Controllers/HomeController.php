@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -11,7 +13,9 @@ class HomeController extends Controller
     public function index()
     {
         if (session('log')) {
-          return view('/home');
+          $user = User::find(session('user_id'));
+          $posts = Post::where('user_id',$user->user_id)->get();
+          return view('/home',['user' => $user,'posts' => $posts]);
         }
         else {
           return redirect('/');
