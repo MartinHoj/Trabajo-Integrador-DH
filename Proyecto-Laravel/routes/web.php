@@ -24,3 +24,6 @@ Route::post('/login','UsersController@login');
 Route::get('/adminListUsers','UsersController@index');
 Route::get('/userDetails/{id}','UsersController@show');
 Route::get('/formEdit','UsersController@editAdmin');
+Route::get('/createPost','PostsController@create');
+Route::post('/post','PostsController@store');
+Route::get('/myPosts','PostsController@showMyPosts');
