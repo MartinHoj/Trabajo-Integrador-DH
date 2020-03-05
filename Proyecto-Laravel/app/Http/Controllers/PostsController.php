@@ -38,6 +38,10 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         // Falta hacer la validación completa
+        $request->validate([
+            'title'=>'string',
+            'body'=>'string'
+        ]);
         $post = new Post();
         $post->title = $request['title'];
         $post->body = $request['body'];
@@ -94,9 +98,23 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'string',
+            'body'=>'string'
+        ]);
+        // Falta hacer la validación completa
+        $post = Post::find($request['id']);
+        $post->title = $request['title'];
+        $post->body = $request['body'];
+        $post->img_name = Post::validateImg($request); 
+        //validateImage recibe $request, valida la imagen, la guarda donde corresponde y retorna unicamente su nombre
+        $post->user_id = session('user_id');
+        
+        $post->save();
+        return redirect('/myPosts')
+            ->with('mensaje', 'Posting update');
     }
 
     /**
