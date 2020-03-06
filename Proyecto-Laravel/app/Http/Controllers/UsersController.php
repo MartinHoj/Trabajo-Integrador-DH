@@ -273,5 +273,11 @@ class UsersController extends Controller
         return view('/welcome',['mensaje' => $mensaje]);
 
     }
+    public function logout()
+    {
+        session()->forget('user_id');
+        session()->forget('log');
+        return view('/welcome');
+    }
 
 }
