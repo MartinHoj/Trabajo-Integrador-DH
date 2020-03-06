@@ -27,9 +27,9 @@ class HomeController extends Controller
         return view('/faqs');
     }
 
-    public function store()
+    public function config()
     {
-        //
+        return view('/myConfig');
     }
 
     public function show($id)

@@ -15,6 +15,9 @@ class UsersController extends Controller
      */
     public function index()
     {
+        if (!session('log')) {
+            redirect('/');
+        }
       $users = User::with('getRole')->get();
        return view('adminListUsers',
            [
@@ -81,6 +84,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        if (!session('log')) {
+            redirect('/');
+        }
         $user = User::findOrFail($id);
         $role = Role::find($user->role_id);
         return view('/userDetails',['user'=>$user,'role' => $role]);
@@ -95,6 +101,9 @@ class UsersController extends Controller
     public function editAdmin($id)
     {
       //Solo para administradores
+      if (!session('log')) {
+        redirect('/');
+    }
       $user_id = session('user_id');
         if (User::find($user_id)->role_id == 2) {
           return 'Usted no está habilitado para modificar este usuario';
@@ -105,6 +114,9 @@ class UsersController extends Controller
     public function editUserData()
     {
       //Va a mostrar el formulario para modificar los datos propios del usuario
+      if (!session('log')) {
+        redirect('/');
+    }
       $user_id = session('user_id');
       $user = User::find($user_id);
       return view('/formEditData',['user' => $user]);
@@ -112,6 +124,9 @@ class UsersController extends Controller
     public function editUserPassword()
     {
       //Va a mostrar el formulario para modificar la contraseña propia del usuario
+      if (!session('log')) {
+        redirect('/');
+    }
       $user_id = session('user_id');
       $user = User::find($user_id);
       return view('/formEditPassword',['user' => $user]);
@@ -119,6 +134,9 @@ class UsersController extends Controller
     public function editUserAvatar()
     {
       //Va a mostrar el formulario para modificar el avatar propio del usuario
+      if (!session('log')) {
+        redirect('/');
+    }
       $user_id = session('user_id');
       $user = User::find($user_id);
       return view('/formEditAvatar',['user' => $user]);
@@ -162,7 +180,7 @@ class UsersController extends Controller
         return redirect('/adminListUsers')
             ->with('mensaje', 'User '.$user->name.' modificado con éxito');
     }
-    public function updatetData(Request $request)
+    public function updateData(Request $request)
     {
       $user_id = session('user_id');
       $user = User::find($user_id);
@@ -230,6 +248,9 @@ class UsersController extends Controller
     }
     public function destroyUser()
     {
+        if (!session('log')) {
+            redirect('/');
+        }
         $user_id = session('user_id');
         $user = User::find($user_id);
         $user->delete();
@@ -279,5 +300,4 @@ class UsersController extends Controller
         session()->forget('log');
         return view('/welcome');
     }
-
 }
