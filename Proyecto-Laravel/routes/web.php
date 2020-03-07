@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index');
 Route::get('/faqs','HomeController@faqs');
+Route::get('/contactUs','HomeController@contactUs')
 
 Route::get('/formRegister','UsersController@create');
 Route::post('/register','UsersController@store')->name('register');
@@ -29,4 +30,4 @@ Route::get('/formEdit','UsersController@editUserData');
 Route::get('/createPost','PostsController@create');
 Route::post('/post','PostsController@store');
 Route::get('/myPosts','PostsController@showMyPosts');
-Route::get('logout','UsersController@logout');
+Route::get('/logout','UsersController@logout');

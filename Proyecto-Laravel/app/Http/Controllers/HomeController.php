@@ -32,9 +32,9 @@ class HomeController extends Controller
         return view('/myConfig');
     }
 
-    public function show($id)
+    public function contactUs()
     {
-        //
+        return view('/contactUs');
     }
 
     public function edit($id)
