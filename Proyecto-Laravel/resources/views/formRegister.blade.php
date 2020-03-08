@@ -4,14 +4,19 @@
     <meta charset="utf-8">
     <title>Register</title>
     <link rel="stylesheet" href="/css/app.css">
+    
 </head>
 <body>
+    <style>
     
+    body {background-color: powderblue;}
+
+    </style>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Registrate</div>
+                    <div style="background-color:#73D91F"; class="card-header">Registrate</div>
                     
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
