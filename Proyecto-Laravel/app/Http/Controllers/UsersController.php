@@ -224,7 +224,7 @@ class UsersController extends Controller
           'newPassword' => 'string|min:6|required_with:confirmPassword|same:confirmPassword',
           'confirmPassword' => 'string'
       ]);
-      if (password_verify($request['lastPassword'],$user->password)) {
+      if (password_verify($request['password'],$user->password)) {
           if ($request['newPassword'] == $request['confirmPassword']) {
               $user->password = password_hash($request['newPassword'],PASSWORD_DEFAULT);
               $user->save();

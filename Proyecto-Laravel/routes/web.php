@@ -29,6 +29,7 @@ Route::get('/formEditAdmin/{id}','UsersController@editAdmin');
 Route::get('/formEdit','UsersController@editUserData');
 Route::get('/formEditPassword','UsersController@editUserPassword');
 Route::post('/updateData','UsersController@updateData');
+Route::post('/updatePassword','UsersController@updatePassword');
 Route::get('/createPost','PostsController@create');
 Route::post('/post','PostsController@store');
 Route::get('/myPosts','PostsController@showMyPosts');

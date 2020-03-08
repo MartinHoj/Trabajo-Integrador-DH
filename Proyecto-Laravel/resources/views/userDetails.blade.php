@@ -10,8 +10,22 @@
   <h1 class="text-left title display-2">
     {{$user->name}} {{$user->surname}}
   </h1>
+  <div class="container">
+    <div class="card align-right col-6">
+      <div class="card-body h3 text-center">User Information</div>
+    <div class="card-body">Name: {{$user->name}}</div>
+    <div class="card-body">Surname: {{$user->surname}}</div>
+    <div class="card-body">Username: {{$user->username}}</div>
+    <div class="card-body">Email: {{$user->email}}</div>
+    <div class="card-body">Phone: {{$user->phone}}</div>
+    <div class="card-body">Hobbie: {{$user->hobbie}}</div>
+    <div class="card-body">Country: {{$user->country}}</div>
+        
+    </div>
+  </div>
+  <div>
   <img src="/images/avatars/{{$user->avatar_name}}" alt="No Disponible">
-  
+  </div>
   
   
   
