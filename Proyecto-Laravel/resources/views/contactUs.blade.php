@@ -8,6 +8,15 @@
     <title>Contact Us</title>
 </head>
 <body>
+    @if (session('log'))
+      @include('layouts.header')
+  @else
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="btn btn-primary" href="/" role="button">Volver</a>
+    </nav>
+    </header>
+  @endif
     <main class="container">
         <form action="" method="post">
             <label for="email" class="form-controller">

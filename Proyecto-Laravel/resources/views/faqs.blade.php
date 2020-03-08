@@ -10,6 +10,15 @@
 </head>
 
 <body>
+  @if (session('log'))
+      @include('layouts.header')
+  @else
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="btn btn-primary" href="/" role="button">Volver</a>
+    </nav>
+    </header>
+  @endif
     <div class="container">
         <main>
             <h1 class="title">Preguntas frecuentes</h1>

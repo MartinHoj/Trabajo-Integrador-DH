@@ -184,11 +184,22 @@ class UsersController extends Controller
     {
       $user_id = session('user_id');
       $user = User::find($user_id);
+      if ($user->email == $request['email']) {
+          $emailCondition = 'bail|string|email|required|max:255';
+      } else {
+          $emailCondition = 'bail|unique:users|string|email|required|max:255';
+      }
+      if ($user->username == $request['username']) {
+        $usernameCondition = 'string|required|max:255';
+    } else {
+        $usernameCondition = 'unique:users|string|required|max:255';
+    }
+    
       $request->validate([
         'name' => 'string|required|max:255',
         'surname' => 'string|required|max:255',
-        'email' => 'bail|unique:users|string|email|required|max:255',
-        'username' => 'unique:users|string|required|max:255',
+        'email' => $emailCondition,
+        'username' => $usernameCondition,
         'phone' => 'integer',
         'hobbie' => 'string|max:255',
         'country' => 'string|max:255'
@@ -283,6 +294,7 @@ class UsersController extends Controller
         $users = User::all();
         foreach ($users as $user) {
             if ($user->email == $request['email']) {
+                $exist = true;
                 if (password_verify($request['password'],$user->password)) {
                     session(['log'=>true]);
                     session(['user_id'=>$user->user_id]);
@@ -290,8 +302,12 @@ class UsersController extends Controller
                 }
             }
         }
-        $mensaje = 'No estás registrado aún, deberás registrarte para loguearte';
-        return view('/welcome',['mensaje' => $mensaje]);
+        if ($exist) {
+            $message = 'The email or the password are wrong';
+        } else {
+        $message = 'No estás registrado aún, deberás registrarte para loguearte';
+        }
+        return view('/welcome',['message' => $message]);
 
     }
     public function logout()
