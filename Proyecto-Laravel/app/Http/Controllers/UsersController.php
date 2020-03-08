@@ -15,6 +15,9 @@ class UsersController extends Controller
      */
     public function index()
     {
+        if (!session('log')) {
+            redirect('/');
+        }
       $users = User::with('getRole')->get();
        return view('adminListUsers',
            [
@@ -81,6 +84,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        if (!session('log')) {
+            redirect('/');
+        }
         $user = User::findOrFail($id);
         $role = Role::find($user->role_id);
         return view('/userDetails',['user'=>$user,'role' => $role]);
@@ -95,6 +101,9 @@ class UsersController extends Controller
     public function editAdmin($id)
     {
       //Solo para administradores
+      if (!session('log')) {
+        redirect('/');
+    }
       $user_id = session('user_id');
         if (User::find($user_id)->role_id == 2) {
           return 'Usted no está habilitado para modificar este usuario';
@@ -105,6 +114,9 @@ class UsersController extends Controller
     public function editUserData()
     {
       //Va a mostrar el formulario para modificar los datos propios del usuario
+      if (!session('log')) {
+        redirect('/');
+    }
       $user_id = session('user_id');
       $user = User::find($user_id);
       return view('/formEditData',['user' => $user]);
@@ -112,6 +124,9 @@ class UsersController extends Controller
     public function editUserPassword()
     {
       //Va a mostrar el formulario para modificar la contraseña propia del usuario
+      if (!session('log')) {
+        redirect('/');
+    }
       $user_id = session('user_id');
       $user = User::find($user_id);
       return view('/formEditPassword',['user' => $user]);
@@ -119,6 +134,9 @@ class UsersController extends Controller
     public function editUserAvatar()
     {
       //Va a mostrar el formulario para modificar el avatar propio del usuario
+      if (!session('log')) {
+        redirect('/');
+    }
       $user_id = session('user_id');
       $user = User::find($user_id);
       return view('/formEditAvatar',['user' => $user]);
@@ -162,15 +180,26 @@ class UsersController extends Controller
         return redirect('/adminListUsers')
             ->with('mensaje', 'User '.$user->name.' modificado con éxito');
     }
-    public function updatetData(Request $request)
+    public function updateData(Request $request)
     {
       $user_id = session('user_id');
       $user = User::find($user_id);
+      if ($user->email == $request['email']) {
+          $emailCondition = 'bail|string|email|required|max:255';
+      } else {
+          $emailCondition = 'bail|unique:users|string|email|required|max:255';
+      }
+      if ($user->username == $request['username']) {
+        $usernameCondition = 'string|required|max:255';
+    } else {
+        $usernameCondition = 'unique:users|string|required|max:255';
+    }
+    
       $request->validate([
         'name' => 'string|required|max:255',
         'surname' => 'string|required|max:255',
-        'email' => 'bail|unique:users|string|email|required|max:255',
-        'username' => 'unique:users|string|required|max:255',
+        'email' => $emailCondition,
+        'username' => $usernameCondition,
         'phone' => 'integer',
         'hobbie' => 'string|max:255',
         'country' => 'string|max:255'
@@ -195,7 +224,7 @@ class UsersController extends Controller
           'newPassword' => 'string|min:6|required_with:confirmPassword|same:confirmPassword',
           'confirmPassword' => 'string'
       ]);
-      if (password_verify($request['lastPassword'],$user->password)) {
+      if (password_verify($request['password'],$user->password)) {
           if ($request['newPassword'] == $request['confirmPassword']) {
               $user->password = password_hash($request['newPassword'],PASSWORD_DEFAULT);
               $user->save();
@@ -230,6 +259,9 @@ class UsersController extends Controller
     }
     public function destroyUser()
     {
+        if (!session('log')) {
+            redirect('/');
+        }
         $user_id = session('user_id');
         $user = User::find($user_id);
         $user->delete();
@@ -262,6 +294,7 @@ class UsersController extends Controller
         $users = User::all();
         foreach ($users as $user) {
             if ($user->email == $request['email']) {
+                $exist = true;
                 if (password_verify($request['password'],$user->password)) {
                     session(['log'=>true]);
                     session(['user_id'=>$user->user_id]);
@@ -269,9 +302,18 @@ class UsersController extends Controller
                 }
             }
         }
-        $mensaje = 'No estás registrado aún, deberás registrarte para loguearte';
-        return view('/welcome',['mensaje' => $mensaje]);
+        if ($exist) {
+            $message = 'The email or the password are wrong';
+        } else {
+        $message = 'No estás registrado aún, deberás registrarte para loguearte';
+        }
+        return view('/welcome',['message' => $message]);
 
     }
-
+    public function logout()
+    {
+        session()->forget('user_id');
+        session()->forget('log');
+        return view('/welcome');
+    }
 }
