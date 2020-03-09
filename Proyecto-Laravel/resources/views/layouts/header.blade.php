@@ -29,9 +29,17 @@
               <a class="dropdown-item" href="/logout">Log Out</a>
             </div>
           </li>
+          @if (session('role_id') == 1)
+          <li class="nav-item">
+            <a class="nav-link" href="/listUsers">List Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/listPosts">List Posts</a>
+          </li>
+          @endif
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
