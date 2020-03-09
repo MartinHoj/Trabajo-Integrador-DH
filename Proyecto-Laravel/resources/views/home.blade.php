@@ -8,7 +8,7 @@
     <title>Home</title>
 </head>
 <body>
-    @include('layouts.header');
+    @include('layouts.header')
 
     <h1>
         Aca va el home con los posteos generales
