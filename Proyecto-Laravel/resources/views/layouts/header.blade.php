@@ -24,7 +24,7 @@
             <div class="dropdown-menu">
               <a class="dropdown-item" href="/formEdit">Edit User</a>
             <a class="dropdown-item" href="/userDetails/{{session('user_id')}}">Show my profile</a>
-              <a class="dropdown-item" href="myPosts">Show my posts</a>
+              <a class="dropdown-item" href="/myPosts">Show my posts</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/logout">Log Out</a>
             </div>
