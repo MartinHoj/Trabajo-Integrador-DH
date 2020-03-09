@@ -38,3 +38,5 @@ Route::get('/myPosts','PostsController@showMyPosts');
 Route::get('/logout','UsersController@logout');
 Route::get('/formEditPost/{id}','PostsController@edit');
 Route::post('/updatePost','PostsController@update');
+Route::get('/listPosts','PostsController@index');
+Route::get('/listUsers','UsersController@index');
