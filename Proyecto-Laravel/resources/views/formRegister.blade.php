@@ -12,6 +12,12 @@
     body {background-color: powderblue;}
 
     </style>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="btn btn-primary mr-3" href="/" role="button">Volver</a>
+        </nav>
+        </header>
+        <br>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
