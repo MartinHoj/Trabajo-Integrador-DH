@@ -6,6 +6,9 @@
   <title>Create Post</title>
 </head>
 <body>
+  <header>
+    @include('layouts.header')  
+  </header>
   <main class="container">
     <form class="form" action="/post" method="post" enctype="multipart/form-data">
       @csrf
