@@ -15,10 +15,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        if (!session('log')) {
+        if (!(session('log') && session('role_id')==1)) {
             redirect('/');
         }
-      $users = User::with('getRole')->get();
+        $users = User::with('getRole')->get();
        return view('adminListUsers',
            [
                'users'=>$users
@@ -265,7 +265,7 @@ class UsersController extends Controller
         $user_id = session('user_id');
         $user = User::find($user_id);
         $user->delete();
-        return redirect('/');
+        return redirect('/logout');
     }
     public function validateAvatar(Request $request)
     {
@@ -298,6 +298,7 @@ class UsersController extends Controller
                 if (password_verify($request['password'],$user->password)) {
                     session(['log'=>true]);
                     session(['user_id'=>$user->user_id]);
+                    session(['role_id'=>$user->role_id]);
                     return redirect('/home');
                 }
             }
@@ -316,6 +317,7 @@ class UsersController extends Controller
         session()->forget('user_id');
         session()->forget('log');
         session()->forget('exist');
+        session()->forget('role_id');
         return view('/welcome');
     }
 }
