@@ -294,7 +294,7 @@ class UsersController extends Controller
         $users = User::all();
         foreach ($users as $user) {
             if ($user->email == $request['email']) {
-                $exist = true;
+                session(['exist' => true]);
                 if (password_verify($request['password'],$user->password)) {
                     session(['log'=>true]);
                     session(['user_id'=>$user->user_id]);
@@ -302,8 +302,9 @@ class UsersController extends Controller
                 }
             }
         }
-        if ($exist) {
+        if (session('exist')) {
             $message = 'The email or the password are wrong';
+            session()->forget('exist');
         } else {
         $message = 'No estás registrado aún, deberás registrarte para loguearte';
         }
@@ -314,6 +315,7 @@ class UsersController extends Controller
     {
         session()->forget('user_id');
         session()->forget('log');
+        session()->forget('exist');
         return view('/welcome');
     }
 }
