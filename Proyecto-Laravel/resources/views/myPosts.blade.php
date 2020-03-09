@@ -7,11 +7,31 @@
 </head>
 <body>
   @include('layouts.header')
-  {{session('mensaje')}}
+  @if (session('postMessage'))
+  <div class="alert alert-success" role="alert">
+    {{session('postMessage')}}
+  </div>
+  @endif
   @foreach($posts as $post)
-  {{$post->title}}
-  {{$post->body}}
-  <img src="/images/posts/{{$post->img_name}}" alt="">
+  <div class="container center">
+  <div class="card mb-3" style="max-width: 740px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="/images/posts/{{$post->img_name}}" class="card-img" alt="No Disponible">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+        <p class="text-right"><small class="text-right card-text"><a href="/formEditPost/{{$post->post_id}}">Change Post</a></small></p>
+          <h5 class="card-title">{{$post->title}}</h5>
+          <p class="card-text">{{$post->body}}.</p>
+          <p class="card-text"><small class="text-muted">Last updated {{$post->updated_at}}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  
   
   
   @endforeach

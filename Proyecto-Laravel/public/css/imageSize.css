@@ -1,0 +1,15 @@
+.img-container {
+    width: 50%;
+    height: 10%;
+}
+.circular {
+    width: 100%;
+    height: auto;
+    border-radius: 100%;
+    margin-bottom: 10%;
+}
+.card {
+    margin: 0 auto;
+    /* align-items: center; */
+    align-content: center;
+}

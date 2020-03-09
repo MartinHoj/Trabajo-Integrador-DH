@@ -37,9 +37,9 @@ class HomeController extends Controller
         return view('/contactUs');
     }
 
-    public function edit($id)
+    public function storeContact()
     {
-        //
+        //Este metodo debera enviar un mail a un desarrollador o administrador con el contacto del usuario y sus datos para que sea respondida su inquietud
     }
 
     public function update(Request $request, $id)

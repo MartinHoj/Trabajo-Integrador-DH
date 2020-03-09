@@ -4,15 +4,20 @@
   <meta charset="utf-8">
   <title>{{$user->username}}</title>
   <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/imageSize.css">
 </head>
 <body>
   @include('layouts.header')
-  <h1 class="text-left title display-2">
+  <h1 class="text-center title display-2">
     {{$user->name}} {{$user->surname}}
   </h1>
-  <div class="container">
-    <div class="card align-right col-6">
-      <div class="card-body h3 text-center">User Information</div>
+  <div class="container align-center main">
+    <div class="card align-center col-6">
+    <div class="card-body h3 text-center">User Information</div>
+    <div class="img-container container">
+      <img src="/images/avatars/{{$user->avatar_name}}" class="circular img" alt="No Disponible">
+    </div>
+    <a href="/formEditAvatar" class="stretched-link text-center">Change Avatar</a>
     <div class="card-body">Name: {{$user->name}}</div>
     <div class="card-body">Surname: {{$user->surname}}</div>
     <div class="card-body">Username: {{$user->username}}</div>
@@ -23,9 +28,7 @@
         
     </div>
   </div>
-  <div>
-  <img src="/images/avatars/{{$user->avatar_name}}" alt="No Disponible">
-  </div>
+
   
   
   

@@ -51,7 +51,7 @@ class PostsController extends Controller
 
         $post->save();
         return redirect('/myPosts')
-            ->with('mensaje', 'Posting done');
+            ->with('postMessage', 'Posting done');
     }
 
     /**
@@ -108,7 +108,9 @@ class PostsController extends Controller
         $post = Post::find($request['id']);
         $post->title = $request['title'];
         $post->body = $request['body'];
-        $post->img_name = Post::validateImg($request);
+        if ($request['img']) {
+            $post->img_name = PostsController::validateImg($request);
+        };
         //validateImage recibe $request, valida la imagen, la guarda donde corresponde y retorna unicamente su nombre
         $post->user_id = session('user_id');
 
