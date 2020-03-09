@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `RedSocial` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `RedSocial`;
+CREATE DATABASE  IF NOT EXISTS `redsocial` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `redsocial`;
 -- MySQL dump 10.13  Distrib 5.7.26, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: RedSocial
