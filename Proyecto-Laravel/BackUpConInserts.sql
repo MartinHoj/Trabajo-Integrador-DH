@@ -90,7 +90,7 @@ CREATE TABLE `posts` (
   PRIMARY KEY (`post_id`),
   KEY `posts_user_id_foreign` (`user_id`),
   CONSTRAINT `posts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +99,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (1,'wqerwqerqewr','werewrwer','Wallpaper-01.png',1,'2020-03-09 20:44:26','2020-03-09 20:44:26');
+INSERT INTO `posts` VALUES (1,'wqerwqerqewrg','werewrwer','Wallpaper-01.png',1,'2020-03-09 20:44:26','2020-03-09 21:46:25'),(2,'12313','123123','noDisponible.jpg',1,'2020-03-09 21:32:53','2020-03-09 21:32:53'),(3,'asdasd','asdasdas','Wallpaper-01.png',1,'2020-03-09 21:58:19','2020-03-09 21:58:19');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +154,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_email_unique` (`email`),
   KEY `users_role_id_foreign` (`role_id`),
   CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,7 +163,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'laravel','laravelBootstrap','laravel@gmail.com','laravelaguante','$2y$10$MQGPkn3fhrd/m7Obg6voZOP9ofk1uSub6kPX.quPTxIdQMwlwaNZm',123123,'Programar','Argentina',2,'2020-03-09 20:43:52','2020-03-09 20:43:52','Wallpaper-01.png');
+INSERT INTO `users` VALUES (1,'laravel','laravelBootstrap','laravel@gmail.com','laravelaguante','$2y$10$MQGPkn3fhrd/m7Obg6voZOP9ofk1uSub6kPX.quPTxIdQMwlwaNZm',123123,'Programar','Argentina',1,'2020-03-09 20:43:52','2020-03-09 20:43:52','Wallpaper-01.png'),(2,'12312321','Mercury','queen@gmail.com','FreddyMer','$2y$10$pCQiLiubO3z0HuAoZ0C1TedfUbtFcdQ1uD.rwn7QlWJwVJK8Y5ljO',21312321,'12312','Argentina',1,'2020-03-09 21:41:41','2020-03-09 21:41:41','Wallpaper-01.png'),(3,'Marcos','Pinardi','marcospinardi@gmail.com','marcospin','$2y$10$HqDbiO/7HQ3OB0UKcdJNLOJVKCq49tMPIcijFZP9ZnnlylTdrEzoa',123213,'Programar en Laravel','Canadá',2,'2020-03-09 23:21:19','2020-03-09 23:21:19','Wallpaper-01.png');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -176,4 +176,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-09 15:09:40
+-- Dump completed on 2020-03-09 17:22:43
