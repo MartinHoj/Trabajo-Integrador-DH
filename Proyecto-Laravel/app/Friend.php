@@ -8,5 +8,5 @@ class Friend extends Model
 {
     protected $primaryKey = 'friend_id';
     protected $guarded = [];
-
+    
 }

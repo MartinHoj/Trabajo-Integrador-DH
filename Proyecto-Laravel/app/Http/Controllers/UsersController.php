@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Friend;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+
 
 class UsersController extends Controller
 {
@@ -89,7 +91,8 @@ class UsersController extends Controller
         }
         $user = User::findOrFail($id);
         $role = Role::find($user->role_id);
-        return view('/userDetails',['user'=>$user,'role' => $role]);
+        $friends = UsersController::friends();
+        return view('/userDetails',['user'=>$user,'role' => $role,'friends' => $friends]);
     }
 
     /**
@@ -319,5 +322,17 @@ class UsersController extends Controller
         session()->forget('exist');
         session()->forget('role_id');
         return view('/welcome');
+    }
+    public function friends(){
+        $friends = Friend::where('user_id_actual',session('user_id'))->orWhere('user_id_friend',session('user_id'))->get();
+        $users = [];
+        foreach ($friends as $friend) {
+            if ($friend->user_id_actual == session('user_id')) {
+                $users[] = User::find($friend->user_id_friend);
+            } else {
+                $users[]=User::find($friend->user_id_actual);
+            }
+        }
+        return $users;
     }
 }
