@@ -13,3 +13,15 @@
     /* align-items: center; */
     align-content: center;
 }
+li #newComment{
+    margin-left: 57%;
+    margin-right: 0%;
+}
+.tiny-img{
+    border-radius: 100%;
+    size: 1%;
+}
+.tiny-img-container{
+    width: 10%;
+    height: 10%;
+}

@@ -73,7 +73,7 @@ class PostsController extends Controller
         $posts = Post::where('user_id',$user_id)->get();
         $postsComments = [];
         foreach ($posts as $post) {
-            $postsComments[] = Comment::where('post_id',$post->post_id)->get();   
+            $postsComments[] = Comment::where('post_id',$post->post_id)->with('getUser')->get();   
         }
         // $postsComments trae todos los comentarios de todos los posteos del usuario
         // cada posicion del array tiene todos los comentarios de un solo post

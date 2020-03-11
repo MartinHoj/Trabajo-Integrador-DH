@@ -4,13 +4,8 @@
   <meta charset="utf-8">
   <title>My Posts</title>
   <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/imageSize.css">
 </head>
-<style>
-  li #newComment{
-    margin-left: 57%;
-    margin-right: 0%;
-  }
-</style>
 <body>
   @include('layouts.header')
   @if (session('postMessage'))
@@ -49,11 +44,25 @@
         <li class="list-group-item "><small class="small"><strong> Comments </strong></small>
         <a class="small" id="newComment" href="/createComment">Create comment</a></li>
       </ul>
-      <div class="card-body">
-        <small>
-          ddddddddddddd
-        </small>
-      </div>
+      @foreach ($postsComments as $postComments)
+          @if ($postComments[0]->post_id)
+          @foreach ($postComments as $comment)
+            <div class="card-body">
+            <small>
+            <div class="tiny-img-container">
+            <img src="/images/avatars/{{$comment->getUser->avatar_name}}" class="tiny-img circular" alt="">
+            </div>
+            <span><strong>{{$comment->getUser->username}}:</strong></span>
+            <span>{{$comment->comment_content}}</span>
+            </small>
+            </div>
+            
+          @endforeach
+          @endif
+      @endforeach
+      <script src="/js/newComment.js"></script>
+      {{-- Aca va codigo linkeado de JS a newComment.js donde cuando se presiona el Create comment, se desplegara
+        un form con un input de texto debajo de los comentarios ya creados --}}
     </div>
   </div>
   </div>
