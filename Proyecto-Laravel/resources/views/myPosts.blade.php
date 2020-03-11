@@ -5,6 +5,12 @@
   <title>My Posts</title>
   <link rel="stylesheet" href="/css/app.css">
 </head>
+<style>
+  li #newComment{
+    margin-left: 57%;
+    margin-right: 0%;
+  }
+</style>
 <body>
   @include('layouts.header')
   @if (session('postMessage'))
@@ -14,8 +20,8 @@
   @endif
   @foreach($posts as $post)
   <div class="container center">
-  <div class="card mb-3" style="max-width: 740px;">
-    <div class="row no-gutters">
+  {{-- <div class="card mb-3" style="max-width: 740px;">
+     <div class="row no-gutters">
       <div class="col-md-4">
         <img src="/images/posts/{{$post->img_name}}" class="card-img" alt="No Disponible">
       </div>
@@ -23,9 +29,30 @@
         <div class="card-body">
         <p class="text-right"><small class="text-right card-text"><a href="/formEditPost/{{$post->post_id}}">Change Post</a></small></p>
           <h5 class="card-title">{{$post->title}}</h5>
-          <p class="card-text">{{$post->body}}.</p>
+          <p class="card-text">{{$post->body}}</p>
           <p class="card-text"><small class="text-muted">Last updated {{$post->updated_at}}</small></p>
         </div>
+      </div>
+    </div> --}}
+    <div class="card" style="width: 25rem;">
+      <img src="/images/posts/{{$post->img_name}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="text-right"><small class="text-right card-text"><a href="/formEditPost/{{$post->post_id}}">Change Post</a></small></p>
+        <h5 class="card-title">{{$post->title}}</h5>
+        <p class="card-text">{{$post->body}}</p>
+        <p class="card-text"><small class="text-muted">Last updated {{$post->updated_at}}</small></p>
+        @if (!($post->updated_at === $post->created_at))
+        <p class="card-text text-right"><small class="text-muted">Changed post</small></p>
+        @endif
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item "><small class="small"><strong> Comments </strong></small>
+        <a class="small" id="newComment" href="/createComment">Create comment</a></li>
+      </ul>
+      <div class="card-body">
+        <small>
+          ddddddddddddd
+        </small>
       </div>
     </div>
   </div>

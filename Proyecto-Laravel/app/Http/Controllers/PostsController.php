@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use App\Comment;
 
 class PostsController extends Controller
 {
@@ -63,13 +64,20 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return view('/postDetails',['post' => $post]);
+        $postComments = Comment::where('post_id',$id)->get();
+        return view('/postDetails',['post' => $post,'postComments' => $postComments]);
     }
     public function showMyPosts()
     {
         $user_id = session('user_id');
         $posts = Post::where('user_id',$user_id)->get();
-        return view('/myPosts',['posts' => $posts]);
+        $postsComments = [];
+        foreach ($posts as $post) {
+            $postsComments[] = Comment::where('post_id',$post->post_id)->get();   
+        }
+        // $postsComments trae todos los comentarios de todos los posteos del usuario
+        // cada posicion del array tiene todos los comentarios de un solo post
+        return view('/myPosts',['posts' => $posts,'postsComments' => $postsComments]);
     }
     public function showFriendsPosts($id)
     {
