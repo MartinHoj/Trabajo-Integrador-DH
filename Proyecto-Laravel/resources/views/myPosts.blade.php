@@ -45,7 +45,8 @@
         <a class="small" id="newComment" href="/createComment">Create comment</a></li>
       </ul>
       @foreach ($postsComments as $postComments)
-          @if ($postComments[0]->post_id)
+          @if (!(count($postComments) === 0))
+          @if ($postComments[0]->post_id == $post->post_id)
           @foreach ($postComments as $comment)
             <div class="card-body">
             <small>
@@ -58,6 +59,7 @@
             </div>
             
           @endforeach
+          @endif
           @endif
       @endforeach
       <script src="/js/newComment.js"></script>

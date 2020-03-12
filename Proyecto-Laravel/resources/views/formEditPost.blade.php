@@ -6,6 +6,7 @@
     <title>Edit Post</title>
 </head>
 <body>
+    @include('layouts.header')
     <main class="container">
         <form class="form" action="/updatePost" method="post" enctype="multipart/form-data">
             @csrf

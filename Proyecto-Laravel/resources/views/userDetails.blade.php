@@ -25,7 +25,7 @@
     <div class="card-body">Phone: {{$user->phone}}</div>
     <div class="card-body">Hobbie: {{$user->hobbie}}</div>
     <div class="card-body">Country: {{$user->country}}</div>
-        
+        {{dd($friends)}}
     </div>
   </div>
 
