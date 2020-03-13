@@ -15,7 +15,7 @@
   @else
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="btn btn-primary" href="/" role="button">Volver</a>
+        <a class="btn btn-primary" href="/" role="button">Go Back</a>
     </nav>
     </header>
   @endif

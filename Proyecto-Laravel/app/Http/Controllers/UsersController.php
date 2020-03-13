@@ -20,7 +20,7 @@ class UsersController extends Controller
         if (!(session('log') && session('role_id')==1)) {
             redirect('/');
         }
-        $users = User::with('getRole')->get();
+        $users = User::with('getRole')->paginate(5);
        return view('adminListUsers',
            [
                'users'=>$users
@@ -34,7 +34,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('formRegister');
+        return view('/formRegister');
     }
 
     /**
@@ -107,8 +107,7 @@ class UsersController extends Controller
       if (!session('log')) {
         redirect('/');
     }
-      $user_id = session('user_id');
-        if (User::find($user_id)->role_id == 2) {
+        if (session('role_id') == 2) {
           return 'Usted no está habilitado para modificar este usuario';
         };
         $user = User::findOrFail($id);
@@ -157,31 +156,54 @@ class UsersController extends Controller
     {
 
         $user = User::find($request->input('user_id'));
+        if ($user->email == $request['email']) {
+            $emailCondition = 'bail|string|email|required|max:255';
+        } else {
+            $emailCondition = 'bail|unique:users|string|email|required|max:255';
+        }
+        if ($user->username == $request['username']) {
+          $usernameCondition = 'string|required|max:255';
+        } else {
+          $usernameCondition = 'unique:users|string|required|max:255';
+        }
+        if ($request['password']) {
+            $passwordCondition = 'string|min:6|required_with:confirmPassword|same:confirmPassword';
+            $confirmCondition = 'string';
+        } else {
+            $passwordCondition = '';
+            $confirmCondition = '';
+        }
         $request->validate([
             'name' => 'string|required|max:255',
             'surname' => 'string|required|max:255',
-            'email' => 'bail|unique:users|string|email|required|max:255',
-            'username' => 'unique:users|string|required|max:255',
+            'email' => $emailCondition,
+            'username' => $usernameCondition,
             'password' => 'required|string|max:255|min:6',
             'phone' => 'integer',
             'hobbie' => 'string|max:255',
-            'country' => 'string|max:255'
-
+            'country' => 'string|max:255',
+            'password' => $passwordCondition,
+            'confirmPassword' => $confirmCondition,
+            'role_id' => 'integer'
         ]);
         $user->name = $request['name'];
         $user->surname = $request['surname'];
         $user->email = $request['email'];
         $user->username = $request['username'];
-        $user->password = password_hash($request['password'],PASSWORD_DEFAULT);
+        if ($request['password']) {
+            $user->password = password_hash($request['password'],PASSWORD_DEFAULT);
+        }
         $user->phone = $request['phone'];
         $user->hobbie = $request['hobbie'];
         $user->country = $request['country'];
         // A traves de un Midleware este campo sera habilitado o no en el formulario. Sera por defecto el rol de cliente
         $user->role_id = $request['role_id'];
-        $user->avatar_name = UsersController::validateAvatar($request);
+        if ($request['avatar']) {
+            $user->avatar_name = UsersController::validateAvatar($request);    
+        }
         $user->save();
         return redirect('/adminListUsers')
-            ->with('mensaje', 'User '.$user->name.' modificado con éxito');
+            ->with('menssage', 'User '.$user->username.' modificado con éxito');
     }
     public function updateData(Request $request)
     {
@@ -242,10 +264,10 @@ class UsersController extends Controller
     {
       //Va a mostrar el formulario para modificar el avatar propio del usuario
       $user_id = session('user_id');
-      $user = User::find($user_id);
+      $user = User::findOrFail($user_id);
       $user->avatar_name = UsersController::validateAvatar($request);
       $user->save();
-      return redirect('/home');
+      return redirect("/home");
     }
 
     /**
@@ -258,7 +280,7 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect('/adminListUsers');
+        return redirect('/listUsers');
     }
     public function destroyUser()
     {

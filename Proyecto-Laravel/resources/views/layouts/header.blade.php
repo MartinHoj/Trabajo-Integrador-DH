@@ -22,7 +22,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="/formEdit">Edit User</a>
+              <a class="dropdown-item" href="/formEditData">Edit User</a>
             <a class="dropdown-item" href="/userDetails/{{session('user_id')}}">Show my profile</a>
               <a class="dropdown-item" href="/myPosts">Show my posts</a>
               <div class="dropdown-divider"></div>

@@ -36,7 +36,7 @@
         <h5 class="card-title">{{$post->title}}</h5>
         <p class="card-text">{{$post->body}}</p>
         <p class="card-text"><small class="text-muted">Last updated {{$post->updated_at}}</small></p>
-        @if (!($post->updated_at === $post->created_at))
+        @if (!($post->updated_at == $post->created_at))
         <p class="card-text text-right"><small class="text-muted">Changed post</small></p>
         @endif
       </div>

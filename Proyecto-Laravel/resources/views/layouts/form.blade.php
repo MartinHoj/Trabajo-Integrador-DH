@@ -17,7 +17,7 @@
                     
                     <div class="card-body">
                         
-                        <form action=@yield('action') method="post">
+                        <form action=@yield('action') method="post" enctype="multipart/form-data">
                             @csrf
                             @yield('form')
                             
