@@ -16,8 +16,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('/adminPosts',['posts' => $posts]);
+        $posts = Post::with('getUser')->paginate(5);
+        return view('/adminListPosts',['posts' => $posts]);
     }
 
     /**
@@ -96,6 +96,9 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
+        if (!(session('role_id') == 1 || session('user_id') == $post->user_id)) {
+            return 'Usted no está autorizado a modificar este posteo';
+        }
         return view('/formEditPost',['post'=>$post]);
     }
 
@@ -142,7 +145,7 @@ class PostsController extends Controller
         }
         $post = Post::findOrFail($id);
         $post->delete();
-        return redirect('/adminPosts');
+        return redirect('/listPosts');
     }
     public function destroyMyPost($id)
     {

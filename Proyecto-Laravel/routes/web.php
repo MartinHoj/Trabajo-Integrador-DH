@@ -25,7 +25,6 @@ Route::post('/register','UsersController@store')->name('register');
 
 Route::post('/login','UsersController@login');
 Route::post('/destroy/{id}','UsersController@destroy');
-Route::get('/adminListUsers','UsersController@index');
 Route::get('/userDetails/{id}','UsersController@show');
 Route::get('/formEdit/{id}','UsersController@editAdmin');
 Route::post('/update','UsersController@update');
@@ -42,4 +41,6 @@ Route::get('/logout','UsersController@logout');
 Route::get('/formEditPost/{id}','PostsController@edit');
 Route::post('/updatePost','PostsController@update');
 Route::get('/listPosts','PostsController@index');
+Route::post('/destroyPost/{id}','PostsController@destroy');
+Route::get('/postDetails/{id}','PostsController@show');
 Route::get('/listUsers','UsersController@index');

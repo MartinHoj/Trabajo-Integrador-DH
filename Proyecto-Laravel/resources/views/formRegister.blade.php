@@ -396,7 +396,7 @@
                                             <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
                                             
                                             <div class="col-md-6">
-                                                <input id="name" type="file" class="form-control @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}" required autocomplete="name" autofocus>
+                                                <input id="name" type="file" class="form-control @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}" autocomplete="name" autofocus>
                                                 
                                                 @error('avatar')
                                                 <span class="invalid-feedback" role="alert">

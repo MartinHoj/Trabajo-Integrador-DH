@@ -17,7 +17,9 @@
     <div class="img-container container">
       <img src="/images/avatars/{{$user->avatar_name}}" class="circular img" alt="No Disponible">
     </div>
-    <a href="/formEditAvatar" class="stretched-link text-center">Change Avatar</a>
+    @if (!session('guest'))
+    <a href="/formEditAvatar" class="stretched-link text-center">Change Avatar</a>    
+    @endif
     <div class="card-body">Name: {{$user->name}}</div>
     <div class="card-body">Surname: {{$user->surname}}</div>
     <div class="card-body">Username: {{$user->username}}</div>
@@ -25,7 +27,11 @@
     <div class="card-body">Phone: {{$user->phone}}</div>
     <div class="card-body">Hobbie: {{$user->hobbie}}</div>
     <div class="card-body">Country: {{$user->country}}</div>
-        {{dd($friends)}}
+      <div class="card-header">Friends:</div>
+      @foreach ($friends as $friend)
+          <div class="card-body">{{$friend->username}}</div>
+      @endforeach    
+    {{dd($friends)}}
     </div>
   </div>
 

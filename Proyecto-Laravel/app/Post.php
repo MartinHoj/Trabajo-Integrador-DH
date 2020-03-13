@@ -13,7 +13,7 @@ class Post extends Model
         
     public function getUser()
     {
-        $this->belongsTo('App/User','user_id');
+       return $this->belongsTo(User::class,'user_id','user_id');
     }
     
 }

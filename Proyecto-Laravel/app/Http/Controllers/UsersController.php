@@ -89,6 +89,9 @@ class UsersController extends Controller
         if (!session('log')) {
             redirect('/');
         }
+        if (session('user_id') != $id) {
+            session(['guest' => true]);
+        }
         $user = User::findOrFail($id);
         $role = Role::find($user->role_id);
         $friends = UsersController::friends(session('user_id'));
@@ -202,7 +205,7 @@ class UsersController extends Controller
             $user->avatar_name = UsersController::validateAvatar($request);    
         }
         $user->save();
-        return redirect('/adminListUsers')
+        return redirect('/listUsers')
             ->with('menssage', 'User '.$user->username.' modificado con éxito');
     }
     public function updateData(Request $request)
