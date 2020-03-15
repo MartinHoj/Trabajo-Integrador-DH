@@ -20,7 +20,7 @@
             <a class="nav-link" href="/createPost">Post</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="./#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="/formEditData">Edit User</a>
             <a class="dropdown-item" href="/userDetails/{{session('user_id')}}">Show my profile</a>

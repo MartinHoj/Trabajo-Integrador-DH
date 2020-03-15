@@ -12,8 +12,8 @@
     {{$user->name}} {{$user->surname}}
   </h1>
   <div class="container align-center main">
-    <div class="card align-center col-6">
-    <div class="card-body h3 text-center">User Information</div>
+    <div class="card align-center col-8">
+    <div class="card-body h2 text-center">User Information</div>
     <div class="img-container container">
       <img src="/images/avatars/{{$user->avatar_name}}" class="circular img" alt="No Disponible">
     </div>
@@ -27,7 +27,7 @@
     <div class="card-body">Phone: {{$user->phone}}</div>
     <div class="card-body">Hobbie: {{$user->hobbie}}</div>
     <div class="card-body">Country: {{$user->country}}</div>
-      <div class="card-header">Friends:</div>
+      <div class="card-title text-center title h5">Friends:</div>
       @foreach ($friends as $friend)
           <div class="card-body">{{$friend->username}}</div>
       @endforeach    

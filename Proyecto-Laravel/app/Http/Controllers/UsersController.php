@@ -348,7 +348,7 @@ class UsersController extends Controller
         session()->forget('role_id');
         return view('/welcome');
     }
-    public function friends($user_id){
+    public static function friends($user_id){
         $friends = Friend::where('user_id_actual',$user_id)->orWhere('user_id_friend',$user_id)->get();
         $users = [];
         foreach ($friends as $friend) {

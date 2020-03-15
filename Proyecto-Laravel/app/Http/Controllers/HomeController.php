@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+use App\Comment;
 
 class HomeController extends Controller
 {
@@ -13,9 +14,17 @@ class HomeController extends Controller
     public function index()
     {
         if (session('log')) {
-          $user = User::find(session('user_id'));
-          $posts = Post::where('user_id',$user->user_id)->get();
-          return view('/home',['user' => $user,'posts' => $posts]);
+        $users = UsersController::friends(session('user_id'));
+        $users[] = User::find(session('user_id'));
+        $posts = [];
+        foreach ($users as $user) {
+            $posts[] = Post::where('user_id',$user->user_id)->get();
+        }
+        $postsComments = [];
+        foreach ($posts as $post) {
+        $postsComments[] = Comment::where('post_id',$post->post_id)->with('getUser')->get();   
+          }
+        return view('/home',['users' => $users,'posts' => $posts,'postsComments' => $postsComments]);
         }
         else {
           return redirect('/');
