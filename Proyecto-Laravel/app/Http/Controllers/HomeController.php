@@ -16,17 +16,15 @@ class HomeController extends Controller
         if (session('log')) {
         $users = UsersController::friends(session('user_id'));
         $users[] = User::find(session('user_id'));
-        $allPosts = [];
         foreach ($users as $user) {
-            if (count(Post::where('user_id',$user->user_id)->get()) != 0) {
-                $allPosts[] = Post::where('user_id',$user->user_id)->with('getUser')->get();   
-            }
+            $users_id[]=$user->user_id;
         }
+        $allPosts = Post::whereIn('user_id',$users_id)->orderBy('created_at','desc')->with('getUser')->get();
         $postsComments = [];
-        foreach ($allPosts as $userPosts) {
-            foreach ($userPosts as $post) {
-                $postsComments[] = Comment::where('post_id',$post->post_id)->with('getUser')->get();   
-            }
+        foreach ($allPosts as $post) {
+            if (count(Comment::where('post_id',$post->post_id)->get()) != 0) {
+                $postsComments[] = Comment::where('post_id',$post->post_id)->with('getUser')->get();
+            }   
         }
         return view('/home',['allPosts' => $allPosts,'postsComments' => $postsComments]);
         }
