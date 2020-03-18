@@ -42,7 +42,7 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item "><small class="small"><strong> Comments </strong></small>
-        <a class="small" id="newComment" href="/createComment">Create comment</a></li>
+        <a class="small commentBtn" name="{{$post->post_id}}" href="#">Create comment</a></li>
       </ul>
       @foreach ($postsComments as $postComments)
           @if (!(count($postComments) === 0))
@@ -62,6 +62,14 @@
           @endif
           @endif
       @endforeach
+      <form action="/createComment" method="post">
+        @csrf
+        <div class="center container">
+          <input type="hidden" name="newComment" class="createComment comment center" id="{{$post->post_id}}">
+          <input type="hidden" name="post_id" value="{{$post->post_id}}">
+          <button type="submit" hidden class="btn btn-primary small" id="button{{$post->post_id}}">Make Comment</button>
+        </div>
+      </form>
       <script src="/js/newComment.js"></script>
       {{-- Aca va codigo linkeado de JS a newComment.js donde cuando se presiona el Create comment, se desplegara
         un form con un input de texto debajo de los comentarios ya creados --}}

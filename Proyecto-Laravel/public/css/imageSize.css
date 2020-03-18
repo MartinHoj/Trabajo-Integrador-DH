@@ -13,7 +13,7 @@
     /* align-items: center; */
     align-content: center;
 }
-li #newComment{
+li .commentBtn{
     margin-left: 57%;
     margin-right: 0%;
 }
@@ -25,3 +25,10 @@ li #newComment{
     width: 10%;
     height: 10%;
 }
+.comment {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    /* border: 1px solid #000000; */
+    padding: 0 4px 0 4px;
+ }

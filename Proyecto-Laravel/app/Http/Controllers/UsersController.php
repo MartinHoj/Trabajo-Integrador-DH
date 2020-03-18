@@ -18,7 +18,7 @@ class UsersController extends Controller
     public function index()
     {
         if (!(session('log') && session('role_id')==1)) {
-            redirect('/');
+           return redirect('/');
         }
         $users = User::with('getRole')->paginate(5);
        return view('adminListUsers',
