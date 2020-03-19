@@ -144,6 +144,8 @@ class PostsController extends Controller
             return 'Tu no tiene autorización para eliminar este posteo';
         }
         $post = Post::findOrFail($id);
+        $comments = Comment::where('post_id',$id)->get();
+        $comments->delete();
         $post->delete();
         return redirect('/listPosts');
     }
@@ -155,6 +157,8 @@ class PostsController extends Controller
             return 'Usted no es el propietario de este posteo, no puede borrarlo';
             exit;
         }
+        $comments = Comment::where('post_id',$id)->get();
+        $comments->delete();
         $post->delete();
         return redirect('/adminPosts');
     }

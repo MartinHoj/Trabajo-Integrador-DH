@@ -6,6 +6,8 @@ use App\Friend;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use App\Post;
+use App\Comment;
 
 
 class UsersController extends Controller
@@ -94,7 +96,7 @@ class UsersController extends Controller
         }
         $user = User::findOrFail($id);
         $role = Role::find($user->role_id);
-        $friends = UsersController::friends(session('user_id'));
+        $friends = UsersController::friends($id);
         return view('/userDetails',['user'=>$user,'role' => $role,'friends' => $friends]);
     }
 
@@ -282,6 +284,13 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+        $posts = Post::where('user_id',$id)->get();
+        foreach ($posts as $post) {
+            $posts_id[] = $post->post_id;
+        }
+        $comments = Comment::where('user_id',$id)->orWhereIn('post_id',$posts_id)->get();
+        $comments->delete();
+        $posts->delete();
         $user->delete();
         return redirect('/listUsers');
     }
@@ -292,6 +301,13 @@ class UsersController extends Controller
         }
         $user_id = session('user_id');
         $user = User::find($user_id);
+        $posts = Post::where('user_id',$user_id)->get();
+        foreach ($posts as $post) {
+            $posts_id[] = $post->post_id;
+        }
+        $comments = Comment::where('user_id',$user_id)->orWhereIn('post_id',$posts_id)->get();
+        $posts->delete();
+        $comments->delete();
         $user->delete();
         return redirect('/logout');
     }

@@ -58,7 +58,7 @@
                 <li class="list-group-item "><small class="small"><strong> Comments </strong></small>
                 <a class="small commentBtn" name="{{$post->post_id}}" href="#">Create comment</a></li>
             </ul>
-        </div>
+        
           
       @foreach ($postsComments as $postComments)
       @if ($postComments[0]->post_id == $post->post_id)
@@ -86,7 +86,7 @@
             </div>
           </form>
           <script src="/js/newComment.js"></script>
-
+            </div>
         @endforeach    
       </div>
     
