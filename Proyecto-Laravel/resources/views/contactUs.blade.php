@@ -8,14 +8,21 @@
         <a class="btn btn-primary" href="/" role="button">Go Back</a>
     </nav>
 </header>
+
+
+
 @endif
 @endsection
 @section('title','Contact Us')
 @section('action','/contactUs')
+
 @section('card-header')
+<h1>Contact us</h1>
     Contact with us if you have any problem or just for give us a recomendation. We want to know your opinions
 @endsection
 @section('form')
+
+
 <div class="form-group ">
     <label for="email" class="">{{ __('E-Mail Address') }}</label>
     <div class="">
@@ -37,4 +44,8 @@
     <label for="comments">Comments</label>
     <textarea class="form-control" name="comments" id="comments" rows="3" placeholder="Comments" value={{@old('comments')}}></textarea>
   </div>
+  <div class="form-group">
+          <br>
+          <button class="btn btn-primary" type="submit">Post</button>
+        </div>
 @endsection

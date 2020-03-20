@@ -1,0 +1,41 @@
+@font-face{
+
+
+    src: url(../fonts/Handlee-Regular.ttf);
+    font-family: ha;
+}
+
+
+
+/*HEADER----------------------*/
+.nav-link{
+
+    font-family: ha;
+    font-size: 25px;
+    color: rgb(237, 244, 253) !important;
+    border: 1px solid rgb(0, 124, 128) ;
+    border-radius: 3%;
+   
+}
+
+.navbar-brand{
+    color: rgb(237, 244, 253) !important;
+
+}
+
+.dropdown-item{
+
+    font-family: ha;
+    font-size: 20px;    
+}
+
+.navbar-toggler-icon{
+
+    background-color: rgb(0, 124, 128) !important;
+    border-radius: 20%;
+}
+
+.navbar-brand{
+
+    font-family: 'Pacifico', cursive;;
+}

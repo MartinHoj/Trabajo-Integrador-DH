@@ -4,36 +4,37 @@
     <meta charset="utf-8">
     <title>User List</title>
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/styleAdminListUsers.css">
   </head>
   <body>
     @include('layouts.header')
-    <main class="container">
+    <main class="container text-center">
       @if( session()->has('message') )
           <div class="alert alert-success">
             {{ session('message')}}
           </div>
       @endif
-    <div class="container">
-      <h1>
+    <div class="container ">
+      <h1 class="mt-5 mb-0 pb-3 pt-3 border bg-light">
         Users List
       </h1>
-      <table class="table table-bordered table-hover table-striped">
+      <table class="table table-bordered table-hover table-striped ">
         <thead class="thead-dark">
         <tr>
             <th>id</th>
             <th>Username</th>
             <th colspan="3">
-                <a href="/..." class="btn btn-dark">Create</a>
+                <a href="/..." class="btn btn-dark btn-success">Create</a>
             </th>
         </tr>
         </thead>
         <tbody>
         @foreach( $users as $user )
             <tr>
-                <td>{{$user->user_id}}</td>
-                <td>{{$user->username}}</td>
-                <td>
-                    <a href="/formEdit/{{$user->user_id}}" class="btn btn-outline-secondary">
+                <td class="fuente">{{$user->user_id}}</td>
+                <td class="fuente">{{$user->username}}</td>
+                <td class="fuente">
+                    <a href="/formEdit/{{$user->user_id}}" class="btn btn-outline-secondary bg-warning">
                         Change
                     </a>
                 </td>
@@ -45,7 +46,7 @@
                 <td>
                     <form action="/destroy/{{$user->user_id}}" method="post">
                       @csrf
-                    <button class="btn btn-outline-secondary">
+                    <button class="btn btn-outline-secondary bg-danger text-white">
                         Destroy
                     </button>
                     </form>

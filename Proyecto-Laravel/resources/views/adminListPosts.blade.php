@@ -2,19 +2,22 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Posts List</title>
+   
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/styleAdminListPosts.css">
   </head>
+
   <body>
+  
     @include('layouts.header')
-    <main class="container">
+    <main class="container text-center">
       @if( session()->has('message') )
           <div class="alert alert-success">
             {{ session('message')}}
           </div>
       @endif
-    <div class="container">
-      <h1>
+    <div class="container ">
+      <h1 class="mt-5 mb-0 pb-3 pt-3 border bg-light">
         Posts List
       </h1>
       <table class="table table-bordered table-hover table-striped">
@@ -24,18 +27,18 @@
             <th>Title</th>
             <th>Owner</th>
             <th colspan="3">
-                <a href="/createPost" class="btn btn-dark">Create</a>
+                <a href="/createPost" class="btn btn-dark ">Create</a>
             </th>
         </tr>
         </thead>
         <tbody>
         @foreach( $posts as $post )
             <tr>
-                <td>{{$post->post_id}}</td>
-                <td>{{$post->title}}</td>
-                <td>{{$post->getUser->username}}</td>
+                <td class="fuente">{{$post->post_id}}</td>
+                <td class="fuente">{{$post->title}}</td>
+                <td class="fuente">{{$post->getUser->username}}</td>
                 <td>
-                    <a href="/formEditPost/{{$post->post_id}}" class="btn btn-outline-secondary">
+                    <a href="/formEditPost/{{$post->post_id}}" class="btn btn-outline-secondary bg-warning">
                         Change
                     </a>
                 </td>
@@ -47,7 +50,7 @@
                 <td>
                     <form action="/destroyPost/{{$post->post_id}}" method="post">
                       @csrf
-                    <button class="btn btn-outline-secondary">
+                    <button class="btn btn-outline-secondary bg-danger text-white">
                         Destroy
                     </button>
                     </form>

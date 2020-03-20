@@ -3,14 +3,16 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/styleCreatePost.css">
   <title>Create Post</title>
 </head>
 <body>
   <header>
     @include('layouts.header')  
   </header>
-  <main class="container">
-    <form class="form" action="/post" method="post" enctype="multipart/form-data">
+  <main class="container pt-5 text-center col-xl-3 ">
+  <h1 class="border rounded mb-0 pb-3 pt-3 bg-light">Create You Post</h1> 
+  <form class="form p-5 rounded " action="/post" method="post" enctype="multipart/form-data">
       @csrf
       <div class="form-group">
         <label for="title">Title</label>
@@ -18,13 +20,15 @@
       </div>
       <div class="form-group">
         <label for="body">Content</label>
-        <textarea class="form-control" name="body" id="body" rows="3" placeholder="Write the content of your post" value={{@old('body')}}></textarea>
-      </div>
+        <textarea class="form-control" name="body" id="body" rows="5" placeholder="Write the content of your post" value={{@old('body')}}></textarea>
+
+      </div><br>
       <div class="form-group">
         <label for="img">
           <input type="file" name="img" value="{{@old('img')}}">
         </label>
         <div class="form-group">
+          <br>
           <button class="btn btn-primary" type="submit">Post</button>
         </div>
       </form>

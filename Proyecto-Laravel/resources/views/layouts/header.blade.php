@@ -1,26 +1,30 @@
+<link rel="stylesheet" href="/css/headerStyle.css">
+<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">SOCIALIZAR</a>
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link rounded mr-2 btn-outline-primary" href="/home">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/faqs">FAQ's</a>
+            <a class="nav-link rounded mr-2 btn-outline-primary" href="/faqs">FAQ's</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contactUs" tabindex="-1">Contact Us</a>
+            <a class="nav-link rounded mr-2 btn-outline-primary" href="/contactUs" tabindex="-1">Contact Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/createPost">Post</a>
+            <a class="nav-link rounded mr-2 btn-outline-primary" href="/createPost">Post</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="./#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle mr-2 btn-outline-dark" data-toggle="dropdown" href="./#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="/formEditData">Edit User</a>
             <a class="dropdown-item" href="/userDetails/{{session('user_id')}}">Show my profile</a>
@@ -31,9 +35,9 @@
           </li>
           @if (session('role_id') == 1)
           <li class="nav-item">
-            <a class="nav-link" href="/listUsers">List Users</a>
+            <a class="nav-link rounded mr-2 btn-outline-primary" href="/listUsers">List Users</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item rounded mr-2 btn-outline-primary">
             <a class="nav-link" href="/listPosts">List Posts</a>
           </li>
           @endif

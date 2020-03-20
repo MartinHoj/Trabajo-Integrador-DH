@@ -11,11 +11,11 @@
     @yield('header')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-5 pt-5 text-center">
                 <div class="card">
                     <div class="card-header">@yield('card-header')</div>
                     
-                    <div class="card-body">
+                    <div class="card-body bg-dark text-white rounded-bottom">
                         
                         <form action=@yield('action') method="post" enctype="multipart/form-data">
                             @csrf
