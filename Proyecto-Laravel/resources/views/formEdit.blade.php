@@ -94,7 +94,7 @@
   <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
   
   <div class="col-md-6">
-    <select id="name" type="text" class="form-control @error('country') is-invalid @enderror" name="country" title="{{$user->country}}" required autocomplete="name" autofocus>
+    <select id="name" type="text" class="form-control @error('country') is-invalid @enderror" name="country" data-country="{{$user->country}}" required autocomplete="name" autofocus>
       
       <option value="Afganistán">Afganistán</option>
       <option value="Albania">Albania</option>
@@ -107,7 +107,7 @@
       <option value="Antillas Holandesas">Antillas Holandesas</option>
       <option value="Arabia Saudí">Arabia Saudí</option>
       <option value="Argelia">Argelia</option>
-      <option value="Argentina" selected>Argentina</option>
+      <option value="Argentina">Argentina</option>
       <option value="Armenia">Armenia</option>
       <option value="Aruba">Aruba</option>
       <option value="Australia">Australia</option>
@@ -343,11 +343,21 @@
       <label for="role_id" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
       
       <div class="col-md-6">
-        <select id="name" type="text" class="form-control @error('role_id') is-invalid @enderror" name="role_id" value="" required autocomplete="name" autofocus>
+      <select id="name" type="text" class="form-control @error('role_id') is-invalid @enderror" name="role_id" data-role="{{$user->role_id}}" required autocomplete="name" autofocus>
           
-          <option value=1>Administrador</option>
-          <option value=2 selected>Cliente</option>
-          <select>
+          <option name="option" value=1>Administrador</option>
+          <option name="option" value=2>Cliente</option>
+        <select>
+          <script>
+            let slt = document.querySelector('[name=role_id]');
+            let role = slt.getAttribute('data-role');
+            let opts = document.querySelectorAll('[name=option]');
+            for (let opt of opts) {
+              if (opt.value == role) {
+                opt.setAttribute('selected','');
+              }
+            }
+          </script>
             @error('role')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>

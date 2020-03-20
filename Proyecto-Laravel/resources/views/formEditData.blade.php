@@ -95,7 +95,7 @@
     <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
     
     <div class="col-md-6">
-        <select id="name" type="text" class="form-control @error('country') is-invalid @enderror" name="country" title="{{$user->country}}" required autocomplete="name" autofocus>
+        <select id="name" type="text" class="form-control @error('country') is-invalid @enderror" name="country" data-country="{{$user->country}}" required autocomplete="name" autofocus>
             
                                         <option value="Afganistán">Afganistán</option>
                                         <option value="Albania">Albania</option>

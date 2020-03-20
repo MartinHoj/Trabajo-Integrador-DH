@@ -23,16 +23,28 @@
           <li class="nav-item">
             <a class="nav-link rounded mr-2 btn-outline-primary" href="/createPost">Post</a>
           </li>
-          <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle mr-2 btn-outline-dark" data-toggle="dropdown" href="./#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
-            <div class="dropdown-menu">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle mr-2 btn-outline-dark" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="drop">Options</a>
+            <div class="dropdown-menu" id="show">
               <a class="dropdown-item" href="/formEditData">Edit User</a>
-            <a class="dropdown-item" href="/userDetails/{{session('user_id')}}">Show my profile</a>
+              <a class="dropdown-item" href="/userDetails/{{session('user_id')}}">Show my profile</a>
               <a class="dropdown-item" href="/myPosts">Show my posts</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/logout">Log Out</a>
             </div>
           </li>
+          <script>
+            // Soluciono el problema del dropdown en userDetails
+            let drop = document.getElementById('drop');
+            let down = document.getElementById('show');
+            drop.onclick = function(){
+              if (down.classList.contains('show')) {
+                down.classList.remove('show');
+              } else {
+                down.classList.add('show');
+              }
+            }
+          </script>
           @if (session('role_id') == 1)
           <li class="nav-item">
             <a class="nav-link rounded mr-2 btn-outline-primary" href="/listUsers">List Users</a>
