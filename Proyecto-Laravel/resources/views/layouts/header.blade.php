@@ -7,7 +7,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">SOCIALIZAR</a>
+      <a class="navbar-brand" href="/home">SOCIALIZAR</a>
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -24,7 +24,7 @@
             <a class="nav-link rounded mr-2 btn-outline-primary" href="/createPost">Post</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle mr-2 btn-outline-dark" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="drop">Options</a>
+            <a class="nav-link dropdown-toggle mr-2 btn-outline-dark" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="drop" [autoClose]="'always'">Options</a>
             <div class="dropdown-menu" id="show">
               <a class="dropdown-item" href="/formEditData">Edit User</a>
               <a class="dropdown-item" href="/userDetails/{{session('user_id')}}">Show my profile</a>
@@ -37,13 +37,21 @@
             // Soluciono el problema del dropdown en userDetails
             let drop = document.getElementById('drop');
             let down = document.getElementById('show');
-            drop.onclick = function(){
+            let li = document.querySelector('.dropdown');
+            drop.onclick = function(event){
               if (down.classList.contains('show')) {
-                down.classList.remove('show');
+                //down.classList.remove('show');
+                //drop.setAttribute('aria-expanded','false');
+                //li.classList.remove('show');
+                //event.preventDefault();
+                down.style.display = 'none';
+                //down.classList.remove('show');
               } else {
-                down.classList.add('show');
+                //down.classList.add('show');
+                down.style.display = 'block';
               }
-            }
+            //console.log(down);
+           }
           </script>
           @if (session('role_id') == 1)
           <li class="nav-item">
