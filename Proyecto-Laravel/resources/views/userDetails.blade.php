@@ -31,7 +31,7 @@
       @foreach ($friends as $friend)
           <div class="card-body">{{$friend->username}}</div>
       @endforeach    
-    {{dd($friends)}}
+    {{-- {{dd($friends)}} --}}
     </div>
   </div>
 

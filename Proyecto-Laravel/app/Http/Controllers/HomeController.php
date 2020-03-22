@@ -59,7 +59,7 @@ class HomeController extends Controller
             'search' => 'string|required'
         ]);
         $search = '%'.$request['search'].'%';
-        $users = User::where('username', 'like', $search)->orWhere('name','like',$search)->get();
+        $users = User::where('username', 'like', $search)->orWhere('name','like',$search)->orWhere('surname','like',$search)->get();
         $posts = Post::where('title', 'like', $search)->orWhere('body','like',$search)->orderBy('created_at','desc')->with('getUser')->get();
         return view('search',['users' => $users,'posts'=>$posts]);
     }
