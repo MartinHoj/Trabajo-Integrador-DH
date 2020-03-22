@@ -53,9 +53,15 @@ class HomeController extends Controller
         //Este metodo debera enviar un mail a un desarrollador o administrador con el contacto del usuario y sus datos para que sea respondida su inquietud
     }
 
-    public function update(Request $request, $id)
+    public function search(Request $request)
     {
-        //
+        $request->validate([
+            'search' => 'string|required'
+        ]);
+        $search = '%'.$request['search'].'%';
+        $users = User::where('username', 'like', $search)->orWhere('name','like',$search)->get();
+        $posts = Post::where('title', 'like', $search)->orWhere('body','like',$search)->orderBy('created_at','desc')->with('getUser')->get();
+        return view('search',['users' => $users,'posts'=>$posts]);
     }
 
     public function destroy($id)
