@@ -94,4 +94,13 @@ class CommentsController extends Controller
     {
         //
     }
+    public function destroyMyComment($id)
+    {
+        $comment = Comment::find($id);
+        if ($comment->user_id != session('user_id')) {
+            return 'Este comentario no te pertenece, no lo podes borrar';
+        }
+        $comment->delete();
+        return redirect('/home');
+    }
 }

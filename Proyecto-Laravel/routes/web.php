@@ -47,3 +47,4 @@ Route::get('/listUsers','UsersController@index');
 
 Route::post('/createComment','CommentsController@store');
 Route::post('/search','HomeController@search');
+Route::get('/destroyComment/{id}','CommentsController@destroyMyComment');

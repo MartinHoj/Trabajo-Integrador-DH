@@ -73,7 +73,13 @@
             </div>
             <span><strong>{{$comment->getUser->username}}:</strong></span>
             <span >{{$comment->comment_content}}</span>
+            <small><span class="text-muted">{{$comment->created_at}}</span></small>
             </small>
+            @if ($comment->user_id == session('user_id'))
+                <div>
+                <small><span><a href="/destroyComment/{{$comment->comment_id}}">Borrar comment</a></span></small>
+                </div>
+            @endif
             </div>
         </div>
         @endforeach
