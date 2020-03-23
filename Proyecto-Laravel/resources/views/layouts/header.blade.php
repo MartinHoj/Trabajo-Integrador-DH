@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="/css/headerStyle.css">
-<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Autour+One|Gloria+Hallelujah|Patrick+Hand|Satisfy&display=swap" rel="stylesheet">
 
 <header>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light pt-5 pb-5 border-bottom">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -24,7 +24,7 @@
             <a class="nav-link rounded mr-2 btn-outline-primary" href="/createPost">Post</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle mr-2 btn-outline-dark" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="drop" [autoClose]="'always'">Options</a>
+            <a class="nav-link dropdown-toggle mr-2 btn-outline-primary" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="drop" [autoClose]="'always'">Options</a>
             <div class="dropdown-menu" id="show">
               <a class="dropdown-item" href="/formEditData">Edit User</a>
               <a class="dropdown-item" href="/userDetails/{{session('user_id')}}">Show my profile</a>
@@ -64,8 +64,8 @@
         </ul>
         <form class="form-inline my-2 my-lg-0" method="POST" action="/search">
           @csrf
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <input class="form-control mr-sm-2 nav-link rounded mr-2 " type="search" placeholder="Search" aria-label="Search" name="search">
+          <button class="btn btn-outline-success my-2 my-sm-0 nav-link rounded mr-2 btn-outline-primary" type="submit">Search</button>
         </form>
       </div>
     </nav>

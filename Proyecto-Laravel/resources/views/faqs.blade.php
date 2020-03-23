@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/styleFaqs.css">
     <title>Faq's</title>
 </head>
 
@@ -19,9 +20,9 @@
     </nav>
     </header>
   @endif
-    <div class="container">
+    <div class="container col-xl-7 pt-5 text-center ">
         <main>
-            <h1 class="title">Preguntas frecuentes</h1>
+            <h1 class="title pb-5 border-bottom-0 border bg-light pt-5">Preguntas frecuentes</h1>
             <div class="accordion" id="accordionExample">
                 <div class="card">
                   <div class="card-header" id="headingOne">

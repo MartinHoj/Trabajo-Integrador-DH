@@ -1,0 +1,26 @@
+.nombreUsuario{
+
+    font-size: 200% ;
+   padding: 2%;
+   text-transform: uppercase;
+  }
+  
+  .card-body{
+  
+      src: url(../fonts/Handlee-Regular.ttf);
+      font-family: ha;
+      font-size: 200%;
+      padding: 0px ;
+  }
+  
+  .changeName{
+   margin: auto;
+      width:60%;
+      font-size: 200%;
+  
+  }
+  
+  
+  
+  
+  

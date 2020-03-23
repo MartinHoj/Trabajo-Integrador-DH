@@ -12,14 +12,22 @@
 
     font-family: ha;
     font-size: 25px;
-    color: rgb(237, 244, 253) !important;
-    border: 1px solid rgb(0, 124, 128) ;
+    color: rgb(5, 6, 7) !important;
+    border: 2px solid rgb(0, 124, 128) ;
     border-radius: 3%;
-   
+    box-shadow: -5px 10px 5px 0px rgba(146, 146, 146, 0.75) !important;
 }
 
 .navbar-brand{
-    color: rgb(237, 244, 253) !important;
+    color: rgb(52, 122, 122) !important;
+        /* font-family: 'Satisfy', cursive; */
+/* font-family: 'Patrick Hand', cursive;*/
+font-family: 'Gloria Hallelujah', cursive;
+/* font-family: 'Autour One', cursive;  */
+
+font-size: 30px;
+
+text-shadow: -5px 10px 5px  rgba(146, 146, 146, 0.75) !important;
 
 }
 
@@ -35,7 +43,19 @@
     border-radius: 20%;
 }
 
-.navbar-brand{
+h1{
+    color: rgb(52, 122, 122) !important;
+    /* font-family: 'Satisfy', cursive; */
+/* font-family: 'Patrick Hand', cursive;*/
+font-family: 'Gloria Hallelujah', cursive;
+/* font-family: 'Autour One', cursive;  */
 
-    font-family: 'Pacifico', cursive;;
 }
+
+
+@media  (max-width:992 px) and (min-width:  1433px) {
+    .navbar-brand{
+
+     display: none!;
+    }
+  }

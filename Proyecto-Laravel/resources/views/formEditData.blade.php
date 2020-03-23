@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="css/styleFormEditData.css">
+
 @extends('layouts.form')
 
 @section('header')
@@ -8,15 +10,15 @@
 <div class="text-center">
     Here you can change your user information
     <br>
-    <a href="/formEditPassword" role="button">Change my Password</a>
+    <a class="btn btn-primary" href="/formEditPassword" role="button">Change my Password</a>
 </div>  
 @endsection
 @section('action','/updateData')
 @section('form')
-<div class="form-group row">
+<div class="form-group row ">
     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
     
-    <div class="col-md-6">
+    <div class="col-md-6 ">
         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
         
         @error('name')
@@ -91,7 +93,7 @@
         @enderror
     </div>
 </div>
-<div class="form-group row">
+<div class="form-group row ">
     <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
     
     <div class="col-md-6">
@@ -354,14 +356,20 @@
                     @enderror
                 </div>
             </div>
-            --}}            
+            --}}    
+            
+           
             <div class="form-group row mb-0">
-                <div class="col-md-6 offset-md-4">
-                    <button type="submit" class="btn btn-primary">
+                <div class="col-md-6  ">
+                    <button type="submit" class="btn btn-primary ">
                         {{ __('Make Changes') }}
                     </button>
                 </div>
             </div>
+ 
+ 
+
+
         </form>
     </div>
 </div>

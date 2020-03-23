@@ -11,8 +11,8 @@
     @include('layouts.header')  
   </header>
   <main class="container pt-5 text-center col-xl-3 ">
-  <h1 class="border rounded mb-0 pb-3 pt-3 bg-light">Create You Post</h1> 
-  <form class="form p-5 rounded " action="/post" method="post" enctype="multipart/form-data">
+  <h1 class="border-bottom-0 border rounded-top mb-0 pb-3 pt-3 bg-light">Create You Post</h1> 
+  <form class="form p-3 rounded-bottom border bg-white" action="/post" method="post" enctype="multipart/form-data">
       @csrf
       <div class="form-group">
         <label for="title">Title</label>

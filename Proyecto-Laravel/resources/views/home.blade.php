@@ -7,13 +7,13 @@
   
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/imageSize.css">
-    
+    <link rel="stylesheet" href="/css/styleHome.css">
     <title>Home</title>
 </head>
 <body>
     @include('layouts.header')
 
-    <h1 class="title display text-center pt-1 pb-3 ">
+    <h1 class="title display text-center mt-5 pt-1 pb-3 ">
         Welcome to our social network
     </h1>
     {{-- Un carrousel que hay que mejorar las flechas para pasar de imagen --}}
@@ -45,7 +45,7 @@
       </div> --}}
       
       @foreach ($allPosts as $post)
-      <div class="container center ">
+      <div class="container center mt-3 ">
         <div class="card" style="width: 25rem;">
             <img src="/images/posts/{{$post->img_name}}" class="card-img-top p-1" alt="...">
             <div class="card-body">
@@ -57,27 +57,27 @@
               @endif
             </div>
             <ul class="list-group list-group-flush ">
-                <li class="list-group-item"><small class="small "><strong> Comments </strong></small>
-                <a class="small commentBtn" name="{{$post->post_id}}" href="#">Create comment</a></li>
+                <li class="list-group-item bg-light"><small class="small "><strong> Comments </strong></small>
+                <a class="small commentBtn rounded" name="{{$post->post_id}}" href="#">Create comment</a></li>
             </ul>
         
-          
+       
       @foreach ($postsComments as $postComments)
       @if ($postComments[0]->post_id == $post->post_id)
           @foreach ($postComments as $comment)
-          <div class="container center">
-            <div class="card-body border m-1 rounded">
+          <div class="container center ">
+            <div class="card-body border m-1 rounded  bg-light ">
             <small>
-            <div class="tiny-img-container">
+            <div class="tiny-img-container bg-light">
             <img src="/images/avatars/{{$comment->getUser->avatar_name}}" class="tiny-img circular" alt="">
             </div>
             <span><strong>{{$comment->getUser->username}}:</strong></span>
             <span >{{$comment->comment_content}}</span>
-            <small><span class="text-muted">{{$comment->created_at}}</span></small>
+            <small><span class="text-muted">Comentario hecho:{{$comment->created_at}}</span></small>
             </small>
             @if ($comment->user_id == session('user_id'))
                 <div>
-                <small><span><a href="/destroyComment/{{$comment->comment_id}}">Borrar comment</a></span></small>
+                <small><span><a class="DeleteCmt rounded" href="/destroyComment/{{$comment->comment_id}}">Borrar comment</a></span></small>
                 </div>
             @endif
             </div>
@@ -85,6 +85,8 @@
         @endforeach
         @endif
         @endforeach
+
+         
         <form action="/createComment" method="post">
             @csrf
             <div class="center container">
@@ -97,6 +99,7 @@
             </div>
         @endforeach    
       </div>
+    
     
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

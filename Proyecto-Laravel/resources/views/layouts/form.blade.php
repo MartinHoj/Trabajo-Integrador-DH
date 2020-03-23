@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/styleContactUs.css">
     <title>@yield('title')</title>
 </head>
 <body>
     @yield('header')
-    <div class="container">
-        <div class="row justify-content-center">
+    <div class="container text-center">
+        <div class="row justify-content-center ">
             <div class="col-md-5 pt-5 text-center">
                 <div class="card">
-                    <div class="card-header">@yield('card-header')</div>
+                    <div class="card-header ">@yield('card-header')</div>
                     
-                    <div class="card-body bg-dark text-white rounded-bottom">
+                    <div class="card-body text-white rounded-bottom">
                         
                         <form action=@yield('action') method="post" enctype="multipart/form-data">
                             @csrf

@@ -1,0 +1,25 @@
+@font-face{
+
+
+    src: url(../fonts/Handlee-Regular.ttf);
+    font-family: ha;
+}
+
+button{
+
+    font-family: ha;
+    font-size: 120% !important;
+}
+
+.card-body{
+
+    font-family: ha;
+    font-size: 220% !important;
+}
+
+main{
+
+    box-shadow: -5px 10px 5px 0px rgba(146, 146, 146, 0.75) !important;
+
+
+}

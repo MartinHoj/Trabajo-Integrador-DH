@@ -6,15 +6,19 @@
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/imageSize.css">
 </head>
+
 <body>
+
   @include('layouts.header')
   @if (session('postMessage'))
   <div class="alert alert-success" role="alert">
     {{session('postMessage')}}
   </div>
   @endif
+  <h1 class="text-center pt-3 pb-3">My posts</h1>
   @foreach($posts as $post)
   <div class="container center">
+  
   {{-- <div class="card mb-3" style="max-width: 740px;">
      <div class="row no-gutters">
       <div class="col-md-4">
@@ -77,7 +81,7 @@
   </div>
   </div>
   </div>
-  
+  <br>
   
   
   @endforeach

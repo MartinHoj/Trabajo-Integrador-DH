@@ -5,11 +5,12 @@
   <title>{{$user->username}}</title>
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/imageSize.css">
+  <link rel="stylesheet" href="/css/styleUserDetails.css">
 </head>
 <body>
   @include('layouts.header')
-  <h1 class="text-center title display-2">
-    {{$user->name}} {{$user->surname}}
+  <h1 class="text-center title display-2 nombreUsuario">
+    USUARIO: {{$user->name}} {{$user->surname}}
   </h1>
   <div class="container align-center main">
     <div class="card align-center col-8">
@@ -18,9 +19,9 @@
       <img src="/images/avatars/{{$user->avatar_name}}" class="circular img" alt="No Disponible">
     </div>
     @if (!session('guest'))
-    <a href="/formEditAvatar" class="stretched-link text-center">Change Avatar</a>    
+    <a href="/formEditAvatar" class=" stretched-link text-center changeName btn btn-outline-primary">Change Avatar</a>    
     @endif
-    <div class="card-body">Name: {{$user->name}}</div>
+    <div class="card-body pt-2">Name: {{$user->name}}</div>
     <div class="card-body">Surname: {{$user->surname}}</div>
     <div class="card-body">Username: {{$user->username}}</div>
     <div class="card-body">Email: {{$user->email}}</div>
