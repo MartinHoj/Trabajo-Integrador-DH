@@ -62,7 +62,7 @@
           </li>
           @endif
         </ul>
-        <form class="form-inline my-2 my-lg-0" method="POST" action="/search">
+        <form class="form-inline my-2 my-lg-0" method="get" action="/search">
           @csrf
           <input class="form-control mr-sm-2 nav-link rounded mr-2 " type="search" placeholder="Search" aria-label="Search" name="search">
           <button class="btn btn-outline-success my-2 my-sm-0 nav-link rounded mr-2 btn-outline-primary" type="submit">Search</button>

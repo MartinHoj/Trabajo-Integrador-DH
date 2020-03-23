@@ -107,6 +107,13 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="form-group center form-check">
+                                    <div class="col-md-6">
+                                    <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                                    <label class="form-check-label" for="remember">Remember Me</label>
+                                    </div>
+                                </div>
+                                
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">
                                         <button type="submit" class="btn btn-primary">

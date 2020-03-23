@@ -10,6 +10,13 @@ use App\Comment;
 class HomeController extends Controller
 {
 
+    public function welcome()
+    {
+        if (session('log') || session('remember')) {
+            return redirect('/home');
+        }
+        return view('welcome');
+    }
 
     public function index()
     {
@@ -55,10 +62,7 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $request->validate([
-            'search' => 'string|required'
-        ]);
-        $search = '%'.$request['search'].'%';
+        $search = '%'.$request->input('search').'%';
         $users = User::where('username', 'like', $search)->orWhere('name','like',$search)->orWhere('surname','like',$search)->get();
         $posts = Post::where('title', 'like', $search)->orWhere('body','like',$search)->orderBy('created_at','desc')->with('getUser')->get();
         return view('search',['users' => $users,'posts'=>$posts]);

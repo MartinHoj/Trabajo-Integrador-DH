@@ -340,6 +340,9 @@ class UsersController extends Controller
             if ($user->email == $request['email']) {
                 session(['exist' => true]);
                 if (password_verify($request['password'],$user->password)) {
+                    if ($request['remember']) {
+                        session(['remember' => true]);
+                    }
                     session(['log'=>true]);
                     session(['user_id'=>$user->user_id]);
                     session(['role_id'=>$user->role_id]);
@@ -362,6 +365,7 @@ class UsersController extends Controller
         session()->forget('log');
         session()->forget('exist');
         session()->forget('role_id');
+        session()->forget('remember');
         return view('/welcome');
     }
     public static function friends($user_id){

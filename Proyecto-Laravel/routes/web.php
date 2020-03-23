@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@welcome');
 
 Route::get('/home', 'HomeController@index');
 Route::get('/faqs','HomeController@faqs');
@@ -46,5 +44,5 @@ Route::get('/postDetails/{id}','PostsController@show');
 Route::get('/listUsers','UsersController@index');
 
 Route::post('/createComment','CommentsController@store');
-Route::post('/search','HomeController@search');
+Route::get('/search','HomeController@search');
 Route::get('/destroyComment/{id}','CommentsController@destroyMyComment');
