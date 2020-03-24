@@ -46,3 +46,8 @@ Route::get('/listUsers','UsersController@index');
 Route::post('/createComment','CommentsController@store');
 Route::get('/search','HomeController@search');
 Route::get('/destroyComment/{id}','CommentsController@destroyMyComment');
+Route::get('/addFriend/{id}','FriendsController@store');
+Route::get('/destroyFriend/{id}','FriendsController@destroy');
+Route::get('/acceptFriend/{id}','FriendsController@update');
+Route::get('/destroyFriendsRequest/{id}','FriendsController@destroyFriendsRequest');
+Route::get('dontAcceptFriend/{id}','FriendsController@dontAccept');

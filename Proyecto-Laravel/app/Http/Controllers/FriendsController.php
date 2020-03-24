@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Friend;
 
 class FriendsController extends Controller
 {
@@ -32,9 +33,14 @@ class FriendsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id)
     {
-        //
+        $friendRelation = new Friend();
+        $friendRelation->user_id_actual = session('user_id');
+        $friendRelation->user_id_friend = $id;
+        $friendRelation->status = false;
+        $friendRelation->save();
+        return redirect("/userDetails/$id");
     }
 
     /**
@@ -66,9 +72,13 @@ class FriendsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $friendRelation = Friend::where('user_id_friend',session('user_id'))->where('user_id_actual',$id)->get();
+        $friendRelation = $friendRelation[0];
+        $friendRelation->status = true;
+        $friendRelation->save();
+        return redirect("/userDetails/$id");
     }
 
     /**
@@ -79,6 +89,23 @@ class FriendsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $friendRelation = Friend::where('user_id_actual',session('user_id'))->where('user_id_friend',$id)->get();
+        $friendRelation = $friendRelation[0];
+        $friendRelation->delete();
+        return redirect("/userDetails/$id");
+    }
+    public function destroyFriendsRequest($id)
+    {
+        $friendRelation = Friend::where('user_id_actual',session('user_id'))->where('user_id_friend',$id)->get();
+        $friendRelation = $friendRelation[0];
+        $friendRelation->delete();
+        return redirect("/userDetails/$id");
+    }
+    public function dontAccept($id)
+    {
+        $friendRelation = Friend::where('user_id_friend',session('user_id'))->where('user_id_actual',$id)->get();
+        $friendRelation = $friendRelation[0];
+        $friendRelation->delete();
+        return redirect("/userDetails/$id");
     }
 }

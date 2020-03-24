@@ -91,13 +91,29 @@ class UsersController extends Controller
         if (!session('log')) {
             redirect('/');
         }
+        session(['guest' => false]);
         if (session('user_id') != $id) {
             session(['guest' => true]);
         }
         $user = User::findOrFail($id);
         $role = Role::find($user->role_id);
         $friends = UsersController::friends($id);
-        return view('/userDetails',['user'=>$user,'role' => $role,'friends' => $friends]);
+        // Hacer aca la validacion de si son amigos o no y pasar con una variable de "relacion"
+        // No son amigos ni nada
+        $relation = 0;
+        foreach ($friends as $friend) {
+            if ($friend->user_id == session('user_id') && $friend->status) {
+                // Ya son amigos
+                $relation = 1;
+            } elseif ($friend->user_id == session('user_id') && $friend->status==false && $friend->yoInvite) {
+                // Yo invite a esa persona y estoy esperando su respuesta
+                $relation = 2;
+            } elseif ($friend->user_id == session('user_id') && $friend->status==false && $friend->yoInvite == false) {
+                // Esa persona te invitó
+                $relation = 3;
+            }
+        }
+        return view('/userDetails',['user'=>$user,'role' => $role,'friends' => $friends,'relation' => $relation,'id' => $id]);
     }
 
     /**
@@ -371,12 +387,22 @@ class UsersController extends Controller
     public static function friends($user_id){
         $friends = Friend::where('user_id_actual',$user_id)->orWhere('user_id_friend',$user_id)->get();
         $users = [];
+        $status = [];
+        $yoInvite = [];
         foreach ($friends as $friend) {
             if ($friend->user_id_actual == $user_id) {
                 $users[] = User::find($friend->user_id_friend);
+                $status[] = $friend->status;
+                $yoInvite[] = false;
             } else {
                 $users[]=User::find($friend->user_id_actual);
+                $status[] = $friend->status;
+                $yoInvite[] = true;
             }
+        }
+        for ($i=0; $i < count($users); $i++) { 
+            $users[$i]['status'] = $status[$i];
+            $users[$i]['yoInvite'] = $yoInvite[$i];
         }
         return $users;
     }

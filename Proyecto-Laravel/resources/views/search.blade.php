@@ -58,7 +58,7 @@
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 @foreach ($posts as $post)
                 <div class="card mb-3" style="max-width: 600px;">
-                    <div class="row no-gutters" data-post="{{$post->post_id}}" style="cursor:pointer">
+                    <div class="row no-gutters no-gutters2" data-post="{{$post->post_id}}" style="cursor:pointer">
                         <div class="col-md-4">
                             <img src="/images/avatars/{{$post->img_name}}" class="card-img" alt="...">
                         </div>
@@ -79,7 +79,7 @@
                 @endif
                 
                 <script>
-                    let postCards = document.querySelectorAll('.no-gutters');
+                    let postCards = document.querySelectorAll('.no-gutters2');
                     for (let card of postCards) {
                         let post_id = card.getAttribute('data-post');
                         let location = '/postDetails/' + post_id;

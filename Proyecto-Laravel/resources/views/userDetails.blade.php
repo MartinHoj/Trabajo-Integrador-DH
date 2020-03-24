@@ -19,8 +19,31 @@
       <img src="/images/avatars/{{$user->avatar_name}}" class="circular img" alt="No Disponible">
     </div>
     @if (!session('guest'))
-    <a href="/formEditAvatar" class=" stretched-link text-center changeName btn btn-outline-primary">Change Avatar</a>    
+      <a href="/formEditAvatar" class=" stretched-link text-center changeName btn btn-outline-primary">Change Avatar</a>    
     @endif
+    @if (session('guest'))
+        @switch($relation)
+            @case(0)
+                <a href="/addFriend/{{$id}}" role="button" class="btn btn-primary">Send Friend Request</a>
+                @break
+            @case(1)
+                <button disabled="disabled" class="btn btn-primary" role="button">Ya son amigos!</button>
+                <a href="/destroyFriend/{{$id}}" role="button" class="btn btn-primary">Eliminar Amigo</a>
+                @break
+            @case(2)
+                <button disabled="disabled" class="btn btn-primary" role="button">Esperando la respuesta</button>
+                <a href="/destroyFriendsRequest/{{$id}}" role="button" class="btn btn-primary">Eliminar Request</a>
+                @break
+                @case(3)
+                <a href="/acceptFriend/{{$id}}" role="button" class="btn btn-primary">Accept Friend</a>
+                <a href="/dontAcceptFriend/{{$id}}" role="button" class="btn btn-primary">Don´t Accept Friend</a>
+                @break
+            @default
+                Error Procesando su amistad
+        @endswitch
+    @endif
+
+    
     <div class="card-body pt-2">Name: {{$user->name}}</div>
     <div class="card-body">Surname: {{$user->surname}}</div>
     <div class="card-body">Username: {{$user->username}}</div>
