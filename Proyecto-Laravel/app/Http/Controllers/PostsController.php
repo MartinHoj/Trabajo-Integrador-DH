@@ -63,8 +63,13 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id);
-        $postComments = Comment::where('post_id',$id)->get();
+        $post = Post::where('post_id',$id)->with('getUser')->get();
+        $post = $post[0];
+        session(['guest' => false]);
+        if (session('user_id') != $post->user_id) {
+            session(['guest' => true]);
+        }
+        $postComments = Comment::where('post_id',$id)->with('getUser')->get();
         return view('/postDetails',['post' => $post,'postComments' => $postComments]);
     }
     public function showMyPosts()
@@ -79,11 +84,11 @@ class PostsController extends Controller
         // cada posicion del array tiene todos los comentarios de un solo post
         return view('/myPosts',['posts' => $posts,'postsComments' => $postsComments]);
     }
-    public function showFriendsPosts($id)
-    {
-        $post = Post::find($id);
-        return view('/postDetails',['post' => $post]);
-    }
+    // public function showFriendsPosts($id)
+    // {
+    //     $post = Post::find($id);
+    //     return view('/postDetails',['post' => $post]);
+    // }
 
 
 
