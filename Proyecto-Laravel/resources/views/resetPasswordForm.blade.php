@@ -76,10 +76,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">Login to enjoy Socialize</div>
+                        <div class="card-header">Complete this data to reset your password. We are going to send to your email a new password for your account</div>
                         <div class="card-body">
                             
-                            <form action="/login" method="post">
+                            <form action="/resetPassword" method="post">
                                 @csrf
                                 <div class="form-group row">
                                     <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -92,43 +92,16 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
+                                        <div class="alert-warning alert" role="alert">Write the same email you use to Login usually</div>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-                                    
-                                    <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                                        
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group center form-check">
-                                    <div class="col-md-6">
-                                    <input type="checkbox" class="form-check-input" id="remember" name="remember">
-                                    <label class="form-check-label" for="remember">Remember Me</label>
-                                    </div>
-                                </div>
-                                
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
-                                            Login
+                                            Reset my password
                                         </button>
                                     <strong>
-                                    <a class='text-right ml-3' href='/formRegister'>You don´t have an account? Register now!</a>
-                                    </strong>
-                                    </div>
-                                </div>
-                                <br><br>
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-8 offset-md-4">
-                                    <strong>
-                                    <a class='text-right ml-3' href='/resetPasswordForm'>Ohh no!! You forgot your password???</a>
+                                    <a class='text-right ml-3' href='/'>Go back, I don´t wanna reset my password</a>
                                     </strong>
                                     </div>
                                 </div>

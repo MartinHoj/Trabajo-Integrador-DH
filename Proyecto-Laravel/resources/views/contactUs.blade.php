@@ -46,6 +46,6 @@
   </div>
   <div class="form-group">
           <br>
-          <button class="btn btn-primary" type="submit">Post</button>
+          <button class="btn btn-primary" type="submit">Send</button>
         </div>
 @endsection

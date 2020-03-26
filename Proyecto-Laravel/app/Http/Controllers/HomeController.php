@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Post;
 use App\Comment;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Contracts\Mail\Mailer;
 
 class HomeController extends Controller
 {
@@ -16,6 +18,31 @@ class HomeController extends Controller
             return redirect('/home');
         }
         return view('welcome');
+    }
+
+    public function resetPasswordForm()
+    {
+        if (session('log')) {
+            return redirect('/home');
+        }
+        return view('resetPasswordForm');
+    }
+
+    public function resetPassword(Request $request)
+    {
+        //Manda un mail y anota algo en la tabla de dicho usuario para cambiar la contra
+        {
+            //Este metodo debera enviar un mail a un desarrollador o administrador con el contacto del usuario y sus datos para que sea respondida su inquietud
+            $data = [
+                'request' => $request
+            ];
+            Mail::send('emails.resetPassword',$data,function($message,$request){
+        
+                $message->from('admin@gmail.com','Reset Password Email');
+                $message->to($request['email'])->subject('Reset Password');    
+            });
+            return redirect('/home');
+        }
     }
 
     public function index()
@@ -55,9 +82,18 @@ class HomeController extends Controller
         return view('/contactUs');
     }
 
-    public function storeContact()
+    public function storeContact(Request $request)
     {
         //Este metodo debera enviar un mail a un desarrollador o administrador con el contacto del usuario y sus datos para que sea respondida su inquietud
+        $data = [
+            'request' => $request
+        ];
+        Mail::send('emails.contactUsMail',$data,function($message){
+    
+            $message->from('userspan2@gmail.com','Contact Us Email');
+            $message->to('admin@gmail.com')->subject('Contact Us Mail');    
+        });
+        return redirect('/home');
     }
 
     public function search(Request $request)
