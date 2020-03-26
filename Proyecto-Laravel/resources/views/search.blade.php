@@ -25,7 +25,7 @@
                 <div class="card mb-3" style="max-width: 600px;">
                     <div class="row no-gutters" data-user="{{$user->user_id}}" style="cursor:pointer">
                         <div class="col-md-4">
-                            <img src="/images/avatars/{{$user->avatar_name}}" class="card-img" alt="...">
+                            <img src="/storage/images/avatars/{{$user->avatar_name}}" class="card-img" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
@@ -60,7 +60,7 @@
                 <div class="card mb-3" style="max-width: 600px;">
                     <div class="row no-gutters no-gutters2" data-post="{{$post->post_id}}" style="cursor:pointer">
                         <div class="col-md-4">
-                            <img src="/images/avatars/{{$post->img_name}}" class="card-img" alt="...">
+                            <img src="/storage/images/avatars/{{$post->img_name}}" class="card-img" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">

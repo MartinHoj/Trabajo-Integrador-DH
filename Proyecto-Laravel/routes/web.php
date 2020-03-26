@@ -55,3 +55,5 @@ Route::get('dontAcceptFriend/{id}','FriendsController@dontAccept');
 
 Route::get('/resetPasswordForm','HomeController@resetPasswordForm');
 Route::post('/resetPassword','HomeController@resetPassword');
+Route::get('/changeResetPassword','UsersController@editResetPassword');
+Route::post('/updateResetPassword','UsersController@updateResetPassword');

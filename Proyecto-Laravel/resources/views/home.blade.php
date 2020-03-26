@@ -47,7 +47,7 @@
       @foreach ($allPosts as $post)
       <div class="container center mt-3 ">
         <div class="card" style="width: 25rem;">
-            <img src="/images/posts/{{$post->img_name}}" class="card-img-top p-1" alt="...">
+            <img src="/storage/images/posts/{{$post->img_name}}" class="card-img-top p-1" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{$post->title}}</h5>
               <p class="card-text">{{$post->body}}</p>
@@ -69,7 +69,7 @@
             <div class="card-body border m-1 rounded  bg-light ">
             <small>
             <div class="tiny-img-container bg-light">
-            <img src="/images/avatars/{{$comment->getUser->avatar_name}}" class="tiny-img circular" alt="">
+            <img src="/storage/images/avatars/{{$comment->getUser->avatar_name}}" class="tiny-img circular" alt="">
             </div>
             <span><strong>{{$comment->getUser->username}}:</strong></span>
             <span >{{$comment->comment_content}}</span>

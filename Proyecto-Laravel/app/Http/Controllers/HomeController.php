@@ -33,14 +33,29 @@ class HomeController extends Controller
         //Manda un mail y anota algo en la tabla de dicho usuario para cambiar la contra
         {
             //Este metodo debera enviar un mail a un desarrollador o administrador con el contacto del usuario y sus datos para que sea respondida su inquietud
+            $request->validate([
+                'email' => 'string|email|required'
+            ]);
+            $user = User::where('email',$request['email'])->get();
+            if(!(isset($user[0]))){
+                $error = 'We don´t have any account registered with that email, if you want, create one';
+                return view('resetPasswordForm',['error' => $error]);
+            }
+            $request['reset_password'] = HomeController::rand_string(12);
+            $user = $user[0];
+            $user->reset_password = $request['reset_password'];
+            $user->save();
             $data = [
                 'request' => $request
             ];
-            Mail::send('emails.resetPassword',$data,function($message,$request){
+            $mail = $request['email'];
+            session(['email'=>$mail]);
+            Mail::send('emails.resetPassword',$data,function($message){
         
                 $message->from('admin@gmail.com','Reset Password Email');
-                $message->to($request['email'])->subject('Reset Password');    
+                $message->to(session('email'))->subject('Reset Password');    
             });
+            session()->forget('email');
             return redirect('/home');
         }
     }
@@ -107,5 +122,11 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function rand_string( $length ) {
+
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        return substr(str_shuffle($chars),0,$length);
+    
     }
 }

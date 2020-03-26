@@ -92,7 +92,8 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
-                                        <div class="alert-warning alert" role="alert">Write the same email you use to Login usually</div>
+                                        <br>
+                                        <small><div class="alert-warning alert" role="alert">Write the same email you use to Login usually</div></small>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0">

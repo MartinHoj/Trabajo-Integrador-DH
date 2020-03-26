@@ -154,6 +154,16 @@ class UsersController extends Controller
       $user = User::find($user_id);
       return view('/formEditPassword',['user' => $user]);
     }
+    public function editResetPassword()
+    {
+      //Va a mostrar el formulario para modificar la contraseña propia del usuario
+      if (!session('log')) {
+        redirect('/');
+    }
+      $user_id = session('user_id');
+      $user = User::find($user_id);
+      return view('/formEditResetPassword',['user' => $user]);
+    }
     public function editUserAvatar()
     {
       //Va a mostrar el formulario para modificar el avatar propio del usuario
@@ -281,6 +291,24 @@ class UsersController extends Controller
       }
       return view('/formEditPassword',['user' => $user]);
     }
+    public function updateResetPassword(Request $request)
+    {
+      $user_id = session('user_id');
+      $user = User::find($user_id);
+      $request->validate([
+          'newPassword' => 'string|min:6|required_with:confirmPassword|same:confirmPassword',
+          'confirmPassword' => 'string'
+      ]);
+      if ($request['newPassword'] == $request['confirmPassword']) {
+            $user->password = password_hash($request['newPassword'],PASSWORD_DEFAULT);
+            $user->reset_password = '';
+            $user->save();
+            return redirect('/home');
+      } else {
+          $errors = 'Wrong password';
+      }
+      return view('/formEditResetPassword',['user' => $user]);
+    }
     public function updateAvatar(Request $request)
     {
       //Va a mostrar el formulario para modificar el avatar propio del usuario
@@ -356,13 +384,27 @@ class UsersController extends Controller
             if ($user->email == $request['email']) {
                 session(['exist' => true]);
                 if (password_verify($request['password'],$user->password)) {
+                    session(['remember' => false]);
                     if ($request['remember']) {
                         session(['remember' => true]);
                     }
                     session(['log'=>true]);
                     session(['user_id'=>$user->user_id]);
                     session(['role_id'=>$user->role_id]);
+                    $user->reset_password = '';
+                    $user->save();
                     return redirect('/home');
+                } elseif (!($user->reset_password == false)) {
+                    if ($request['password'] == $user->reset_password) {
+                        session(['remember' => false]);
+                        if ($request['remember']) {
+                            session(['remember' => true]);
+                        }
+                        session(['log'=>true]);
+                        session(['user_id'=>$user->user_id]);
+                        session(['role_id'=>$user->role_id]);
+                        return redirect('/changeResetPassword');
+                    }
                 }
             }
         }

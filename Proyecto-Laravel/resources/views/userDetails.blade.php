@@ -16,7 +16,7 @@
     <div class="card align-center col-8">
     <div class="card-body h2 text-center">User Information</div>
     <div class="img-container container">
-      <img src="/images/avatars/{{$user->avatar_name}}" class="circular img" alt="No Disponible">
+      <img src="/storage/images/avatars/{{$user->avatar_name}}" class="circular img" alt="No Disponible">
     </div>
     @if (!session('guest'))
       <a href="/formEditAvatar" class=" stretched-link text-center changeName btn btn-outline-primary">Change Avatar</a>    
