@@ -87,11 +87,11 @@
                                     <div class="col-md-6">
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                         
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        @if ($errors)
+                                        <span class="invalid-feedback alert alert-danger" role="alert">
+                                            <strong>{{ $errors }}</strong>
                                         </span>
-                                        @enderror
+                                        @endif
                                         <br>
                                         <small><div class="alert-warning alert" role="alert">Write the same email you use to Login usually</div></small>
                                     </div>

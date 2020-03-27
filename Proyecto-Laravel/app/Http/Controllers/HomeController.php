@@ -38,8 +38,8 @@ class HomeController extends Controller
             ]);
             $user = User::where('email',$request['email'])->get();
             if(!(isset($user[0]))){
-                $error = 'We don´t have any account registered with that email, if you want, create one';
-                return view('resetPasswordForm',['error' => $error]);
+                $errors = 'We don´t have any account registered with that email, if you want, create one';
+                return view('resetPasswordForm',['error' => $errors]);
             }
             $request['reset_password'] = HomeController::rand_string(12);
             $user = $user[0];
