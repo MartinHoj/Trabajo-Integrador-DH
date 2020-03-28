@@ -72,6 +72,7 @@ class UsersController extends Controller
         // A traves de un Midleware este campo sera habilitado o no en el formulario. Sera por defecto el rol de cliente
         $user->role_id = 2;
         $user->avatar_name = UsersController::validateAvatar($request);
+        $user->reset_password = '';
 
         $user->save();
         session(['log'=>true]);
