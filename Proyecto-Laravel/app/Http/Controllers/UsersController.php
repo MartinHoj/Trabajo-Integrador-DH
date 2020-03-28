@@ -424,6 +424,7 @@ class UsersController extends Controller
         session()->forget('exist');
         session()->forget('role_id');
         session()->forget('remember');
+        session()->forget('notifications');
         return view('/welcome');
     }
     public static function friends($user_id){
