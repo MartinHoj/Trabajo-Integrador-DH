@@ -61,6 +61,17 @@
             <a class="nav-link" href="/listPosts">List Posts</a>
           </li>
           @endif
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle mr-2 btn-outline-primary" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="drop" [autoClose]="'always'">
+              Notifications <span class="badge badge-light">{{count(session('notifications'))}}</span>
+            </a>
+            <div class="dropdown-menu" id="show">
+              @foreach (session('notifications') as $userFriend)
+              <a class="dropdown-item" href="/userDetails/{{$userFriend->user_id}}">{{$userFriend->username}} te ha enviado una solicitud de amistad!</a>
+              <a class="btn-sm btn-primary btn" href="/acceptFriend/{{$userFriend->user_id}}" role="button">Aceptar Amigo</a>
+              @endforeach
+            </div>
+          </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="get" action="/search">
           @csrf

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Http\Controllers\UsersController;
 use App\Post;
 use App\Comment;
 use Illuminate\Support\Facades\Mail;
@@ -75,6 +76,8 @@ class HomeController extends Controller
                 $postsComments[] = Comment::where('post_id',$post->post_id)->with('getUser')->get();
             }   
         }
+        $notifications = HomeController::notifications();
+        session(['notifications' => $notifications]);
         return view('/home',['allPosts' => $allPosts,'postsComments' => $postsComments]);
         }
         else {
@@ -128,5 +131,15 @@ class HomeController extends Controller
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         return substr(str_shuffle($chars),0,$length);
     
+    }
+    public function notifications(){
+        $userFriends = UsersController::friends(session('user_id'));
+        $notifications = [];
+        foreach ($userFriends as $userFriend) {
+            if ($userFriend->status == false && $userFriend->yoInvite == true) {
+                $notifications[] = $userFriend;
+            }
+        }
+        return $notifications;
     }
 }

@@ -43,7 +43,6 @@
           <span class="sr-only">Next</span>
         </a>
       </div> --}}
-      
       @foreach ($allPosts as $post)
       <div class="container center mt-3 ">
         <div class="card" style="width: 25rem;">
