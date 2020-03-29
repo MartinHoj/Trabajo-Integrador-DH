@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/styleFormEditData.css">
 @extends('layouts.form')
 @section('title','Change Password')
 @section('action','/updateResetPassword')

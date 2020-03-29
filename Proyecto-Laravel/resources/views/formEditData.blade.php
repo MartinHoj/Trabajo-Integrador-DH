@@ -368,7 +368,14 @@
                     </button>
                 </div>
             </div>
- 
+            <br><br><br>
+            <div class="form-group row mb-0">
+                <div class="col-md-6 offset-md-3">
+                    <a class="btn btn-warning bt-small" href="/destroyConfirmation" role="button" class="btn btn-primary">
+                        Close my account
+                    </a>
+                </div>
+            </div>
  
 
 

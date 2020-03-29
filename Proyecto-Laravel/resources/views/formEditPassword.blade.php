@@ -1,10 +1,11 @@
+<link rel="stylesheet" href="css/styleFormEditData.css">
 @extends('layouts.form')
 @section('title','Change Password')
 @section('action','/updatePassword')
 @section('header')
     @include('layouts.header')
 @endsection
-
+@section('card-header','Here you can change your password')
 @section('form')
 
 <div class="form-group row">
