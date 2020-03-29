@@ -8,17 +8,18 @@
 button{
 
     font-family: ha;
-    font-size: 120% !important;
+    font-size: 90% !important;
 }
 
 .card-body{
 
     font-family: ha;
-    font-size: 220% !important;
+    font-size: 150% !important;
 }
 
 main{
-
+    margin: auto;
+    width: 40%;
     box-shadow: -5px 10px 5px 0px rgba(146, 146, 146, 0.75) !important;
 
 

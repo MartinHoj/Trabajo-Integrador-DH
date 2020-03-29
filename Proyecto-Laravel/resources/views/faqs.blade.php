@@ -22,11 +22,11 @@
   @endif
     <div class="container col-xl-7 pt-5 text-center ">
         <main>
-            <h1 class="title pb-5 border-bottom-0 border bg-light pt-5">Preguntas frecuentes</h1>
-            <div class="accordion" id="accordionExample">
+            <h1 class="title pb-5 mb-0 border-bottom-0 border bg-light pt-5">Preguntas frecuentes</h1>
+            <div class="accordion " id="accordionExample">
                 <div class="card">
-                  <div class="card-header" id="headingOne">
-                    <h2 class="mb-0">
+                  <div class="card-header bg-white" id="headingOne">
+                    <h2 class="mb-0 ">
                       <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         Question 1
                       </button>
@@ -40,7 +40,7 @@
                   </div>
                 </div>
                 <div class="card">
-                  <div class="card-header" id="headingTwo">
+                  <div class="card-header bg-white" id="headingTwo">
                     <h2 class="mb-0">
                       <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         Question 2
@@ -54,7 +54,7 @@
                   </div>
                 </div>
                 <div class="card">
-                  <div class="card-header" id="headingThree">
+                  <div class="card-header bg-white" id="headingThree">
                     <h2 class="mb-0">
                       <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         Question 3
@@ -68,7 +68,7 @@
                   </div>
                 </div>
                 <div class="card">
-                    <div class="card-header" id="headingFour">
+                    <div class="card-header bg-white" id="headingFour">
                       <h2 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                           Question 4
@@ -82,7 +82,7 @@
                     </div>
                   </div>
                   <div class="card">
-                    <div class="card-header" id="headingFive">
+                    <div class="card-header bg-white" id="headingFive">
                       <h2 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                           Question 5

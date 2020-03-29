@@ -1,0 +1,48 @@
+.sombreadoTitulo{
+
+
+    text-shadow: -5px 10px 5px  rgba(146, 146, 146, 0.75) !important;
+}
+
+.destroyPost{
+
+
+    
+       
+        width: 30%;
+        font-size: 14px;
+        /* color: rgb(5, 6, 7) ; */
+        border: 2px solid rgb(0, 124, 128) ;
+        border-radius: 3%;
+        padding-right: 2.5%;
+
+}
+
+
+
+.commentBtn{
+
+    /* font-family: ha; */
+    font-size: 10px;
+    /* color: rgb(5, 6, 7) !important; */
+    border: 2px solid rgb(0, 124, 128) ;
+    border-radius: 7%;
+   /* box-shadow: -5px 10px 5px 0px rgba(146, 146, 146, 0.75) !important;
+     */
+    padding: 1%;
+}
+
+.changePost{
+
+
+    
+    /* font-family: ha; */
+    font-size: 12px;
+    border: 2px solid rgb(0, 124, 128) ;
+    border-radius: 7%;
+   /* box-shadow: -5px 10px 5px 0px rgba(146, 146, 146, 0.75) !important;
+     */
+    padding: 1%;
+   
+}
+

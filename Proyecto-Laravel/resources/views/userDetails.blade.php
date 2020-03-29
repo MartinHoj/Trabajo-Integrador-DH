@@ -9,14 +9,14 @@
 </head>
 <body>
   @include('layouts.header')
-  <h1 class="text-center title display-2 nombreUsuario">
+  <h1 class="text-center title display-2 nombreUsuario border-bottom-0 rounded-top mt-2 bg-light">
     USUARIO: {{$user->name}} {{$user->surname}}
   </h1>
   <div class="container align-center main">
-    <div class="card align-center col-8">
-    <div class="card-body h2 text-center">User Information</div>
-    <div class="img-container container">
-      <img src="/storage/images/avatars/{{$user->avatar_name}}" class="circular img" alt="No Disponible">
+    <div class="card align-center col-5 text-center">
+    <div class="card-body h2 text-center pt-3">User Information</div>
+    <div class="img-container container text-center">
+      <img src="/storage/images/avatars/{{$user->avatar_name}}" class="circular img text-center" alt="No Disponible">
     </div>
     @if (!session('guest'))
       <a href="/formEditAvatar" class=" stretched-link text-center changeName btn btn-outline-primary">Change Avatar</a>    

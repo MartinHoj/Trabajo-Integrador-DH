@@ -23,8 +23,8 @@
           <li class="nav-item">
             <a class="nav-link rounded mr-2 btn-outline-primary" href="/createPost">Post</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle mr-2 btn-outline-primary" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="drop" [autoClose]="'always'">Options</a>
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle mr-2 btn-outline-primary " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="drop" [autoClose]="'always'">Options</a>
             <div class="dropdown-menu" id="show">
               <a class="dropdown-item" href="/formEditData">Edit User</a>
               <a class="dropdown-item" href="/userDetails/{{session('user_id')}}">Show my profile</a>

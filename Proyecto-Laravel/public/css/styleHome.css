@@ -7,12 +7,12 @@
 .commentBtn{
 
     /* font-family: ha; */
-    font-size: 10px;
+    font-size: 9px;
     color: rgb(5, 6, 7) !important;
     border: 2px solid rgb(0, 124, 128) ;
     border-radius: 3%;
-    box-shadow: -5px 10px 5px 0px rgba(146, 146, 146, 0.75) !important;
-     
+   /* box-shadow: -5px 10px 5px 0px rgba(146, 146, 146, 0.75) !important;
+     */
     padding: 1%;
 }
 
@@ -32,3 +32,8 @@
 
 
 }
+
+ .cabecera{
+
+    text-shadow: -5px 10px 5px  rgba(146, 146, 146, 0.75) !important;
+} 

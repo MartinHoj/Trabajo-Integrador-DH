@@ -13,7 +13,7 @@
 <body>
     @include('layouts.header')
 
-    <h1 class="title display text-center mt-5 pt-1 pb-3 ">
+    <h1 class="title display text-center mt-5 p-1 pb-3 cabecera ">
         Welcome to our social network
     </h1>
     {{-- Un carrousel que hay que mejorar las flechas para pasar de imagen --}}
@@ -56,7 +56,7 @@
               @endif
             </div>
             <ul class="list-group list-group-flush ">
-                <li class="list-group-item bg-light"><small class="small "><strong> Comments </strong></small>
+                <li class="list-group-item bg-light "><small class=" small "><strong> Comments </strong></small>
                 <a class="small commentBtn rounded" name="{{$post->post_id}}" href="#">Create comment</a></li>
             </ul>
         
@@ -76,7 +76,7 @@
             </small>
             @if ($comment->user_id == session('user_id'))
                 <div>
-                <small><span><a class="DeleteCmt rounded" href="/destroyComment/{{$comment->comment_id}}">Borrar comment</a></span></small>
+                <small><span><a class="DeleteCmt rounded" href="/destroyComment/{{$comment->comment_id}}">Delete comment</a></span></small>
                 </div>
             @endif
             </div>

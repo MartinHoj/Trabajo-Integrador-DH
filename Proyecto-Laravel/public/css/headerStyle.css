@@ -53,9 +53,37 @@ font-family: 'Gloria Hallelujah', cursive;
 }
 
 
-@media  (max-width:992 px) and (min-width:  1433px) {
+@media  (max-width:1386px) and (min-width:  992px) {
     .navbar-brand{
 
-     display: none!;
+     display: none !important;
     }
+
   }
+
+
+
+  @media  (max-width:1386px) and (min-width:  992px) {
+    .navbar-brand{
+
+     display: none !important;
+    }
+
+  }
+
+
+  @media  (max-width:1386px) and (min-width:  991px){
+
+    .nav-link{
+     
+        font-family: ha;
+        font-size: 19px;
+        color: rgb(5, 6, 7) !important;
+        border: 2px solid rgb(0, 124, 128) ;
+        border-radius: 3%;
+        box-shadow: -5px 10px 5px 0px rgba(146, 146, 146, 0.75) !important;
+    }
+
+  }
+
+  

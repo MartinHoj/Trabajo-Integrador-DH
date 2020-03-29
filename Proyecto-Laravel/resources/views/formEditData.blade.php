@@ -7,8 +7,10 @@
 @endsection
 @section('title','Edit User')
 @section('card-header')
-<div class="text-center">
+<div class="text-center  p-0">
+   <p class="p-0 editarDatos">
     Here you can change your user information
+    </p>
     <br>
     <a class="btn btn-primary" href="/formEditPassword" role="button">Change my Password</a>
 </div>  
@@ -359,9 +361,9 @@
             --}}    
             
            
-            <div class="form-group row mb-0">
-                <div class="col-md-6  ">
-                    <button type="submit" class="btn btn-primary ">
+            <div class="form-group row mb-0  text-center ">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary btnMakeChanges">
                         {{ __('Make Changes') }}
                     </button>
                 </div>

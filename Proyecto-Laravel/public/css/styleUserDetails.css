@@ -3,23 +3,34 @@
     font-size: 200% ;
    padding: 2%;
    text-transform: uppercase;
+   border: rgb(224, 222, 222) 1px solid;
+   width: 24%;
+   margin: 0 auto ;
   }
   
   .card-body{
   
       src: url(../fonts/Handlee-Regular.ttf);
-      font-family: ha;
-      font-size: 200%;
+      /* font-family: ha; */
+      font-size: 160%;
       padding: 0px ;
   }
   
   .changeName{
    margin: auto;
-      width:60%;
-      font-size: 200%;
+      width:40%;
+      font-size: 100%;
   
   }
   
+
+  .img{
+
+
+    width: 30% !important;
+
+  }
+
   
   
   
