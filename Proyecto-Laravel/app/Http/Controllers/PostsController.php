@@ -180,7 +180,7 @@ class PostsController extends Controller
             $imagen = $request->file('img');
             //$imagen->getClientOriginalExtension();
             $imageName = $request->img->getClientOriginalName();
-            $request->img->move(public_path('images/posts'), $imageName);
+            $request->img->move(public_path('/storage/images/posts'), $imageName);
         }
         return $imageName;
     }

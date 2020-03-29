@@ -368,7 +368,7 @@ class UsersController extends Controller
             $imagen = $request->file('avatar');
             //$imagen->getClientOriginalExtension();
             $imageName = $request->avatar->getClientOriginalName();
-            $request->avatar->move(public_path('images/avatars'), $imageName);
+            $request->avatar->move(public_path('storage/images/avatars'), $imageName);
         }
         return $imageName;
     }
