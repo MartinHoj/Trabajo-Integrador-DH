@@ -40,6 +40,7 @@ Route::get('/formEditPost/{id}','PostsController@edit');
 Route::post('/updatePost','PostsController@update');
 Route::get('/listPosts','PostsController@index');
 Route::post('/destroyPost/{id}','PostsController@destroy');
+Route::get('/destroyMyPost/{id}','PostsController@destroyMyPost');
 Route::get('/postDetails/{id}','PostsController@show');
 Route::get('/listUsers','UsersController@index');
 

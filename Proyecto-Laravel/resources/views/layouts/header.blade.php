@@ -63,7 +63,7 @@
           @endif
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle mr-2 btn-outline-primary" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="drop" [autoClose]="'always'">
-              Notifications <span class="badge badge-light">{{count(session('notifications'))}}</span>
+              Notifications <span class="badge badge-danger">{{count(session('notifications'))}}</span>
             </a>
             <div class="dropdown-menu" id="show">
               @foreach (session('notifications') as $userFriend)

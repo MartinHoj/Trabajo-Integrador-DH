@@ -163,9 +163,11 @@ class PostsController extends Controller
             exit;
         }
         $comments = Comment::where('post_id',$id)->get();
-        $comments->delete();
+        foreach ($comments as $comment) {
+            $comment->delete();
+        }
         $post->delete();
-        return redirect('/adminPosts');
+        return redirect('/myPosts');
     }
 
     public function validateImg(Request $request)
