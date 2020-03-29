@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/styleCreatePost.css">
+  <link rel="stylesheet" href="css/styleFormEditData.css">
   <title>Create Post</title>
 </head>
 <body>

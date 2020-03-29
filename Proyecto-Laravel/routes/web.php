@@ -51,7 +51,7 @@ Route::get('/addFriend/{id}','FriendsController@store');
 Route::get('/destroyFriend/{id}','FriendsController@destroy');
 Route::get('/acceptFriend/{id}','FriendsController@update');
 Route::get('/destroyFriendsRequest/{id}','FriendsController@destroyFriendsRequest');
-Route::get('dontAcceptFriend/{id}','FriendsController@dontAccept');
+Route::get('/dontAcceptFriend/{id}','FriendsController@dontAccept');
 
 
 Route::get('/resetPasswordForm','HomeController@resetPasswordForm');

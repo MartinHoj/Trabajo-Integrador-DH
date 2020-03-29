@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/styleContactUs.css">
+    <link rel="stylesheet" href="css/styleFormEditData.css">
     <title>@yield('title')</title>
 </head>
 <body>

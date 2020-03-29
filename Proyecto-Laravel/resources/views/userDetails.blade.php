@@ -51,8 +51,11 @@
     <div class="card-body">Phone: {{$user->phone}}</div>
     <div class="card-body">Hobbie: {{$user->hobbie}}</div>
     <div class="card-body">Country: {{$user->country}}</div>
-      <div class="card-title text-center title h5">Friends:</div>
+      <div class="card-title text-center title h5" style="color: grey;">Friends:</div>
       @foreach ($friends as $friend)
+          <div class="tiny-img-container">
+            <img src="/storage/images/avatars/{{$friend->avatar_name}}" alt="" class="tiny-img circular">
+          </div>
           <div class="card-body">{{$friend->username}}</div>
       @endforeach    
     {{-- {{dd($friends)}} --}}

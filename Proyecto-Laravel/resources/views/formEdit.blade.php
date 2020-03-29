@@ -13,7 +13,7 @@
 @section('action','/update')
 @section('form')
 <div class="form-group row">
-  <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+  <label for="name" style="color: black;" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
   
   <div class="col-md-6">
     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
@@ -26,7 +26,7 @@
   </div>
 </div>
 <div class="form-group row">
-  <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
+  <label for="surname" style="color: black;" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
   
   <div class="col-md-6">
     <input id="name" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ $user->surname }}" required autocomplete="name" autofocus>
@@ -39,7 +39,7 @@
   </div>
 </div>
 <div class="form-group row">
-  <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+  <label for="email" style="color: black;" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
   
   <div class="col-md-6">
     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email">
@@ -52,7 +52,7 @@
   </div>
 </div>
 <div class="form-group row">
-  <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+  <label for="username" style="color: black;" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
   
   <div class="col-md-6">
     <input id="name" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ $user->username }}" required autocomplete="name" autofocus>
@@ -65,7 +65,7 @@
   </div>
 </div>
 <div class="form-group row">
-  <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+  <label for="phone" style="color: black;" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
   
   <div class="col-md-6">
     <input id="name" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $user->phone }}" required autocomplete="name" autofocus>
@@ -78,7 +78,7 @@
   </div>
 </div>
 <div class="form-group row">
-  <label for="hobbie" class="col-md-4 col-form-label text-md-right">{{ __('Hobbie') }}</label>
+  <label for="hobbie" style="color: black;" class="col-md-4 col-form-label text-md-right">{{ __('Hobbie') }}</label>
   
   <div class="col-md-6">
     <input id="name" type="text" class="form-control @error('hobbie') is-invalid @enderror" name="hobbie" value="{{ $user->hobbie }}" required autocomplete="name" autofocus>
@@ -91,7 +91,7 @@
   </div>
 </div>
 <div class="form-group row">
-  <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
+  <label for="country" style="color: black;" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
   
   <div class="col-md-6">
     <select id="name" type="text" class="form-control @error('country') is-invalid @enderror" name="country" data-country="{{$user->country}}" required autocomplete="name" autofocus>
@@ -340,7 +340,7 @@
     </div>
     <script src="/js/countrySelected.js"></script>
     <div class="form-group row">
-      <label for="role_id" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+      <label for="role_id" style="color: black;" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
       
       <div class="col-md-6">
       <select id="name" type="text" class="form-control @error('role_id') is-invalid @enderror" name="role_id" data-role="{{$user->role_id}}" required autocomplete="name" autofocus>

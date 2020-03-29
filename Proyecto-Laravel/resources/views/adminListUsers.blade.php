@@ -24,7 +24,6 @@
             <th>id</th>
             <th>Username</th>
             <th colspan="3">
-                <a href="/..." class="btn btn-dark btn-success">Create</a>
             </th>
         </tr>
         </thead>
