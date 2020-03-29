@@ -330,12 +330,14 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $posts = Post::where('user_id',$id)->get();
-        foreach ($posts as $post) {
-            $posts_id[] = $post->post_id;
+        if (count($posts) != 0) {
+            foreach ($posts as $post) {
+                $posts_id[] = $post->post_id;
+            }
+            $comments = Comment::where('user_id',$id)->orWhereIn('post_id',$posts_id)->get();
+            $comments->delete();
+            $posts->delete();
         }
-        $comments = Comment::where('user_id',$id)->orWhereIn('post_id',$posts_id)->get();
-        $comments->delete();
-        $posts->delete();
         $user->delete();
         return redirect('/listUsers');
     }
@@ -347,12 +349,14 @@ class UsersController extends Controller
         $user_id = session('user_id');
         $user = User::find($user_id);
         $posts = Post::where('user_id',$user_id)->get();
-        foreach ($posts as $post) {
-            $posts_id[] = $post->post_id;
+        if (count($posts) != 0) {
+            foreach ($posts as $post) {
+                $posts_id[] = $post->post_id;
+            }
+            $comments = Comment::where('user_id',$user_id)->orWhereIn('post_id',$posts_id)->get();
+            $comments->delete();
+            $posts->delete();
         }
-        $comments = Comment::where('user_id',$user_id)->orWhereIn('post_id',$posts_id)->get();
-        $posts->delete();
-        $comments->delete();
         $user->delete();
         return redirect('/logout');
     }
