@@ -43,11 +43,13 @@
           <span class="sr-only">Next</span>
         </a>
       </div> --}}
+
       @foreach ($allPosts as $post)
       <div class="container center mt-3 ">
         <div class="card" style="width: 25rem;">
             <img src="/storage/images/posts/{{$post->img_name}}" class="card-img-top p-1" alt="...">
             <div class="card-body">
+              <h6 class="title">{{$post->getUser->username}}</h6>
               <h5 class="card-title">{{$post->title}}</h5>
               <p class="card-text">{{$post->body}}</p>
               <p class="card-text"><small class="text-muted">Last updated {{$post->updated_at}}</small></p>

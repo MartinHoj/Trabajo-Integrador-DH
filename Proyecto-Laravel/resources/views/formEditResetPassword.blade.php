@@ -2,7 +2,7 @@
 @extends('layouts.form')
 @section('title','Change Password')
 @section('action','/updateResetPassword')
-@section('card-header',Change your password)
+@section('card-header','Change your password')
 @section('form')
 
 <div class="form-group row">

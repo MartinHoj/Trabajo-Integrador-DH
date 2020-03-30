@@ -56,7 +56,7 @@
           <div class="tiny-img-container">
             <img src="/storage/images/avatars/{{$friend->avatar_name}}" alt="" class="tiny-img circular">
           </div>
-          <div class="card-body">{{$friend->username}}</div>
+          <a href="/userDetails/{{$friend->user_id}}" style="color:black;" class="card-body">{{$friend->username}}</a>
       @endforeach    
     {{-- {{dd($friends)}} --}}
     </div>

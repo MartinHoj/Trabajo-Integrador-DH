@@ -89,7 +89,8 @@ class FriendsController extends Controller
      */
     public function destroy($id)
     {
-        $friendRelation = Friend::where('user_id_actual',session('user_id'))->where('user_id_friend',$id)->get();
+        $friendRelation = Friend::where('user_id_actual',session('user_id'))->where('user_id_friend',$id)
+        ->orWhere('user_id_friend',session('user_id'))->where('user_id_actual',$id)->get();
         $friendRelation = $friendRelation[0];
         $friendRelation->delete();
         return redirect("/userDetails/$id");

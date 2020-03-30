@@ -66,10 +66,14 @@
               Notifications <span class="badge badge-danger">{{count(session('notifications'))}}</span>
             </a>
             <div class="dropdown-menu" id="show">
-              @foreach (session('notifications') as $userFriend)
-              <a class="dropdown-item" href="/userDetails/{{$userFriend->user_id}}">{{$userFriend->username}} te ha enviado una solicitud de amistad!</a>
-              <a class="btn-sm btn-primary btn" href="/acceptFriend/{{$userFriend->user_id}}" role="button">Aceptar Amigo</a>
-              @endforeach
+              @if (count(session('notifications')) != 0)
+                @foreach (session('notifications') as $userFriend)
+                <a class="dropdown-item" href="/userDetails/{{$userFriend->user_id}}">{{$userFriend->username}} te ha enviado una solicitud de amistad!</a>
+                <a class="btn-sm btn-primary btn" href="/acceptFriend/{{$userFriend->user_id}}" role="button">Aceptar Amigo</a>
+                @endforeach
+              @else
+                  <div class="bold strong muted-text text-center center container">No tienes notificaciones pendientes</div>
+              @endif
             </div>
           </li>
         </ul>

@@ -114,6 +114,8 @@ class UsersController extends Controller
                 $relation = 3;
             }
         }
+        $notifications = HomeController::notifications();
+        session(['notifications' => $notifications]);
         return view('/userDetails',['user'=>$user,'role' => $role,'friends' => $friends,'relation' => $relation,'id' => $id]);
     }
 

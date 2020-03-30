@@ -11,8 +11,8 @@ let phone = elements[6];
 let hobbie = elements[7];
 let errors = [];
 var regExpre = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-let divs = document.querySelectorAll('.col-md-6');
-divs = Array.from(divs);
+let smalls = document.querySelectorAll('.alert-danger');
+smalls = Array.from(smalls);
 
 name.onblur = function() {
     if (name.value.trim().length < 2) {
@@ -43,7 +43,7 @@ password.onblur = function(){
     }
 }
 confPass.onblur = function(){
-    if (confPass.value !== password.value) {
+    if (confPass.value != password.value) {
         errors[4] = ('Is not the same password');
     } else {
         errors[4] = null;
@@ -74,8 +74,11 @@ form.onsubmit = function(event){
     console.log(errors);
     for (let i = 0; i < errors.length; i++) {
         if (errors[i] !== null) {
-            divs[i].innerHTML += '<small class="alert-danger">' + errors[i] + '</small>';
+            smalls[i].textContent = errors[i];
+            smalls[i].removeAttribute('hidden');
             event.preventDefault();
+        } else {
+            smalls[i].setAttribute('hidden','');
         }
         
     }

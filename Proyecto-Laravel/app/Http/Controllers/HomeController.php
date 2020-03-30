@@ -132,7 +132,7 @@ class HomeController extends Controller
         return substr(str_shuffle($chars),0,$length);
     
     }
-    public function notifications(){
+    public static function notifications(){
         $userFriends = UsersController::friends(session('user_id'));
         $notifications = [];
         foreach ($userFriends as $userFriend) {
