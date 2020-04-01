@@ -16,6 +16,9 @@ class PostsController extends Controller
      */
     public function index()
     {
+        if (!(session('log') && session('role_id')==1)) {
+            return redirect('/');
+         }
         $posts = Post::with('getUser')->paginate(5);
         return view('/adminListPosts',['posts' => $posts]);
     }
