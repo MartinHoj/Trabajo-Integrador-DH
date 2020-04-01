@@ -332,13 +332,29 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $posts = Post::where('user_id',$id)->get();
+        $friendsRelations = Friend::where('user_id_actual',$id)->orWhere('user_id_friend',$id)->get();
+        if (count($friendsRelations) != 0) {
+            foreach ($friendsRelations as $friendRelation) {
+                $friendRelation->delete();
+            }
+        }
         if (count($posts) != 0) {
             foreach ($posts as $post) {
                 $posts_id[] = $post->post_id;
             }
             $comments = Comment::where('user_id',$id)->orWhereIn('post_id',$posts_id)->get();
-            $comments->delete();
-            $posts->delete();
+            foreach ($comments as $comment) {
+                $comment->delete();
+            }
+            foreach ($posts as $post) {
+                $post->delete();
+            }
+        }
+        $userComments = Comment::where('user_id',$id)->get();
+        if (count($userComments) != 0) {
+            foreach ($userComments as $userComment) {
+                $userComment->delete();
+            }
         }
         $user->delete();
         return redirect('/listUsers');
@@ -350,14 +366,30 @@ class UsersController extends Controller
         }
         $user_id = session('user_id');
         $user = User::find($user_id);
+        $friendsRelations = Friend::where('user_id_actual',$user_id)->orWhere('user_id_friend',$user_id)->get();
+        if (count($friendsRelations) != 0) {
+            foreach ($friendsRelations as $friendRelation) {
+                $friendRelation->delete();
+            }
+        }
         $posts = Post::where('user_id',$user_id)->get();
         if (count($posts) != 0) {
             foreach ($posts as $post) {
                 $posts_id[] = $post->post_id;
             }
             $comments = Comment::where('user_id',$user_id)->orWhereIn('post_id',$posts_id)->get();
-            $comments->delete();
-            $posts->delete();
+            foreach ($comments as $comment) {
+                $comment->delete();
+            }
+            foreach ($posts as $post) {
+                $post->delete();
+            }
+        }
+        $userComments = Comment::where('user_id',$user_id)->get();
+        if (count($userComments) != 0) {
+            foreach ($userComments as $userComment) {
+                $userComment->delete();
+            }
         }
         $user->delete();
         return redirect('/logout');
