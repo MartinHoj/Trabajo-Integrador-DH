@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="css/styleFormEditData.css">
-
+<link rel="shortcut icon" href="{{URL::asset('/icon/iconoPrincipal.jpg')}}" type="image/x-icon">
 @extends('layouts.form')
 
 @section('header')

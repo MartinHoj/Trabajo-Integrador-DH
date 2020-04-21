@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="css/styleFormEditData.css">
 @extends('layouts.form')
 @section('title','Change Password')
+<link rel="shortcut icon" href="{{URL::asset('/icon/iconoPrincipal.jpg')}}" type="image/x-icon">
 @section('action','/updatePassword')
 @section('header')
     @include('layouts.header')

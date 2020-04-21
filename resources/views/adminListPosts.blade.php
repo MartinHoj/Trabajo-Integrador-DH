@@ -5,6 +5,7 @@
    
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/styleAdminListPosts.css">
+    <link rel="shortcut icon" href="{{URL::asset('/icon/iconoPrincipal.jpg')}}" type="image/x-icon">
   </head>
 
   <body>

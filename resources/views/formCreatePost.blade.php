@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="/css/styleCreatePost.css">
   <link rel="stylesheet" href="css/styleFormEditData.css">
   <title>Create Post</title>
+  <link rel="shortcut icon" href="{{URL::asset('/icon/iconoPrincipal.jpg')}}" type="image/x-icon">
 </head>
 <body>
   <header>

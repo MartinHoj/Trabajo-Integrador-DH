@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/app.css">
     <title>Edit Post</title>
+    <link rel="shortcut icon" href="{{URL::asset('/icon/iconoPrincipal.jpg')}}" type="image/x-icon">
 </head>
 <body>
     @include('layouts.header')

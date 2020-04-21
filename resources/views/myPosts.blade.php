@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/imageSize.css">
   <link rel="stylesheet" href="/css/styleMyPosts.css">
+  <link rel="shortcut icon" href="{{URL::asset('/icon/iconoPrincipal.jpg')}}" type="image/x-icon">
 </head>
 
 <body>

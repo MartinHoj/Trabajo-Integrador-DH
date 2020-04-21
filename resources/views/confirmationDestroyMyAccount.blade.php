@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="css/styleFormEditData.css">
 @extends('layouts.form')
 @section('title','Close Accounting')
+<link rel="shortcut icon" href="{{URL::asset('/icon/iconoPrincipal.jpg')}}" type="image/x-icon">
 @section('action',' ')
 @section('header')
     @include('layouts.header')

@@ -4,6 +4,7 @@
 @include('layouts.header')
 @endsection
 @section('title','Edit User')
+<link rel="shortcut icon" href="{{URL::asset('/icon/iconoPrincipal.jpg')}}" type="image/x-icon">
 @section('card-header')
 <div class="text-center">
   Here you can change this user information

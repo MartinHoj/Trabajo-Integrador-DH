@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/imageSize.css">
     <title>Post "{{$post->title}}"</title>
+    <link rel="shortcut icon" href="{{URL::asset('/icon/iconoPrincipal.jpg')}}" type="image/x-icon">
 </head>
 <body>
     @include('layouts.header')

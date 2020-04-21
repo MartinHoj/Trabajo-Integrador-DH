@@ -14,6 +14,7 @@
 @endif
 @endsection
 @section('title','Contact Us')
+<link rel="shortcut icon" href="{{URL::asset('/icon/iconoPrincipal.jpg')}}" type="image/x-icon">
 @section('action','/contactUs')
 
 @section('card-header')

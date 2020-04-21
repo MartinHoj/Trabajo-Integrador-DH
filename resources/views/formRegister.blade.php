@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Register</title>
     <link rel="stylesheet" href="/css/app.css">
-    
+    <link rel="shortcut icon" href="{{URL::asset('/icon/iconoPrincipal.jpg')}}" type="image/x-icon">
 </head>
 <body>
     <style>

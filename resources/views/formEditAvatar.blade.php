@@ -1,5 +1,6 @@
 @extends('layouts.form')
 @section('title','Edit Avatar')
+<link rel="shortcut icon" href="{{URL::asset('/icon/iconoPrincipal.jpg')}}" type="image/x-icon">
 @section('header')
 @include('layouts.header')
 @endsection
